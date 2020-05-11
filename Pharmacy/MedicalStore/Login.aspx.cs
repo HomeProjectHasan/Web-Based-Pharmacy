@@ -23,23 +23,27 @@ namespace MedicalStore
             string Password = txtPassword.Text;
             if (Username == "" || Password == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('No data');</script>");﻿
             }
             else
             {
                 int result = userDal.Login(Username, Password);
                 if (result == 1)
                 {
+                    Session["user_id"] = TextBox1.Text;
                     Label1.Text = "Login Successful!";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert(" + Session["user_id"].ToString() + "');</script>");
                     Response.Redirect("~/Home.aspx");
                 }
                 else if (result == 0)
                 {
+                    Session["user_id"] = null;
                     Label1.Text = "Login Unsuccessful!";
                 }
 
                 else if (result == -5)
                 {
+                    Session["user_id"] = null;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('SQL Error');</script>");﻿
                 }
             }

@@ -1,11 +1,14 @@
-use Ppharmacy
+use Medicine
 	-----Triggers----------------------------------------------
+
 	CREATE Trigger PreventDropTables
 	ON DATABASE FOR DROP_TABLE
 	AS begin
 		RAISERROR ('You cannot Drop any Table (Trigger Name "PreventDropTables")',10,1);
 		rollback
 	end
+
+	GO
 	---------------------
 
 	CREATE Trigger Prevent_Database on all server
@@ -14,6 +17,8 @@ use Ppharmacy
 		RAISERROR ('You cannot Drop Database (Trigger Name "Prevent_Database")',10,1);
 		rollback
 	end
+
+	GO
 	----------------------------------------------
 
 	CREATE Trigger Prevent_Procedure on all server
@@ -22,6 +27,8 @@ use Ppharmacy
 		RAISERROR ('You cannot Drop Procedure (Trigger Name "Prevent_Procedure")',10,1);
 		rollback
 	End
+
+	GO
 	----------------------
 	create trigger forStock on Purchase --adds new medicines in stock after purchase from dealer
 	for insert
@@ -42,8 +49,10 @@ use Ppharmacy
 			values (@medid, @quantity)
 			end
 		end
+
+		GO
 	-------------------------------------------
-	alter trigger forSales on Customers   --adds sold medicine in our sale list  
+	create trigger forSales on Customers   --adds sold medicine in our sale list  
 	for insert
 			as begin
 			declare @quantity int;
@@ -73,12 +82,12 @@ use Ppharmacy
 				values (@medid, @Cdate ,@quantity, @price, @tprice)
 				end
 			end
-
+GO
 	-------------------------
 	CREATE TRIGGER Valid_Email ON Employ
 	instead of insert, update
 		As BEGIN
-		declare @email varchar(25);
+		declare @email varchar(50);
 		SELECT @email=i.Email from inserted i;
 		IF @email NOT LIKE '%_@__%.__%'
 			BEGIN
@@ -91,6 +100,7 @@ use Ppharmacy
 			select EmpID, EmpName, Contact, House, Designation, Salary ,Email from inserted
 			end
 		END
+		GO
 		--------------------------------------
 	CREATE TRIGGER Valid_Expiry_Insert ON Medicine
 	instead of insert
@@ -110,8 +120,9 @@ use Ppharmacy
 			select MedicineID, MedicineName, CompanyID, Price, Manufacturing, Expiry from inserted
 			end
 		END
-		drop Trigger billcalculation
-	alter TRIGGER billcalculation ON Customers
+		GO
+
+	create TRIGGER billcalculation ON Customers
 	instead of insert
 		As BEGIN
 		delete from bill
@@ -160,8 +171,7 @@ use Ppharmacy
 		end
 		END
 
-
-		drop trigger Valid_Dealer_Purchase_Price
+GO
 			CREATE TRIGGER Valid_Dealer_Purchase_Price ON Purchase
 	instead of insert
 	As BEGIN
@@ -192,7 +202,8 @@ Select @price2=NULL
 	declare @return  float;
 Select @return =@purchaseprice-@purchaseprice2
 
-INSERT INTO Purchase select *from inserted
+INSERT INTO Purchase 
+select * from inserted
 
 delete from Dealerbill
 
@@ -202,3 +213,4 @@ values(@idd,@purchaseprice,@return)
 	END
 	END
 
+GO

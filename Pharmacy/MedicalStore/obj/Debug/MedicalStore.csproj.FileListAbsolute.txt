@@ -29,3 +29,10 @@ C:\Users\Zaheer Ud Din Faiz\Desktop\Modified\Modified\MedicalStore\bin\MedicalSt
 C:\Users\Zaheer Ud Din Faiz\Desktop\Modified\Modified\MedicalStore\obj\Debug\MedicalStore.csprojResolveAssemblyReference.cache
 C:\Users\Zaheer Ud Din Faiz\Desktop\Modified\Modified\MedicalStore\obj\Debug\MedicalStore.dll
 C:\Users\Zaheer Ud Din Faiz\Desktop\Modified\Modified\MedicalStore\obj\Debug\MedicalStore.pdb
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.dll.config
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.dll
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.pdb
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.csprojAssemblyReference.cache
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.csproj.CoreCompileInputs.cache
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.dll
+C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.pdb
