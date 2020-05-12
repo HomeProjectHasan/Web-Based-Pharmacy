@@ -13,7 +13,11 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Did"].ToString() == "1")
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else if (Session["Did"].ToString() == "1")
             {
                 DAL.myClass userDal = new DAL.myClass();
                 DataTable table = new DataTable();

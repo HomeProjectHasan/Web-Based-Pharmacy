@@ -13,6 +13,13 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] == null)
+            {
+            }
+            else
+            {
+                Session["user_id"] = null;
+            }
 
         }
 

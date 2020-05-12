@@ -8,15 +8,12 @@
     <body>
         <div style="padding-bottom:500px;">
             <div id="menu">
-                <ul>
-                    <li class="active"><a href="Home.aspx" accesskey="1" title="">Home</a></li>
-                    <li><a href="Medicine.aspx" accesskey="2" title="">Medicines</a></li>
-                    <li><a href="Employ.aspx" accesskey="3" title="">Employees</a></li>
-                    <li><a href="Purchase.aspx" accesskey="4" title="">Purchase</a></li>
-                    <li><a href="Dealer.aspx" accesskey="5" title="">Dealers</a></li>
-                    <li><a href="About.aspx" accesskey="6" title="">About Us</a></li>
-                    <li><a href="Frontpage.aspx" accesskey="7" title="">Sign Out</a></li>
-                </ul>
+                <div style="font-size: large; padding-left:600px;">
+                    <a href="Home.aspx" accesskey="1" title="" style="color: #000000">Home</a> &nbsp;&nbsp;&nbsp; <a href="Medicine.aspx" accesskey="2" title="" style="color: #000000">Medicines</a> &nbsp;&nbsp;&nbsp;<a href="Employ.aspx" accesskey="3" title="" style="color: #000000">Employees</a>
+                        &nbsp;&nbsp;&nbsp;<a href="Purchase.aspx" accesskey="4" title="" style="color: #000000">Purchase</a> &nbsp;&nbsp;&nbsp;<a href="Dealer.aspx" accesskey="5" title="" style="color: #000000">Dealers</a>
+                        &nbsp;&nbsp;&nbsp;<a href="About.aspx" accesskey="6" title="" style="color: #000000">About Us</a> &nbsp;&nbsp;&nbsp;<a href="Frontpage.aspx" accesskey="7" title="" style="color: #000000">Sign Out</a>
+            </div>
+                <div style="padding-left:600px;padding-top:50px;">
                 <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -28,6 +25,7 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
+                    </div>
 
             </div>
 

@@ -12,14 +12,18 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else { 
             DAL.myClass userDal = new DAL.myClass();
             DataTable table = new DataTable();
             table = userDal.showdealerbill();
             GridView1.DataSource = table;
             GridView1.EmptyDataText = "Amount is less or due to another fault No record found";
             GridView1.DataBind();
-
-
+            }
         }
     }
 }
