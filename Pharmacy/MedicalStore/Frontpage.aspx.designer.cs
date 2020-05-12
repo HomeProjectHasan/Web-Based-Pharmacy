@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MedicalStore {
-    
-    
-    public partial class Frontpage {
-        
+namespace MedicalStore
+{
+
+
+    public partial class Frontpage
+    {
+
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Button2 control.
         /// </summary>

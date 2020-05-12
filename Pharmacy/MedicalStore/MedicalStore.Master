@@ -5,10 +5,14 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<header class="header">
-    <div style="color:white">
-        <h1>PHOENIX PHARMACY</h1>
+<header style="padding-top:30px;">
+    <div class="header">
+    <div style="color:#d4fbff">
+        <h1>ALPHA PHARMACY</h1>
     </div>
+        </div>
+    <div style= "padding-top:10px;"></div>
+    
 </header>
 <body>
     <form id="form1" runat="server">
@@ -18,8 +22,9 @@
         </div>
     </form>
 </body>
+<br />
 <footer class="footer">
-    <div class="div" style="color:white; height: 34px;">
+    <div class="div" style="color:white; height: 25px;">
         This project is made by: <br />
         SALMAN LAYEK
     </div>

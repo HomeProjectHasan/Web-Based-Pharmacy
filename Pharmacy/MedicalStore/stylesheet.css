@@ -3,21 +3,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    background: url(images/1088840.jpg) center;
+    background: url(images/7091.jpg) center;
+    /*inear-gradient(#2095a1, #dce6e8);*/ 
     font-size: 14px;
     color: #405A67;
     height: 207px;
+
 }
 
 .div {
     padding-bottom: 10px;
-}
-
-.login {
-    color: black;
-    text-align: center;
-    padding-top: 200px;
-    padding-bottom: 190px;
 }
 
 .outputpage {
@@ -74,16 +69,59 @@ h3 {
 /* Header */
 
 .header {
-    background: url(images/image1.jpg);
+    background: linear-gradient(to right, #2D333F, #A2B0B3);
+     /*linear-gradient(to right, #2D333F, #dce6e8);*/
     text-align: center;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 2px;
     text-transform: uppercase;
 }
+.header1 {
+    background-image: linear-gradient(to right, #2D333F, #A2B0B3);
+    text-align: center;
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
 
 /* Footer */
 
 .footer {
-    background: url(images/image1.jpg);
+    background: linear-gradient(to right, #2D333F, #A2B0B3);
     text-align: center;
+}
+.footerImage {
+    background: url(images/7129.jpg) center;
+}
+
+.whitepanel {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 5px 10px 10px #2D333F;
+}
+.login {
+    left: 40%;
+    width: 250px;
+}
+.homepanel {
+    left: 40%;
+    width: 400px;
+}
+.buttonBorder {
+    border: 2px solid white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px #2D333F;
+    cursor: pointer;
+}
+
+.buttonBorderSmall {
+    border: 2px solid #2D333F;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+    cursor: pointer;
 }
