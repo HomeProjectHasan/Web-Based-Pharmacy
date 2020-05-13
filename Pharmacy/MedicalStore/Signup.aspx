@@ -3,10 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Button ID="Button1" runat="server" PostBackUrl="~/Frontpage.aspx" Text="&lt;&lt; Back" />
+    <asp:Button ID="Button1" runat="server" class="buttonBorder" style="margin-right:25px;" Font-Size="Larger" Font-Bold="true"  Height="30px" Width="100px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" PostBackUrl="~/Frontpage.aspx" Text="Back" />
+    
         <div class="signup" style="padding-bottom: 60px; padding-top: 75px;">
             <div class="div" style="color: black">
-                Fullname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Full Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             </div>
 
@@ -51,7 +52,9 @@
             </div>
 
             <div class="div" style="padding-left: 7px; padding-right: 7px; margin-left: 40px; color: black">
-                <asp:Button runat="server" ID="Button2" Text="Signup" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 0 10px red; margin-left: 52px;" OnClick="button2_Click" />
+                <asp:Button runat="server" ID="Button2" Text="Sign Up" Height="30px" Width="100px" Font-Size="Larger" Font-Bold="true" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; margin-left: 52px;" OnClick="button2_Click" />
+                &nbsp;&nbsp <asp:Label ID="Label2" runat="server" style="color: white" Text="Existing User"></asp:Label>
+                <asp:Button runat="server" ID="Button3" Text="Log In" Height="30px" Width="100px" Font-Size="Larger" Font-Bold="true" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; margin-left: 52px;" PostBackUrl="~/Login.aspx" />
                 <br />
                 &nbsp;&nbsp;&nbsp;
             <br />

@@ -5,10 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <body onkeydown="return (event.keyCode!=13)">
 
-        <div style="font-size: large; padding-left:600px;">
-                    <a href="Home.aspx" accesskey="1" title="" style="color: #000000">Home</a> &nbsp;&nbsp;&nbsp; <a href="Medicine.aspx" accesskey="2" title="" style="color: #000000">Medicines</a> &nbsp;&nbsp;&nbsp;<a href="Employ.aspx" accesskey="3" title="" style="color: #000000">Employees</a>
-                        &nbsp;&nbsp;&nbsp;<a href="Purchase.aspx" accesskey="4" title="" style="color: #000000">Purchase</a> &nbsp;&nbsp;&nbsp;<a href="Dealer.aspx" accesskey="5" title="" style="color: #000000">Dealers</a>
-                        &nbsp;&nbsp;&nbsp;<a href="About.aspx" accesskey="6" title="" style="color: #000000">About Us</a> &nbsp;&nbsp;&nbsp;<a href="Frontpage.aspx" accesskey="7" title="" style="color: #000000">Sign Out</a>
+        <div style="font-size: large; padding-left:40%;">
+                    <a href="Home.aspx" accesskey="1" title="" style="color: #d4fbff">Home</a> &nbsp;&nbsp;&nbsp; 
+                <a href="Medicine.aspx" accesskey="2" title="" style="color: #d4fbff">Medicines</a> &nbsp;&nbsp;&nbsp;
+                <a href="Employ.aspx" accesskey="3" title="" style="color: #d4fbff">Employees</a>
+                        &nbsp;&nbsp;&nbsp;
+                <a href="Purchase.aspx" accesskey="4" title="" style="color: #d4fbff">Purchase</a> &nbsp;&nbsp;&nbsp;
+                <a href="Dealer.aspx" accesskey="5" title="" style="color: #d4fbff">Dealers</a>
+                        &nbsp;&nbsp;&nbsp;
+                <a href="About.aspx" accesskey="6" title="" style="color: #d4fbff">About Us</a> &nbsp;&nbsp;&nbsp;
+                <a href="Frontpage.aspx" accesskey="7" title="" style="color: #d4fbff">Sign Out</a>
             </div>
     </body>
     <p>

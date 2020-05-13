@@ -1,4 +1,4 @@
-USE [Medicine]
+USE [MedicalStore]
 GO
 
 /****** Object:  StoredProcedure [dbo].[CompanyName]    Script Date: 11-05-2020 16:45:25 ******/
