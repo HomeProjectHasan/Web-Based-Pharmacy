@@ -1,4 +1,5 @@
 
-Pharmacy/.vs/MedicalStore/v16/.suo
-Pharmacy/.vs/MedicalStore/v16/.suo
+Pharmacy/.vs/MedicalStore/v16/*
 Pharmacy/.vs/MedicalStore/config/applicationhost.config
+Pharmacy/MedicalStore/bin/*
+Pharmacy/MedicalStore/obj/Debug/MedicalStore.dll
