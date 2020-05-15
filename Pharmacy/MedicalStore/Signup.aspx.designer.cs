@@ -7,20 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MedicalStore {
-    
-    
-    public partial class Signup {
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
+namespace MedicalStore
+{
+
+
+    public partial class Signup
+    {
+
         /// <summary>
         /// TextBox1 control.
         /// </summary>
@@ -29,7 +22,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
+
         /// <summary>
         /// TextBox2 control.
         /// </summary>
@@ -38,7 +31,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
+
         /// <summary>
         /// TextBox3 control.
         /// </summary>
@@ -47,7 +40,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
-        
+
         /// <summary>
         /// TextBox4 control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
-        
+
         /// <summary>
         /// TextBox5 control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
-        
+
         /// <summary>
         /// TextBox6 control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox6;
-        
+
         /// <summary>
         /// TextBox8 control.
         /// </summary>
@@ -83,7 +76,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox8;
-        
+
         /// <summary>
         /// TextBox9 control.
         /// </summary>
@@ -92,7 +85,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox9;
-        
+
         /// <summary>
         /// TextBox7 control.
         /// </summary>
@@ -101,7 +94,16 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
-        
+
+        /// <summary>
+        /// button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button button1;
+
         /// <summary>
         /// Button2 control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace MedicalStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
+
         /// <summary>
         /// Label1 control.
         /// </summary>

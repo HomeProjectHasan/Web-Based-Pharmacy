@@ -4,18 +4,25 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <body>
-        <div style="padding-bottom:500px;">
-            <div id="menu">
-                <ul>
-                    <li class="active"><a href="Home.aspx" accesskey="1" title="">Home</a></li>
-                    <li><a href="Medicine.aspx" accesskey="2" title="">Medicines</a></li>
-                    <li><a href="Employ.aspx" accesskey="3" title="">Employees</a></li>
-                    <li><a href="Purchase.aspx" accesskey="4" title="">Purchase</a></li>
-                    <li><a href="Dealer.aspx" accesskey="5" title="">Dealers</a></li>
-                    <li><a href="About.aspx" accesskey="6" title="">About Us</a></li>
-                    <li><a href="Frontpage.aspx" accesskey="7" title="">Sign Out</a></li>
-                </ul>
-                <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+        <div style="font-size: large; padding-left:40%;">
+                    <a href="Home.aspx" accesskey="1" title="" style="color: #d4fbff">Home</a> &nbsp;&nbsp;&nbsp; 
+                <a href="Medicine.aspx" accesskey="2" title="" style="color: #d4fbff">Medicines</a> &nbsp;&nbsp;&nbsp;
+                <a href="Employ.aspx" accesskey="3" title="" style="color: #d4fbff">Employees</a>
+                        &nbsp;&nbsp;&nbsp;
+                <a href="Purchase.aspx" accesskey="4" title="" style="color: #d4fbff">Purchase</a> &nbsp;&nbsp;&nbsp;
+                <a href="Dealer.aspx" accesskey="5" title="" style="color: #d4fbff">Dealers</a>
+                        &nbsp;&nbsp;&nbsp;
+                <a href="About.aspx" accesskey="6" title="" style="color: #d4fbff">About Us</a> &nbsp;&nbsp;&nbsp;
+                <a href="Frontpage.aspx" accesskey="7" title="" style="color: #d4fbff">Sign Out</a>
+            </div>
+        </body>
+                <div style="padding-bottom:400px;">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+               <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" style="margin-left: 663px; margin-right: 0px" Width="290px">
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
@@ -30,5 +37,5 @@
             </div>
 
         </div>
-    </body>
+    
 </asp:Content>

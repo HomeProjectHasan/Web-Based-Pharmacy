@@ -7,7 +7,7 @@
 
 <header style="padding-top:30px;">
     <div class="header">
-    <div style="color:#d4fbff">
+    <div style="color:#FBFBF8">
         <h1>ALPHA PHARMACY</h1>
     </div>
         </div>
@@ -24,7 +24,7 @@
 </body>
 <br />
 <footer class="footer">
-    <div class="div" style="color:white; height: 25px;">
+    <div class="div" style="color:#FBFBF8; height: 25px;">
         This project is made by: <br />
         SALMAN LAYEK
     </div>

@@ -36,3 +36,10 @@ C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.c
 C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.csproj.CoreCompileInputs.cache
 C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.dll
 C:\Programming\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.pdb
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.dll.config
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.dll
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\bin\MedicalStore.pdb
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.csprojAssemblyReference.cache
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.csproj.CoreCompileInputs.cache
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.dll
+C:\Users\SDM\Documents\GitHub\Web-Based-Pharmacy\Pharmacy\MedicalStore\obj\Debug\MedicalStore.pdb
