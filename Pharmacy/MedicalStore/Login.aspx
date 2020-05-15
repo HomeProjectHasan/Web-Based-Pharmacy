@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <body onkeydown = "return (event.keyCode!=13)">
-       <div style="padding-bottom:300px;padding-top:200px;">
+       <div style="padding-bottom:344px;padding-top:200px;">
           <div class="whitepanel login">
             <table id="table1" align="center">
                 <tr>
