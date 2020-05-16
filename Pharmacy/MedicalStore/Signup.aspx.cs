@@ -38,7 +38,7 @@ namespace MedicalStore
             }
             else if (Password.Text == ConfPassword.Text)
             {
-                int result = userDal.Signup(Name.Text, Contact.Text, Address.Text, Designation.Text, Int32.Parse(Salary.Text), Email.Text, UName.Text, Password.Text);
+                int result = userDal.Signup(Name.Text, Contact.Text, Address.Text, Designation.Text, Int32.Parse(Salary.Text), Email.Text,Gender.Text, UName.Text, Password.Text);
                 if (result == 0)
                 {
                     Label1.Text = "Username already exists!";

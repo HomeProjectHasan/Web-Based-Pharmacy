@@ -508,7 +508,7 @@ namespace MedicalStore.DAL
             }
             return ans;
         }
-        public int Signup(string Name, string Contact, string House, string Designation, int Salary, string Email, string UserN, string Pass)
+        public int Signup(string Name, string Contact, string House, string Designation, int Salary, string Email, string Gender, string UserN, string Pass)
         {
             int ans = -1;
             int Fans = -1;
@@ -537,6 +537,7 @@ namespace MedicalStore.DAL
                 sqlcommand1.Parameters.Add("@desig", SqlDbType.VarChar, 40);
                 sqlcommand1.Parameters.Add("@sal", SqlDbType.Int);
                 sqlcommand1.Parameters.Add("@Email", SqlDbType.VarChar, 25);
+                sqlcommand1.Parameters.Add("@gen", SqlDbType.VarChar, 25);
                 sqlcommand1.Parameters.Add("@usrn", SqlDbType.VarChar, 25);
                 sqlcommand1.Parameters.Add("@pass", SqlDbType.VarChar, 25);
                 sqlcommand1.Parameters.Add("@output", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -547,6 +548,7 @@ namespace MedicalStore.DAL
                 sqlcommand1.Parameters["@desig"].Value = Designation;
                 sqlcommand1.Parameters["@sal"].Value = Salary;
                 sqlcommand1.Parameters["@Email"].Value = Email;
+                sqlcommand1.Parameters["@gen"].Value = Gender;
                 sqlcommand1.Parameters["@usrn"].Value = UserN;
                 sqlcommand1.Parameters["@pass"].Value = Pass;
                 sqlcommand1.ExecuteNonQuery();

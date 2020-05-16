@@ -61,6 +61,18 @@
                    <td align="right">Email:</td>
                    <td>
                        <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+                       <br />
+                   </td>
+               </tr>
+               <tr>
+                   <td align="right">Gender:</td>
+                   <td>
+
+                       <asp:RadioButtonList ID="Gender" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>M</asp:ListItem>
+                           <asp:ListItem>F</asp:ListItem>
+                       </asp:RadioButtonList>
+
                    </td>
                </tr>
                <tr>
