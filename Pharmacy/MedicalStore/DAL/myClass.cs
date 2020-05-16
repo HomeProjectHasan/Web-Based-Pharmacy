@@ -601,8 +601,9 @@ namespace MedicalStore.DAL
             }
             return 0;
         }
-        public int Bill(string id) { 
-         DataSet ds = new DataSet();
+        public int Bill(string id)
+        {
+            DataSet ds = new DataSet();
             SqlConnection sqlconn = new SqlConnection(connString);
             sqlconn.Open();
             SqlCommand sqlcommand;
@@ -628,9 +629,10 @@ namespace MedicalStore.DAL
             }
             return 0;
         }
-        public int repetedcustomer(string id) {
- 
-             DataSet ds = new DataSet();
+        public int repetedcustomer(string id)
+        {
+
+            DataSet ds = new DataSet();
             SqlConnection sqlconn = new SqlConnection(connString);
             sqlconn.Open();
             SqlCommand sqlcommand;
@@ -692,7 +694,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters.Add("@PurchaseID", SqlDbType.VarChar, 20);
                 sqlcommand.Parameters.Add("@DealerID", SqlDbType.VarChar, 20);
                 sqlcommand.Parameters.Add("@Medicineid", SqlDbType.VarChar, 20);
-                sqlcommand.Parameters.Add("@PurchaseDate", SqlDbType.VarChar,20);
+                sqlcommand.Parameters.Add("@PurchaseDate", SqlDbType.VarChar, 20);
                 sqlcommand.Parameters.Add("@Quantity", SqlDbType.Float);
                 sqlcommand.Parameters.Add("@price", SqlDbType.Float);
                 sqlcommand.Parameters.Add("@Totalprice", SqlDbType.Float);
@@ -700,7 +702,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters["@DealerID"].Value = DealerID;
                 sqlcommand.Parameters["@Medicineid"].Value = Medicineid;
                 sqlcommand.Parameters["@PurchaseDate"].Value = PurchaseDate;
-                float c, p,d;
+                float c, p, d;
                 c = float.Parse(Quantity);
                 p = float.Parse(price);
                 d = float.Parse(Totalprice);
@@ -720,27 +722,73 @@ namespace MedicalStore.DAL
             }
             return 0;
         }
+
+        public DataTable getMedicineIdList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT MedicineID from Medicine", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
         public DataTable showdealerbill()
-       {
-           SqlConnection sqlconn = new SqlConnection(connString);
-           sqlconn.Open();
-           SqlDataAdapter datatable = new SqlDataAdapter();
-           DataTable searchresult = new DataTable();
-           try
-           {
-               datatable = new SqlDataAdapter("select * from DealerBill", sqlconn);
-               datatable.Fill(searchresult);
-           }
-           catch (SqlException ex)
-           {
-               Console.WriteLine("SQL Error" + ex.Message.ToString());
-               return null;
-           }
-           finally
-           {
-               sqlconn.Close();
-           }
-           return searchresult;
-       }
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("select * from DealerBill", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
+        public DataTable getCustomerIdList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT CustomerID from Customers", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
     }
 }

@@ -17,14 +17,24 @@ namespace MedicalStore
             {
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                DAL.myClass userDal = new DAL.myClass();
+
+                MedicineID.DataSource = userDal.getMedicineIdList();
+                MedicineID.DataBind();
+
+                CustomerID.DataSource = userDal.getCustomerIdList();
+                CustomerID.DataBind();
+            }
 
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             DAL.myClass userDal = new DAL.myClass();
-            string id = TextBox1.Text;
+            string id = CustomerID.SelectedItem.Value;
             string name = TextBox2.Text;
-            string mid = TextBox3.Text;
+            string mid = MedicineID.SelectedItem.Value;
             string quantity = TextBox4.Text;
             string amount = TextBox5.Text;
             if (id == "" || name == "" || mid == "" || quantity == "" || amount == "")
@@ -34,16 +44,16 @@ namespace MedicalStore
             else
             {
                 userDal.customer(id, name, mid, quantity, amount);
-                TextBox3.Text = "";
+                MedicineID.SelectedItem.Value = "";
                 TextBox4.Text = "";
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
             DAL.myClass userDal = new DAL.myClass();
-            string id = TextBox1.Text;
+            string id = CustomerID.SelectedItem.Value;
             string name = TextBox2.Text;
-            string mid = TextBox3.Text;
+            string mid = MedicineID.SelectedItem.Value;
             string quantity = TextBox4.Text;
             string amount = TextBox5.Text;
             if (id == "" || name == "" || mid == "" || quantity == "" || amount == "")
