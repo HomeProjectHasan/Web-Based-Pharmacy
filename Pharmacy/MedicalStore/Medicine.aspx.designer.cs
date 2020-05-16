@@ -42,13 +42,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
-        /// Textbox1 control.
+        /// Pricebyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox1;
+        protected global::System.Web.UI.WebControls.TextBox Pricebyid;
 
         /// <summary>
         /// Button4 control.
@@ -60,13 +60,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button4;
 
         /// <summary>
-        /// Textbox2 control.
+        /// Expirybyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox2;
+        protected global::System.Web.UI.WebControls.TextBox Expirybyid;
 
         /// <summary>
         /// Button5 control.
@@ -78,13 +78,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button5;
 
         /// <summary>
-        /// Textbox3 control.
+        /// Takebyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox3;
+        protected global::System.Web.UI.WebControls.TextBox Takebyid;
 
         /// <summary>
         /// Button6 control.
@@ -96,13 +96,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
-        /// Textbox4 control.
+        /// Informationbyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox4;
+        protected global::System.Web.UI.WebControls.TextBox Informationbyid;
 
         /// <summary>
         /// Button7 control.
@@ -114,13 +114,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button7;
 
         /// <summary>
-        /// Textbox5 control.
+        /// Quantitybyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox5;
+        protected global::System.Web.UI.WebControls.TextBox Quantitybyid;
 
         /// <summary>
         /// Button8 control.
@@ -132,13 +132,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button8;
 
         /// <summary>
-        /// Textbox6 control.
+        /// Purchasebyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox6;
+        protected global::System.Web.UI.WebControls.TextBox Purchasebyid;
 
         /// <summary>
         /// Button9 control.
@@ -150,13 +150,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button9;
 
         /// <summary>
-        /// Textbox7 control.
+        /// Salesnobyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox7;
+        protected global::System.Web.UI.WebControls.TextBox Salesnobyid;
 
         /// <summary>
         /// Button10 control.
@@ -168,22 +168,22 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button10;
 
         /// <summary>
-        /// Textbox8 control.
+        /// Updatebyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox8;
+        protected global::System.Web.UI.WebControls.TextBox Updatebyid;
 
         /// <summary>
-        /// Textbox9 control.
+        /// manudate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox9;
+        protected global::System.Web.UI.WebControls.TextBox manudate;
 
         /// <summary>
         /// Button11 control.
@@ -195,22 +195,22 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button11;
 
         /// <summary>
-        /// Textbox10 control.
+        /// Expirydatebyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox10;
+        protected global::System.Web.UI.WebControls.TextBox Expirydatebyid;
 
         /// <summary>
-        /// Textbox11 control.
+        /// expirydate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox11;
+        protected global::System.Web.UI.WebControls.TextBox expirydate;
 
         /// <summary>
         /// Button12 control.
