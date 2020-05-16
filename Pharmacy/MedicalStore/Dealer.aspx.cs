@@ -40,7 +40,7 @@ namespace MedicalStore
         protected void Button5_Click(object sender, EventArgs e)
         {
             Session["Did"] = 5;
-            Session["Did2"] = Textbox1.Text;
+            Session["Did2"] = findDealerbyid.Text;
             if (Session["Did2"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -51,7 +51,7 @@ namespace MedicalStore
         protected void Button6_Click(object sender, EventArgs e)
         {
             Session["Did"] = 6;
-            Session["Did2"] = Textbox2.Text;
+            Session["Did2"] = getdealnmbyid.Text;
             if (Session["Did2"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿

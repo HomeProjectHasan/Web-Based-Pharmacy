@@ -37,7 +37,7 @@ namespace MedicalStore
         protected void Button4_Click(object sender, EventArgs e)
         {
             Session["Button"] = 4;
-            Session["id"] = Textbox1.Text;
+            Session["id"] = Pricebyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -48,7 +48,7 @@ namespace MedicalStore
         protected void Button5_Click(object sender, EventArgs e)
         {
             Session["Button"] = 5;
-            Session["id"] = Textbox2.Text;
+            Session["id"] = Expirybyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -59,7 +59,7 @@ namespace MedicalStore
         protected void Button6_Click(object sender, EventArgs e)
         {
             Session["Button"] = 6;
-            Session["id"] = Textbox3.Text;
+            Session["id"] = Takebyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -70,7 +70,7 @@ namespace MedicalStore
         protected void Button7_Click(object sender, EventArgs e)
         {
             Session["Button"] = 7;
-            Session["id"] = Textbox4.Text;
+            Session["id"] = Informationbyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -81,7 +81,7 @@ namespace MedicalStore
         protected void Button8_Click(object sender, EventArgs e)
         {
             Session["Button"] = 8;
-            Session["id"] = Textbox5.Text;
+            Session["id"] = Quantitybyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -92,7 +92,7 @@ namespace MedicalStore
         protected void Button9_Click(object sender, EventArgs e)
         {
             Session["Button"] = 9;
-            Session["id"] = Textbox6.Text;
+            Session["id"] = Purchasebyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -103,7 +103,7 @@ namespace MedicalStore
         protected void Button10_Click(object sender, EventArgs e)
         {
             Session["Button"] = 10;
-            Session["id"] = Textbox7.Text;
+            Session["id"] = Salesnobyid.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -114,8 +114,8 @@ namespace MedicalStore
         protected void Button11_Click(object sender, EventArgs e)
         {
             Session["Button"] = 11;
-            Session["id"] = Textbox8.Text;
-            Session["id2"] = Textbox9.Text;
+            Session["id"] = Updatebyid.Text;
+            Session["id2"] = manudate.Text;
             if (Session["id"].ToString() == "" || Session["id2"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -125,8 +125,8 @@ namespace MedicalStore
         }
         protected void Button12_Click(object sender, EventArgs e)
         {
-            Session["id"] = Textbox10.Text;
-            Session["id2"] = Textbox11.Text;
+            Session["id"] = Expirydatebyid.Text;
+            Session["id2"] = expirydate.Text;
             Session["Button"] = 12;
             if (Session["id"].ToString() == "" || Session["id2"].ToString() == "")
             {

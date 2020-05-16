@@ -51,13 +51,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button4;
 
         /// <summary>
-        /// Textbox1 control.
+        /// findDealerbyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox1;
+        protected global::System.Web.UI.WebControls.TextBox findDealerbyid;
 
         /// <summary>
         /// Button5 control.
@@ -69,13 +69,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button5;
 
         /// <summary>
-        /// Textbox2 control.
+        /// getdealnmbyid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox2;
+        protected global::System.Web.UI.WebControls.TextBox getdealnmbyid;
 
         /// <summary>
         /// Button6 control.

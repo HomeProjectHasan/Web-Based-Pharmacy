@@ -42,6 +42,23 @@ td {
     background: url(images/7091.jpg) center;
     text-transform: uppercase;
 }
+.Medicinepanel {
+    color: white;
+    text-align:center;
+    color:black;
+}
+.dealerpanel {
+    color: white;
+    text-align: center;
+    color: black;
+}  
+
+{
+    color: white;
+    text-align: center;
+    color: black;
+}
+}
 
 .signup {
     color: white;
@@ -105,8 +122,10 @@ h3 {
     font-family: Helvetica, Arial, sans-serif;
 }
 .signup {
-    left: 40%;
-    width: 30%;
+    left: 0%;
+    width: 99%;
+    top: 2px;
+    height: 462px;
 }
 .login {
     left: 40%;
@@ -115,6 +134,22 @@ h3 {
 .homepanel {
     left: 40%;
     width: 400px;
+}
+.medicinepanel1 {
+    left: 40%;
+    width:850px;
+}
+.employpanel {
+    left: 40%;
+    width: 850px;
+}
+.dealerpanel1 {
+    left: 40%;
+    width: 850px;
+}
+.purchasepanel {
+    left: 40%;
+    width: 850px;
 }
 .buttonBorder {
     border: 2px solid white;

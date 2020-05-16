@@ -30,7 +30,7 @@
              <div style="font-size: large; padding-left:40%;">
             <asp:Button ID="Button1" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Medicines" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button1_Click" />
                 &nbsp;
-                <asp:Button ID="Button2" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show Out Of Stock" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button2_Click" />
+                <asp:Button ID="Button2" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Large" Font-Bold="true" Text="Show Out Of Stock" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button2_Click" />
                 &nbsp;
                 <asp:Button ID="Button3" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Expired" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button3_Click" />
             </div>

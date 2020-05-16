@@ -9,8 +9,11 @@
 
 namespace MedicalStore
 {
+
+
     public partial class Outputpage
     {
+
         /// <summary>
         /// GridView1 control.
         /// </summary>
