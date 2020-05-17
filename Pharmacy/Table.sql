@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  Table [dbo].[Company]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +20,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,7 +39,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -64,7 +64,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -92,7 +92,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -106,7 +106,7 @@ CREATE TABLE [dbo].[LoginDetails](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -128,7 +128,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -149,7 +149,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 17-05-2020 10:29:19 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 17-05-2020 11:40:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -168,6 +168,55 @@ PRIMARY KEY CLUSTERED
 	[SellID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Dealer]  WITH CHECK ADD  CONSTRAINT [FK_Dealer_Company] FOREIGN KEY([CompanyID])
+REFERENCES [dbo].[Company] ([CompanyID])
+GO
+
+ALTER TABLE [dbo].[Dealer] CHECK CONSTRAINT [FK_Dealer_Company]
+GO
+
+ALTER TABLE [dbo].[LoginDetails]  WITH CHECK ADD  CONSTRAINT [FK_LoginDetails_Employee] FOREIGN KEY([EmpID])
+REFERENCES [dbo].[Employee] ([EmpID])
+GO
+
+ALTER TABLE [dbo].[LoginDetails] CHECK CONSTRAINT [FK_LoginDetails_Employee]
+GO
+
+ALTER TABLE [dbo].[Medicine]  WITH CHECK ADD  CONSTRAINT [FK_Medicine_Company] FOREIGN KEY([CompanyID])
+REFERENCES [dbo].[Company] ([CompanyID])
+GO
+
+ALTER TABLE [dbo].[Medicine] CHECK CONSTRAINT [FK_Medicine_Company]
+GO
+
+ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_Dealer] FOREIGN KEY([DealerID])
+REFERENCES [dbo].[Dealer] ([DealerID])
+GO
+
+ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_Dealer]
+GO
+
+ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_Medicine] FOREIGN KEY([MedicineID])
+REFERENCES [dbo].[Medicine] ([MedicineID])
+GO
+
+ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_Medicine]
+GO
+
+ALTER TABLE [dbo].[Sell]  WITH CHECK ADD  CONSTRAINT [FK_Sell_Customers] FOREIGN KEY([CustomerID])
+REFERENCES [dbo].[Customers] ([CustomerID])
+GO
+
+ALTER TABLE [dbo].[Sell] CHECK CONSTRAINT [FK_Sell_Customers]
+GO
+
+ALTER TABLE [dbo].[Sell]  WITH CHECK ADD  CONSTRAINT [FK_Sell_Medicine] FOREIGN KEY([MedicineID])
+REFERENCES [dbo].[Medicine] ([MedicineID])
+GO
+
+ALTER TABLE [dbo].[Sell] CHECK CONSTRAINT [FK_Sell_Medicine]
 GO
 
 
