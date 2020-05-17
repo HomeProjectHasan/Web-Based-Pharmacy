@@ -16,8 +16,8 @@
                 <a href="About.aspx" accesskey="6" title="" style="color: #d4fbff">About Us</a> &nbsp;&nbsp;&nbsp;
                 <a href="Frontpage.aspx" accesskey="7" title="" style="color: #d4fbff">Sign Out</a>
         </div>
-        <div style="padding-top: 20px; padding-bottom: 12%;">
-             <div class="whitepanel signup">
+        <div style="padding-top: 20px; padding-bottom: 10%;">
+             <div class="whitepanel purchasepanel">
            <table id="table1" align="center">
                <tr>
                    <td></td>
@@ -91,7 +91,7 @@
                    <td></td>
                    <td>
                        <div class="div" style="padding-right: 7px; height: 15px;">
-                           <asp:Button ID="Button1" Text="Creat Bill" runat="server" Style="margin-left: 94px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="PurchaseClick" />
+                           <asp:Button ID="Button1" Text="Creat Bill" runat="server" Style="margin-left: 80px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="PurchaseClick" />
                        </div>
                    </td>
                </tr>

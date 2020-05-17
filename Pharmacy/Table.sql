@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  Table [dbo].[Company]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 17-05-2020 17:53:42 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +20,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,7 +39,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -64,7 +64,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -92,7 +92,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -106,7 +106,7 @@ CREATE TABLE [dbo].[LoginDetails](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -128,7 +128,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -149,7 +149,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 17-05-2020 11:40:17 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 17-05-2020 17:53:43 ******/
 SET ANSI_NULLS ON
 GO
 

@@ -19,59 +19,39 @@ namespace MedicalStore
             }
             else
             {
-                DAL.myClass userDal = new DAL.myClass();
+                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
-                MedicineID.DataSource = userDal.getMedicineIdList();
-                MedicineID.DataBind();
+                Customerlist.DataSource = userDal.getCustomerList();
+                Customerlist.DataBind();
 
-                CustomerID.DataSource = userDal.getCustomerIdList();
-                CustomerID.DataBind();
+                MedicineList.DataSource = userDal.getMedicineList();
+                MedicineList.DataBind();
+               
             }
 
         }
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void SellClick(object sender, EventArgs e)
         {
-            DAL.myClass userDal = new DAL.myClass();
-            string id = CustomerID.SelectedItem.Value;
-            string name = TextBox2.Text;
-            string mid = MedicineID.SelectedItem.Value;
-            string quantity = TextBox4.Text;
-            string amount = TextBox5.Text;
-            if (id == "" || name == "" || mid == "" || quantity == "" || amount == "")
+            DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+            string CustomerName = Customer.Text;
+            string CustomerAddress = Address.Text;
+            string CustomerContact = Contact.Text;
+            string MedicineID = MedicineList.Text;
+            DateTime SellDate = DateTime.Parse(Date.Text);
+            int QuantitySell = Int32.Parse(Quantity.Text);
+            string Newflag = NewFlag.Text;
+            if (CustomerName == "" || MedicineID == "" || SellDate.ToString() == "" || QuantitySell.ToString() == "" || Newflag == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");
             }
             else
             {
-                userDal.customer(id, name, mid, quantity, amount);
-                MedicineID.SelectedItem.Value = "";
-                TextBox4.Text = "";
+                string result = userDal.SellMedicine(CustomerName, CustomerAddress, CustomerContact, MedicineID, SellDate, QuantitySell, Newflag);
+                string[] strArray = result.Split('|');
+
+                ErrorLabel.Text = strArray[1].ToString();
             }
-        }
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            DAL.myClass userDal = new DAL.myClass();
-            string id = CustomerID.SelectedItem.Value;
-            string name = TextBox2.Text;
-            string mid = MedicineID.SelectedItem.Value;
-            string quantity = TextBox4.Text;
-            string amount = TextBox5.Text;
-            if (id == "" || name == "" || mid == "" || quantity == "" || amount == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
-            }
-            else
-            {
-                int result = userDal.customer(id, name, mid, quantity, amount);
-                int result1 = userDal.Bill(id);
-                int result2 = userDal.repetedcustomer(id);
-                if (result == -5 || result1 == -5 || result2 == -5)
-                {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('SQL Error');</script>");﻿
-                }
-                else
-                Response.Redirect("~/Output4.aspx");
-            }
+            
         }
     }
 }

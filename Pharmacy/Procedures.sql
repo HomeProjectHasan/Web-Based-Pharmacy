@@ -1,12 +1,13 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 17-05-2020 13:01:13 ******/
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 17-05-2020 17:55:28 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
  CREATE procedure [dbo].[Login] @usr varchar(20), @pas varchar(20), @result varchar(200) output
@@ -33,12 +34,13 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 17-05-2020 13:01:13 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 17-05-2020 17:55:28 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -96,12 +98,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 17-05-2020 13:01:13 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 17-05-2020 17:55:28 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -109,14 +112,14 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[SellMedicine]
-	@CustomerName varchar(50), @MedicineID varchar(100), @Date date, @Quantity int, @Address varchar(100), @Contract numeric(11,0), @NewFlag varchar(1)
+	@CustomerName varchar(50), @MedicineID varchar(100), @Date date, @Quantity int, @Address varchar(100), @Contact numeric(11,0), @NewFlag varchar(1),@result varchar(200) output
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	declare @sellid INT
-	declare @CustomerID int 
+	declare @CustomerID varchar (20) 
 	declare @CurrQuantity INT
 	declare @Price float 
 	
@@ -127,12 +130,13 @@ BEGIN
 		
 		declare @Cusid varchar(20)
 
-	    select @Cusid = max(cast(REPLACE([CustomerID],'C','') as INT)) from Customers
+	    select @Cusid = isnull(max(cast(REPLACE([CustomerID],'C','') as INT)),0) from Customers
 
-		select @CustomerID = cast(@Cusid+1 as varchar) +'M'
+
+		select @CustomerID = cast(@Cusid+1 as varchar) +'C'
 
 		INSERT INTO Customers([CustomerID],[CustomerName],[Address],[ContactNo])
-		values(@CustomerID, @CustomerName, @Address, @Contract)
+		values(@CustomerID, @CustomerName, @Address, @Contact)
 
 	end
 	else
@@ -144,7 +148,7 @@ BEGIN
 
 	    select @Price = [Price] from [dbo].[Medicine] where [MedicineID] = @MedicineID
 
-	    select @sellid = max(cast(REPLACE([SellID],'S','') as INT)) from Sell
+	    select @sellid = isnull(max(cast(REPLACE([SellID],'S','') as INT)),0) from Sell
 
 	    set @sellid = @sellid+1
 
@@ -153,20 +157,21 @@ BEGIN
 
 		update [Medicine] set [CurrentQuantity] = [CurrentQuantity] - @Quantity where [MedicineID] = @MedicineID
 
-		select '1'
+		select @result = 'Success| successful'
 		end try
 	   begin catch
-		select '0'
+		set @result = 'Error|' + ERROR_MESSAGE ( ) 
 		end catch
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 17-05-2020 13:01:13 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 17-05-2020 17:55:28 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
