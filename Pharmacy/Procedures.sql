@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 17-05-2020 10:30:21 ******/
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 17-05-2020 13:01:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,7 +33,7 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 17-05-2020 10:30:21 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 17-05-2020 13:01:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -46,7 +46,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[PurchaseMedicine]
-	@DealerID varchar(20), @MedicineName varchar(100), @Date date, @Quantity int, @Price float, @MFD Date, @EXP Date, @NewFlag varchar(1)
+	@DealerID varchar(20), @MedicineName varchar(100), @Date date, @Quantity int, @Price float, @MFD Date, @EXP Date, @NewFlag varchar(1), @result varchar(200) output
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -65,7 +65,7 @@ BEGIN
 
 		select @comid = [CompanyID] from [dbo].[Dealer] where [DealerID]= @DealerID
 
-	    select @medid = max(cast(REPLACE([MedicineID],'M','') as INT)) from Medicine
+	    select @medid = isnull(max(cast(REPLACE([MedicineID],'M','') as INT)),0) from Medicine
 
 		select @MedicineID = cast(@medid+1 as varchar) +'M'
 
@@ -82,21 +82,21 @@ BEGIN
 	end
 	-- finally add to purchase
 
-	    select @purchaseid = max(cast(REPLACE([PurchaseID],'P','') as INT)) from Purchase
+	    select @purchaseid = isnull(max(cast(REPLACE([PurchaseID],'P','') as INT)),0) from Purchase
 	    set @purchaseid = @purchaseid+1
 
 		INSERT INTO Purchase ([PurchaseID],[DealerID],[MedicineID],[PurchaseDate],[Quantity],[Totalprice])
 		values(cast(@purchaseid as varchar) +'P', @DealerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
 
-		select '1'
+		select @result = 'Success|Purchase successful'
 		end try
 	   begin catch
-		select '0'
+		set @result = 'Error|' + ERROR_MESSAGE ( ) 
 		end catch
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 17-05-2020 10:30:21 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 17-05-2020 13:01:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -161,7 +161,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 17-05-2020 10:30:21 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 17-05-2020 13:01:13 ******/
 SET ANSI_NULLS ON
 GO
 
