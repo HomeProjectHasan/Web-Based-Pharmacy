@@ -139,6 +139,48 @@ namespace MedicalStore.DAL
             return result;
         }
 
+        public string SellMedicine(string CustomerName, string CustomerAddress, String CustomerContact, string MedicineID, DateTime SellDate, int Quantity, string NewFlag)
+        {
+            string result;
+            DataSet ds = new DataSet();
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlCommand sqlcommand;
+            try
+            {
+                sqlcommand = new SqlCommand("dbo.SellMedicine", sqlconn);
+                sqlcommand.CommandType = CommandType.StoredProcedure;
+                sqlcommand.Parameters.Add("@CustomerName", SqlDbType.VarChar, 50);
+                sqlcommand.Parameters.Add("@MedicineID", SqlDbType.VarChar, 100);
+                sqlcommand.Parameters.Add("@Date", SqlDbType.Date);
+                sqlcommand.Parameters.Add("@Quantity", SqlDbType.Int);
+                sqlcommand.Parameters.Add("@Address", SqlDbType.VarChar, 100);
+                sqlcommand.Parameters.Add("@Contact", SqlDbType.BigInt);
+                sqlcommand.Parameters.Add("@NewFlag", SqlDbType.VarChar, 1);
+                sqlcommand.Parameters.Add("@result", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+
+                sqlcommand.Parameters["@CustomerName"].Value = CustomerName;
+                sqlcommand.Parameters["@MedicineID"].Value = MedicineID;
+                sqlcommand.Parameters["@Date"].Value = SellDate;
+                sqlcommand.Parameters["@Quantity"].Value = Quantity;
+                sqlcommand.Parameters["@Address"].Value = CustomerAddress;
+                sqlcommand.Parameters["@Contact"].Value = CustomerContact;
+                sqlcommand.Parameters["@NewFlag"].Value = NewFlag;
+                sqlcommand.ExecuteNonQuery();
+                result = sqlcommand.Parameters["@result"].Value.ToString();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error|" + ex.Message.ToString());
+                return "Error|" + ex.Message.ToString();
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return result;
+        }
+
         public DataTable getDealerList()
         {
             SqlConnection sqlconn = new SqlConnection(connString);
@@ -171,6 +213,29 @@ namespace MedicalStore.DAL
             try
             {
                 datatable = new SqlDataAdapter("SELECT MedicineID, MedicineName, CurrentQuantity, Price from Medicine", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
+        public DataTable getCustomerList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT CustomerID, CustomerName, from Customers", sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)
