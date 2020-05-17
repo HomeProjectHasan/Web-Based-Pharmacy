@@ -25,7 +25,7 @@ namespace MedicalStore
 
         protected void button1_Click1(object sender, EventArgs e)
         {
-            DAL.myClass userDal = new DAL.myClass();
+            DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
             string Username = TextBox1.Text;
             string Password = txtPassword.Text;
             if (Username == "" || Password == "")
@@ -34,24 +34,17 @@ namespace MedicalStore
             }
             else
             {
-                int result = userDal.Login(Username, Password);
-                if (result == 1)
+                string result = userDal.Login(Username, Password);
+
+                string[] strArray = result.Split('|');
+                if (strArray[0].ToString().Contains("Success"))
                 {
                     Session["user_id"] = TextBox1.Text;
-                    Label1.Text = "Login Successful!";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert(" + Session["user_id"].ToString() + "');</script>");
                     Response.Redirect("~/Home.aspx");
                 }
-                else if (result == 0)
+                else
                 {
-                    Session["user_id"] = null;
-                    Label1.Text = "Login Unsuccessful!";
-                }
-
-                else if (result == -5)
-                {
-                    Session["user_id"] = null;
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('SQL Error');</script>");﻿
+                    Label1.Text = strArray[1].ToString();
                 }
             }
         }

@@ -203,6 +203,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\MedicalStoreDAL.cs" />
     <Compile Include="DAL\myClass.cs" />
     <Compile Include="Dealer.aspx.cs">
       <DependentUpon>Dealer.aspx</DependentUpon>

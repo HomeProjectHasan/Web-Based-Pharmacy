@@ -26,32 +26,32 @@ namespace MedicalStore
 
         protected void button2_Click(object sender, EventArgs e)
         {
-            DAL.myClass userDal = new DAL.myClass();
+            DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
             DataTable DT = new DataTable();
             if (Password.Text != ConfPassword.Text)
             {
-                Label1.Text = "Password not same!";
+                ErrorLabel.Text = "Password not same!";
             }
-            if (Name.Text == "" || Address.Text == "" || Salary.Text == "" || Designation.Text == "" || Email.Text == "" || Password.Text == "" || ConfPassword.Text == "" || Contact.Text == "" || UName.Text == "")
+            if (Name.Text == "" || Address.Text == "" || Salary.Text == "" || Designation.Text == "" || Email.Text == "" || Password.Text == "" || ConfPassword.Text == "" || dob.Text == "" || Contact.Text == "" || UName.Text == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
             }
             else if (Password.Text == ConfPassword.Text)
             {
-                int result = userDal.Signup(Name.Text, Contact.Text, Address.Text, Designation.Text, Int32.Parse(Salary.Text), Email.Text,Gender.Text, UName.Text, Password.Text);
-                if (result == 0)
-                {
-                    Label1.Text = "Username already exists!";
-                }
+                string result = userDal.Signup(Name.Text, Contact.Text, Address.Text, Designation.Text, Int32.Parse(Salary.Text), Email.Text,Gender.Text, DateTime.Parse(dob.Text), UName.Text, Password.Text);
 
-                else if (result == 1)
-                {
-                    Label1.Text = "Account made successfully!";
-                }
+                string[] strArray = result.Split('|');
 
-                else if (result == -5)
+                if (strArray[0].ToString().Contains("Success"))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('SQL Error');</script>");﻿
+                    ClientScriptManager CSM = Page.ClientScript;
+
+                    string strconfirm = "<script>if(window.confirm('"+ strArray[1].ToString() + " Want to login?')){window.location.href='Login.aspx'}</script>";
+                    CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false);
+                }
+                else
+                {
+                    ErrorLabel.Text = strArray[1].ToString();
                 }
             }
         }

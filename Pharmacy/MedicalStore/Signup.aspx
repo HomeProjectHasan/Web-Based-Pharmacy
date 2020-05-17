@@ -6,8 +6,11 @@
   <div style="padding-bottom:210px;padding-top:100px;">  
         <div class="whitepanel signup">
            <table id="table1" align="center">
-                <tr>
-                   <asp:Label ID="Label1" runat="server" Style="color: red" Text=""></asp:Label>
+               <tr>
+                   <td></td>
+                   <td>
+                       <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+                   </td>
                </tr>
                <tr>
                    <td align="right">Full Name:</td>
@@ -22,9 +25,26 @@
                    </td>
                </tr>
                <tr>
-                   <td align="right">House Address:</td>
+                   <td align="right">Address:</td>
                    <td>
                        <asp:TextBox ID="Address" runat="server"></asp:TextBox>
+                   </td>
+               </tr>
+               <tr>
+                   <td align="right">Gender:</td>
+                   <td>
+
+                       <asp:RadioButtonList ID="Gender" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>M</asp:ListItem>
+                           <asp:ListItem>F</asp:ListItem>
+                       </asp:RadioButtonList>
+
+                   </td>
+               </tr>
+               <tr>
+                   <td align="right">Date of Birth:</td>
+                   <td>
+                       <asp:TextBox ID="dob" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -37,6 +57,13 @@
                    <td align="right">Salary:</td>
                    <td>
                        <asp:TextBox ID="Salary" runat="server"></asp:TextBox>
+                   </td>
+               </tr>               
+               <tr>
+                   <td align="right">Email:</td>
+                   <td>
+                       <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+                       <br />
                    </td>
                </tr>
                <tr>
@@ -55,24 +82,6 @@
                    <td align="right">Confirm password:</td>
                    <td>
                        <asp:TextBox ID="ConfPassword" TextMode="password" runat="server"></asp:TextBox>
-                   </td>
-               </tr>
-               <tr>
-                   <td align="right">Email:</td>
-                   <td>
-                       <asp:TextBox ID="Email" runat="server"></asp:TextBox>
-                       <br />
-                   </td>
-               </tr>
-               <tr>
-                   <td align="right">Gender:</td>
-                   <td>
-
-                       <asp:RadioButtonList ID="Gender" runat="server" RepeatDirection="Horizontal">
-                           <asp:ListItem>M</asp:ListItem>
-                           <asp:ListItem>F</asp:ListItem>
-                       </asp:RadioButtonList>
-
                    </td>
                </tr>
                <tr>
