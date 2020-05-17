@@ -37,10 +37,22 @@ namespace MedicalStore
             string MedicineName = Medicine.Text;
             DateTime PurchaseDate = DateTime.Parse(Date.Text);
             int QuantityPurchased = Int32.Parse(Quantity.Text);
-            float price = float.Parse(Price.Text);
-            DateTime MFDEntered = DateTime.Parse(MFD.Text);
-            DateTime EXPEntered = DateTime.Parse(EXP.Text); ;
             string Newflag = NewFlag.Text;
+            float price;
+            DateTime MFDEntered;
+            DateTime EXPEntered;
+            if(Newflag == "Yes")
+            { 
+            price = float.Parse(Price.Text);
+            MFDEntered = DateTime.Parse(MFD.Text);
+            EXPEntered = DateTime.Parse(EXP.Text);
+            }
+            else
+            {
+                price = 0;
+                MFDEntered = DateTime.Parse("1900-01-01");
+                EXPEntered = DateTime.Parse("1900-01-01");
+            }
 
             if (DealerID == "" || MedicineName == "" || PurchaseDate.ToString() == "" || QuantityPurchased.ToString() == "" || Newflag == "")
             {

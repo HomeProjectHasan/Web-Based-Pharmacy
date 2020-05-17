@@ -1,6 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MedicalStore.Master" AutoEventWireup="true" CodeBehind="Purchase.aspx.cs" Inherits="MedicalStore.Purchase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script  type="text/javascript">
+        function enableDisable() {
+            var list = document.getElementById("<%= NewFlag.ClientID%>");
+            var inputs = list.getElementsByTagName("input");
+            var selected;
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    selected = inputs[i];
+                    break;
+                }
+            }
+            if (selected) {
+                if (selected.value == "No") {
+                    document.getElementById("<%= Price.ClientID%>").disabled = true;
+                    document.getElementById("<%= MFD.ClientID%>").disabled = true;
+                    document.getElementById("<%= EXP.ClientID%>").disabled = true;
+                    document.getElementById("<%= Medicine.ClientID%>").style.visibility = 'hidden';
+                    document.getElementById("<%= MedicineList.ClientID%>").style.visibility = 'visible';
+                }
+                else {
+                    document.getElementById("<%= Price.ClientID%>").disabled = false;
+                    document.getElementById("<%= MFD.ClientID%>").disabled = false;
+                    document.getElementById("<%= EXP.ClientID%>").disabled = false;
+                    document.getElementById("<%= Medicine.ClientID%>").style.visibility = 'visible';
+                    document.getElementById("<%= MedicineList.ClientID%>").style.visibility = 'hidden';
+                }
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -38,17 +67,17 @@
                <tr>
                    <td align="right">New Medicine?:</td>
                    <td>
-                        <asp:RadioButtonList ID="NewFlag" runat="server" RepeatDirection="Horizontal">
-                           <asp:ListItem>Y</asp:ListItem>
-                           <asp:ListItem>N</asp:ListItem>
+                        <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+                           <asp:ListItem>Yes</asp:ListItem>
+                           <asp:ListItem>No</asp:ListItem>
                        </asp:RadioButtonList>
                    </td>
                </tr>
-               <tr>
+               
+               <tr id="listid">
                    <td align="right">Medicine:</td>
                    <td>
-                       <asp:TextBox ID="Medicine" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
+                    <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
                     DataTextField="MedicineName" DataValueField="MedicineName" Height="16px"
                     Width="118px">
                     <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
@@ -69,6 +98,12 @@
                         <asp:TextBox ID="Quantity" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
+               <tr id="id">
+                   <td  align="right"><div ID="textMedicine" >New medicine name:</div></td>
+                   <td>
+                       <asp:TextBox ID="Medicine" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
                <tr>
                    <td align="right">Price:</td>
                    <td>
@@ -82,7 +117,7 @@
                    </td>
                </tr>
                 <tr>
-                   <td align="right">MFD:</td>
+                   <td align="right">EXP:</td>
                    <td>
                        <asp:TextBox ID="EXP" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>

@@ -11,11 +11,12 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            base.OnLoad(e);
+            Page.Header.DataBind();
             if (Session["user_id"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-
         }
     }
 }
