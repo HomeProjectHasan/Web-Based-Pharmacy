@@ -1,0 +1,38 @@
+.menu-navigation-round {
+    font:bold 12px Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+    .menu-navigation-round a {
+        color: #9FE7EB;
+        background-color: #12343D;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        margin: 0 20px auto;
+        line-height: 2;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+.menu-navigation-round a.selected {
+        color: #12343D;
+        background-color: #9FE7EB;
+        border-radius: 20px;
+        padding: 10px 15px;
+        margin: 0 5px auto;
+    }
+
+.menu-navigation-round a:hover {
+        color: #12343D;
+        background-color: #9FE7EB;
+        border-radius: 20px;
+        padding: 10px 15px;
+        margin: 0 5px auto;
+    }
+
+/* Making the navigation menu responsive */
+
+.slicknav_menu {
+    display:none;
+}
+

@@ -11,17 +11,17 @@
 
     <body>
         <div>
-            <div style="font-size: large; padding-left:40%;">
-                    <a href="Home.aspx" accesskey="1" title="" style="color: #d4fbff">Home</a> &nbsp;&nbsp;&nbsp; 
-                <a href="Medicine.aspx" accesskey="2" title="" style="color: #d4fbff">Medicines</a> &nbsp;&nbsp;&nbsp;
-                <a href="Employ.aspx" accesskey="3" title="" style="color: #d4fbff">Employees</a>
-                        &nbsp;&nbsp;&nbsp;
-                <a href="Purchase.aspx" accesskey="4" title="" style="color: #d4fbff">Purchase</a> &nbsp;&nbsp;&nbsp;
-                <a href="Dealer.aspx" accesskey="5" title="" style="color: #d4fbff">Dealers</a>
-                        &nbsp;&nbsp;&nbsp;
-                <a href="About.aspx" accesskey="6" title="" style="color: #d4fbff">About Us</a> &nbsp;&nbsp;&nbsp;
-                <a href="Frontpage.aspx" accesskey="7" title="" style="color: #d4fbff">Sign Out</a>
+             <nav class="menu-navigation-round">
+                <div style="padding-left:26%; padding-top:30px;">
+                <a href="Home.aspx"  accesskey="1" >Home</a>
+                <a href="Medicine.aspx"  class="selected" accesskey="2">Medicines</a>
+                <a href="Employ.aspx"   accesskey="3">Employees</a>
+                <a href="Purchase.aspx" accesskey="4">Purchase</a>
+                <a href="Dealer.aspx" accesskey="5">Dealers</a>
+                <a href="About.aspx" accesskey="6">About Us</a>
+                <a href="Frontpage.aspx" accesskey="7">Sign Out</a>
             </div>
+            </nav>
             <br />
             <br />
            
@@ -118,7 +118,6 @@
                </tr>
                 </table>
               </div>
-                </div>
     </body>
 
 </asp:Content>

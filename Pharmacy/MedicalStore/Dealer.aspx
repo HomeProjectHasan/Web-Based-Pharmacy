@@ -4,23 +4,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <body onkeydown="return (event.keyCode!=13)">
-
-        <div style="font-size: large; padding-left:40%;">
-                    <a href="Home.aspx" accesskey="1" title="" style="color: #d4fbff">Home</a> &nbsp;&nbsp;&nbsp; 
-                <a href="Medicine.aspx" accesskey="2" title="" style="color: #d4fbff">Medicines</a> &nbsp;&nbsp;&nbsp;
-                <a href="Employ.aspx" accesskey="3" title="" style="color: #d4fbff">Employees</a>
-                        &nbsp;&nbsp;&nbsp;
-                <a href="Purchase.aspx" accesskey="4" title="" style="color: #d4fbff">Purchase</a> &nbsp;&nbsp;&nbsp;
-                <a href="Dealer.aspx" accesskey="5" title="" style="color: #d4fbff">Dealers</a>
-                        &nbsp;&nbsp;&nbsp;
-                <a href="About.aspx" accesskey="6" title="" style="color: #d4fbff">About Us</a> &nbsp;&nbsp;&nbsp;
-                <a href="Frontpage.aspx" accesskey="7" title="" style="color: #d4fbff">Sign Out</a>
+        <nav class="menu-navigation-round">
+                <div style="padding-left:26%; padding-top:30px;">
+                <a href="Home.aspx"  accesskey="1" >Home</a>
+                <a href="Medicine.aspx" accesskey="2">Medicines</a>
+                <a href="Employ.aspx" accesskey="3">Employees</a>
+                <a href="Purchase.aspx" accesskey="4">Purchase</a>
+                <a href="Dealer.aspx" class="selected" accesskey="5">Dealers</a>
+                <a href="About.aspx" accesskey="6">About Us</a>
+                <a href="Frontpage.aspx" accesskey="7">Sign Out</a>
             </div>
+            </nav>
   
     <br />
     <br />
     <br />
-  <p>
              <div style="font-size: large; padding-left:38%;">
             <asp:Button ID="Button1" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Dealers" Height="30px" Width="200px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button1_Click" />
                 &nbsp;
@@ -30,7 +28,6 @@
                  &nbsp;
                 <asp:Button ID="Button4" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Sales" Height="30px" Width="200px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button4_Click" />
                  </div>
-            </p>
         <br />
         <br />
         <div style="padding-top:20px; padding-bottom:10%;">
@@ -58,10 +55,4 @@
         <asp:Label ID="errorLabel" runat="server" Text="" Visible="false"></asp:Label>
     </div>
         </body>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 </asp:Content>

@@ -1,10 +1,26 @@
 ﻿<head id="Head1" runat="server">
     <title></title>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="Content/navigation-round.css">
+    <script src="Scripts/jquery.slicknav.min.js"></script>
+    <script src="Scripts/jquery-custom.min.js"></script>
+
+    <script>
+        $(function () {
+            var menu = $('.menu-navigation-round');
+            menu.slicknav();
+            // Mark the clicked item as selected
+            menu.on('click', 'a', function () {
+                var a = $(this);
+                a.siblings().removeClass('selected');
+                a.addClass('selected');
+            });
+        });
+    </script>
     <script type="text/javascript">
         function getData() {
             var SesVar = '<%= Session("user_name") %>';
-            if (SesVar) {               
+            if (SesVar) {
                 document.getElementById("userID").innerHTML = "Welcome, " + SesVar.toString();
             }
         }
@@ -12,10 +28,10 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-
-<header style="padding-top:10px;">
-    <p style="color: white" id="userID"></p>
-    <div class="header">
+<header>  
+    <div style="color: white; position:fixed;"><a href="Frontpage.aspx" accesskey="7">Sign Out</a></div>    
+    <div><p style="color: white; position:fixed;" id="userID"></p></div>
+    <div class="header" >        
         <div style="color: #FBFBF8">
             <h1>ALPHA PHARMACY</h1>
         </div>
