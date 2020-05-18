@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  Table [dbo].[Company]    Script Date: 17-05-2020 17:53:42 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +20,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,7 +39,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -64,7 +64,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -92,7 +92,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -106,7 +106,7 @@ CREATE TABLE [dbo].[LoginDetails](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -128,7 +128,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -137,19 +137,19 @@ GO
 
 CREATE TABLE [dbo].[Purchase](
 	[PurchaseID] [varchar](20) NOT NULL,
-	[DealerID] [varchar](20) NULL,
-	[MedicineID] [varchar](20) NULL,
+	[DealerID] [varchar](20) NOT NULL,
+	[MedicineID] [varchar](20) NOT NULL,
 	[PurchaseDate] [date] NOT NULL,
 	[Quantity] [int] NOT NULL,
 	[Totalprice] [float] NOT NULL,
-PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Purchase__6B0A6BDE8D8AFF02] PRIMARY KEY CLUSTERED 
 (
 	[PurchaseID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 17-05-2020 17:53:43 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 18-05-2020 13:22:04 ******/
 SET ANSI_NULLS ON
 GO
 

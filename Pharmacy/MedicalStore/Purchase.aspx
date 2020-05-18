@@ -14,18 +14,18 @@
             }
             if (selected) {
                 if (selected.value == "No") {
-                    document.getElementById("<%= Price.ClientID%>").disabled = true;
-                    document.getElementById("<%= MFD.ClientID%>").disabled = true;
-                    document.getElementById("<%= EXP.ClientID%>").disabled = true;
-                    document.getElementById("<%= Medicine.ClientID%>").style.visibility = 'hidden';
-                    document.getElementById("<%= MedicineList.ClientID%>").style.visibility = 'visible';
+                    document.getElementById("oldMedicine").style.visibility = 'visible';
+                    document.getElementById("newMedicine").style.visibility = 'hidden';
+                    document.getElementById("newPrice").style.visibility = 'hidden';
+                    document.getElementById("newMFD").style.visibility = 'hidden';
+                    document.getElementById("newEXP").style.visibility = 'hidden';
                 }
                 else {
-                    document.getElementById("<%= Price.ClientID%>").disabled = false;
-                    document.getElementById("<%= MFD.ClientID%>").disabled = false;
-                    document.getElementById("<%= EXP.ClientID%>").disabled = false;
-                    document.getElementById("<%= Medicine.ClientID%>").style.visibility = 'visible';
-                    document.getElementById("<%= MedicineList.ClientID%>").style.visibility = 'hidden';
+                    document.getElementById("oldMedicine").style.visibility = 'hidden';
+                    document.getElementById("newMedicine").style.visibility = 'visible';
+                    document.getElementById("newPrice").style.visibility = 'visible';
+                    document.getElementById("newMFD").style.visibility = 'visible';
+                    document.getElementById("newEXP").style.visibility = 'visible';
                 }
             }
         }
@@ -53,17 +53,7 @@
                    <td>
                        <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
                    </td>
-               </tr>
-               <tr>
-                   <td align="right">Dealer ID:</td>
-                   <td>
-                       <asp:DropDownList ID="Dealer" runat="server" AppendDataBoundItems="True"
-                    DataTextField="Name" DataValueField="DealerID" Height="16px"
-                    Width="118px">
-                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
-                </asp:DropDownList>
-                   </td>
-               </tr>
+               </tr>               
                <tr>
                    <td align="right">New Medicine?:</td>
                    <td>
@@ -74,11 +64,22 @@
                    </td>
                </tr>
                
-               <tr id="listid">
+               <tr id="oldMedicine">
                    <td align="right">Medicine:</td>
                    <td>
                     <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
                     DataTextField="MedicineName" DataValueField="MedicineName" Height="16px"
+                    Width="118px">
+                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                </asp:DropDownList>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td align="right">Dealer ID:</td>
+                   <td>
+                       <asp:DropDownList ID="Dealer" runat="server" AppendDataBoundItems="True"
+                    DataTextField="Name" DataValueField="DealerID" Height="16px"
                     Width="118px">
                     <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
                 </asp:DropDownList>
@@ -98,25 +99,25 @@
                         <asp:TextBox ID="Quantity" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
-               <tr id="id">
-                   <td  align="right"><div ID="textMedicine" >New medicine name:</div></td>
+               <tr id="newMedicine">
+                   <td  align="right">Enter Medicine name:</td>
                    <td>
                        <asp:TextBox ID="Medicine" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
-               <tr>
+               <tr id ="newPrice">
                    <td align="right">Price:</td>
                    <td>
                        <asp:TextBox ID="Price" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
-               <tr>
+               <tr id ="newMFD">
                    <td align="right">MFD:</td>
                    <td>
                         <asp:TextBox ID="MFD" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
-                <tr>
+                <tr id ="newEXP">
                    <td align="right">EXP:</td>
                    <td>
                        <asp:TextBox ID="EXP" runat="server" Style="margin-left: 0px"></asp:TextBox>

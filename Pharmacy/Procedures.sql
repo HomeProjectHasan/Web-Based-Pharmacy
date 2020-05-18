@@ -1,13 +1,12 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 17-05-2020 17:55:28 ******/
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 18-05-2020 13:22:31 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 
  CREATE procedure [dbo].[Login] @usr varchar(20), @pas varchar(20), @result varchar(200) output
@@ -34,13 +33,12 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 17-05-2020 17:55:28 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 18-05-2020 13:22:31 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -57,54 +55,73 @@ BEGIN
 	declare @purchaseid INT
 	declare @MedicineID varchar(20)
 	declare @CurrQuantity INT
+	declare @valid bit = 0;
 	
 	begin try
 	if(@NewFlag = 'Y')
 	begin
 	-- for new medicine create a medicine and then proceed to purchase
-		declare @medid int 
-		declare @comid varchar(20)	
+		if((select count(1) from Medicine where MedicineName = @MedicineName) = 0)
+		begin	
+			declare @medid int 
+			declare @comid varchar(20)	
 
-		select @comid = [CompanyID] from [dbo].[Dealer] where [DealerID]= @DealerID
+			select @comid = [CompanyID] from [dbo].[Dealer] where [DealerID]= @DealerID
 
-	    select @medid = isnull(max(cast(REPLACE([MedicineID],'M','') as INT)),0) from Medicine
+			select @medid = isnull(max(cast(REPLACE([MedicineID],'M','') as INT)),0) from Medicine
 
-		select @MedicineID = cast(@medid+1 as varchar) +'M'
+			select @MedicineID = cast(@medid+1 as varchar) +'M'
 
-		INSERT INTO Medicine([MedicineID],[MedicineName],[CompanyID],[Price],[Manufacturing],[Expiry],[CurrentQuantity])
-		values(@MedicineID, @MedicineName, @comid, @Price, @MFD, @EXP, @Quantity)
+			INSERT INTO Medicine([MedicineID],[MedicineName],[CompanyID],[Price],[Manufacturing],[Expiry],[CurrentQuantity])
+			values(@MedicineID, @MedicineName, @comid, @Price, @MFD, @EXP, @Quantity)
+			set @valid = 1
+		end
+		else
+		begin
+			select @result = 'Error|Medicine already exist with same name. Please select new medicine as "No"';
+			set @valid = 0
+		end
 
 	end
-	else
+	else if (@NewFlag = 'N')
 	begin
 	-- For existing medicine get the medicineid and price, also update the quantity
 		select @MedicineID = [MedicineID] , @Price = [Price] from [dbo].[Medicine] where [MedicineName] = @MedicineName
-
 		update [dbo].[Medicine] set [CurrentQuantity] = [CurrentQuantity] + @Quantity where [MedicineID] = @MedicineID
+		set @valid = 1
+	end
+	else
+	begin
+	select @result = 'Error|NewFlag should be either Yes or No'
+	set @valid = 0
+
 	end
 	-- finally add to purchase
 
-	    select @purchaseid = isnull(max(cast(REPLACE([PurchaseID],'P','') as INT)),0) from Purchase
-	    set @purchaseid = @purchaseid+1
+	select @purchaseid = isnull(max(cast(REPLACE([PurchaseID],'P','') as INT)),0) from Purchase
+	set @purchaseid = @purchaseid+1
 
-		INSERT INTO Purchase ([PurchaseID],[DealerID],[MedicineID],[PurchaseDate],[Quantity],[Totalprice])
-		values(cast(@purchaseid as varchar) +'P', @DealerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
+	if(@valid = 1)
+	begin
+	INSERT INTO Purchase ([PurchaseID],[DealerID],[MedicineID],[PurchaseDate],[Quantity],[Totalprice])
+	values(cast(@purchaseid as varchar) +'P', @DealerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
 
-		select @result = 'Success|Purchase successful'
-		end try
-	   begin catch
-		set @result = 'Error|' + ERROR_MESSAGE ( ) 
-		end catch
+	select @result = 'Success|Purchase successful'
+	end
+	
+	end try
+	begin catch
+	set @result = 'Error|' + ERROR_MESSAGE ( ) 
+	end catch
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 17-05-2020 17:55:28 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 18-05-2020 13:22:31 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -122,56 +139,82 @@ BEGIN
 	declare @CustomerID varchar (20) 
 	declare @CurrQuantity INT
 	declare @Price float 
+	declare @valid bit = 0;
 	
 	begin try
-	if(@NewFlag = 'Y')
+	select @CurrQuantity = CurrentQuantity from [dbo].[Medicine] where [MedicineID] = @MedicineID
+
+	if(@CurrQuantity<@Quantity)
 	begin
-	-- for new customer create a customer and then proceed to sell
-		
-		declare @Cusid varchar(20)
-
-	    select @Cusid = isnull(max(cast(REPLACE([CustomerID],'C','') as INT)),0) from Customers
-
-
-		select @CustomerID = cast(@Cusid+1 as varchar) +'C'
-
-		INSERT INTO Customers([CustomerID],[CustomerName],[Address],[ContactNo])
-		values(@CustomerID, @CustomerName, @Address, @Contact)
-
+		select @result = 'Error|Entered quantity is greater than available quantity'
+		set @valid = 0
 	end
 	else
 	begin
-	-- For existing customer get the customerid
-		select @CustomerID = [CustomerID] from Customers where [CustomerName] = @CustomerName
+		if(@NewFlag = 'Y')
+		begin
+		-- for new customer create a customer and then proceed to sell
+			if((select count(1) from Customers where CustomerName = @CustomerName and ContactNo = @Contact) = 0)
+			begin	
+				declare @Cusid int
+
+				select @Cusid = isnull(max(cast(REPLACE([CustomerID],'Cus','') as INT)),0) from Customers
+
+
+				select @CustomerID = cast(@Cusid+1 as varchar) +'Cus'
+
+				INSERT INTO Customers([CustomerID],[CustomerName],[Address],[ContactNo])
+				values(@CustomerID, @CustomerName, @Address, @Contact)
+				set @valid = 1
+			end
+			else 
+			begin
+				select @result = 'Error|Customer already exist with same name and contactNo. Please select new customer as "No"';
+				set @valid = 0
+			end
+		end
+		else if (@NewFlag = 'N')
+		begin
+		-- For existing customer get the customerid
+			select @CustomerID = [CustomerID] from Customers where [CustomerName] = @CustomerName and ContactNo = @Contact
+			set @valid = 1
+		end
+		else
+		begin
+		select @result = 'Error|NewFlag should be either Yes or No'
+		set @valid = 0
+
+		end
+		-- finally add to sell
+
+			select @Price = [Price] from [dbo].[Medicine] where [MedicineID] = @MedicineID
+
+			select @sellid = isnull(max(cast(REPLACE([SellID],'S','') as INT)),0) from Sell
+
+			set @sellid = @sellid+1
+			if(@valid = 1)
+			begin
+				INSERT INTO Sell ([SellID],[CustomerID],[MedicineID],[SellDate],[Quantity],[Totalprice])
+				values(cast(@sellid as varchar) +'S', @CustomerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
+
+				update [Medicine] set [CurrentQuantity] = [CurrentQuantity] - @Quantity where [MedicineID] = @MedicineID
+
+				select @result = 'Success| Successful'
+			end
 	end
-	-- finally add to sell
-
-	    select @Price = [Price] from [dbo].[Medicine] where [MedicineID] = @MedicineID
-
-	    select @sellid = isnull(max(cast(REPLACE([SellID],'S','') as INT)),0) from Sell
-
-	    set @sellid = @sellid+1
-
-		INSERT INTO Sell ([SellID],[CustomerID],[MedicineID],[SellDate],[Quantity],[Totalprice])
-		values(cast(@sellid as varchar) +'S', @CustomerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
-
-		update [Medicine] set [CurrentQuantity] = [CurrentQuantity] - @Quantity where [MedicineID] = @MedicineID
-
-		select @result = 'Success| successful'
-		end try
-	   begin catch
+	end try
+	begin catch
 		set @result = 'Error|' + ERROR_MESSAGE ( ) 
-		end catch
+	end catch
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 17-05-2020 17:55:28 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 18-05-2020 13:22:31 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 -- =============================================
 -- Author:		<Author,,Name>

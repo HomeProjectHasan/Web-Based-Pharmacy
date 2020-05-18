@@ -24,15 +24,6 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
 
         /// <summary>
-        /// Dealer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Dealer;
-
-        /// <summary>
         /// NewFlag control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace MedicalStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList MedicineList;
+
+        /// <summary>
+        /// Dealer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Dealer;
 
         /// <summary>
         /// Date control.

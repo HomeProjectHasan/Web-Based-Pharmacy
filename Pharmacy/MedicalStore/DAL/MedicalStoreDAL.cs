@@ -235,7 +235,7 @@ namespace MedicalStore.DAL
             DataTable searchresult = new DataTable();
             try
             {
-                datatable = new SqlDataAdapter("SELECT CustomerID, CustomerName, from Customers", sqlconn);
+                datatable = new SqlDataAdapter("SELECT  CustomerID, CustomerName, ContactNo  from Customers", sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)
