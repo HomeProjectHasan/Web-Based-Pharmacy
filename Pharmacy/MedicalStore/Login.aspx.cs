@@ -13,13 +13,8 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null)
-            {
-            }
-            else
-            {
                 Session["user_id"] = null;
-            }
+                Session["user_name"] = null;
 
         }
 
@@ -40,6 +35,7 @@ namespace MedicalStore
                 if (strArray[0].ToString().Contains("Success"))
                 {
                     Session["user_id"] = TextBox1.Text;
+                    Session["user_name"] = strArray[1].ToString();
                     Response.Redirect("~/Home.aspx");
                 }
                 else
