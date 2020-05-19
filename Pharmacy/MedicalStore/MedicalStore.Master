@@ -83,7 +83,7 @@
     </form>
 </body>
 <br />
-<footer>
-    <div class="footer"><p> All content & design © 2019-2020 Salman Layek</p>
+<footer class="footer">
+    <div style="padding-top:8px;"><p> All content & design © 2019-2020 Salman Layek</p>
     </div>
 </footer>
