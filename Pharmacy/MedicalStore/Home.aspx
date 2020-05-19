@@ -3,6 +3,89 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
         <script  type="text/javascript">
+
+            function ValidateForm() {
+                var Date = document.getElementById('<%=Date.ClientID%>').value;
+                var Quantity = document.getElementById('<%=Quantity.ClientID%>').value;
+                var MedicineName = document.getElementById('<%=MedicineList.ClientID%>').value;
+                var oldCustomer = document.getElementById('<%=Customerlist.ClientID%>').value;
+                var newCustomer = document.getElementById('<%=Customer.ClientID%>').value;
+                var newaddress = document.getElementById('<%=Address.ClientID%>').value;
+                var newcontact = document.getElementById('<%=Contact.ClientID%>').value;
+
+                var list = document.getElementById("<%= NewFlag.ClientID%>");
+                var inputs = list.getElementsByTagName("input");
+                var selected;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].checked) {
+                        selected = inputs[i];
+                        break;
+                    }
+                }
+                if (selected) {
+                    if (selected.value == "No") {
+                        if (MedicineName != "0" && oldCustomer != "0") {
+                            //check others
+                            if (Date != "") {
+                                if (dateValidator(Date)) {
+                                    //date is fine check quantity
+                                    if (Quantity != "") {
+                                        if (numberValidator(Quantity)) {
+                                            //Quantity is fine too. Rerturn
+                                            return true;
+                                        }
+                                        else {
+                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
+                                            enableDisable();
+                                            return false;
+                                        }
+                                    }
+                                    else {
+                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
+                                        enableDisable();
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                                    enableDisable();
+                                    return false;
+                                }
+                            }
+                            else {
+                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
+                                enableDisable();
+                                return false;
+                            }
+
+                        }
+                        else {
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select customer and medicine.";
+                            enableDisable();
+                            return false;
+                        }
+
+                    }
+
+                    //if selected yes
+                    else {
+                        if (phoneNoValidator(newcontact) && textWithSpaceValidator(newCustomer) && textWithSpaceValidator(newaddress)) {
+                            return true;
+                        }
+                        else {
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter correct new customer details for Name/Contact/Address.";
+                            enableDisable();
+                            return false;
+                        }
+                    }
+                }
+                else {
+                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select customer type.";
+                    enableDisable();
+                    return false;
+                }
+            }
+
             function showContact() {
                 var list = document.getElementById("<%= Customerlist.ClientID%>");
                 if (list.value) {
@@ -66,14 +149,13 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-md-11 offset-1">
+                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+                </div>
+            </div>
             <table id="table1" align="center">
-                <tr>
-                   <td></td>
-                   <td>
-                       <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
-                   </td>
-               </tr>
-                 <tr id="oldCustomer">
+               <tr id="oldCustomer">
                    <td align="right">Customer:</td>
                     <td>
                         <asp:DropDownList ID="Customerlist" runat="server" AppendDataBoundItems="True" OnChange="showContact()"
@@ -98,9 +180,9 @@
                    </td>
                </tr>
                <tr>
-                   <td align="right">Sell Date:</td>
+                   <td align="right">Date:</td>
                    <td>
-                       <asp:TextBox ID="Date" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                       <asp:TextBox ID="Date" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
 
@@ -134,7 +216,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-8 offset-4">
-                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClick="GenerateBill" />
+                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="GenerateBill" />
                 </div>
             </div>
         </div>
