@@ -15,49 +15,67 @@ namespace MedicalStore
             {
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
+                CompanyList.DataSource = userDal.getCompanyList();
+                CompanyList.DataBind();
+
+            }
         }
-        protected void Button1_Click(object sender, EventArgs e)
+
+        protected void Submit(object sender, EventArgs e)
         {
-            Session["Did"] = 1;
-            Response.Redirect("~/Outputpage2.aspx");
-        }
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Session["Did"] = 2;
-            Response.Redirect("~/Outputpage2.aspx");
-        }
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Session["Did"] = 3;
-            Response.Redirect("~/Outputpage2.aspx");
-        }
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            Session["Did"] = 4;
-            Response.Redirect("~/Outputpage2.aspx");
-        }
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            Session["Did"] = 5;
-            Session["Did2"] = findDealerbyid.Text;
-            if (Session["Did2"].ToString() == "")
+            if (Dealername.Text == "" || Dealercontactno.Text == "" || Dealeraddress.Text == "" || Dealeremail.Text == "" || NewFlag.Text == "" || (NewFlag.Text == "Yes" && Companyname.Text == "") || (NewFlag.Text == "Yes" && Companyaddress.Text == "")
+                || (NewFlag.Text == "Yes" && Companycontactno.Text == "") || (NewFlag.Text == "No" && CompanyList.Text == "")) 
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");
             }
             else
-                Response.Redirect("~/Outputpage2.aspx");
-        }
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            Session["Did"] = 6;
-            Session["Did2"] = getdealnmbyid.Text;
-            if (Session["Did2"].ToString() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
+                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                string DealerName= Dealername.Text;                  
+                string DealerContact= Dealercontactno.Text;
+                string DealerAddress= Dealeraddress.Text;
+                string DealerEmail= Dealeremail.Text;
+                string Newflag = NewFlag.Text;
+                string CompanyName;
+                string CompanyLocation;
+                string CompanyContact;             
+                if (Newflag == "Yes")
+                {
+                    CompanyName = Companyname.Text;
+                    CompanyLocation = Companyaddress.Text;
+                    CompanyContact = Companycontactno.Text;
+                }
+                else
+                {
+                    CompanyName = CompanyList.SelectedItem.Text;
+                    CompanyLocation = "";
+                    CompanyContact = "0";
+                }
+
+                string result = userDal.creatdealer(DealerName, DealerContact, DealerAddress, DealerEmail, Newflag, CompanyName, CompanyLocation, CompanyContact);
+                string[] strArray = result.Split('|');
+
+                if (strArray[0].ToString() == "Success")
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
+                    ClientScriptManager CSM = Page.ClientScript;
+                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to home?')){window.location.href='Home.aspx'}</script>";
+                    CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false); ;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
+
+                    ErrorLabel.Text = strArray[1].ToString();
+                }
             }
-            else
-                Response.Redirect("~/Outputpage2.aspx");
+
+
+
         }
     }
 }

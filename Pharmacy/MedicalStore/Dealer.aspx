@@ -15,43 +15,92 @@
             </div>
             </nav>
   
-    <br />
-    <br />
-    <br />
-             <div style="font-size: large; padding-left:38%;">
-            <asp:Button ID="Button1" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Dealers" Height="30px" Width="200px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button1_Click" />
-                &nbsp;
-                <asp:Button ID="Button2" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Companies" Height="30px" Width="230px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button2_Click" />
-                &nbsp;
-                <asp:Button ID="Button3" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All purchases" Height="30px" Width="230px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button3_Click" />
-                 &nbsp;
-                <asp:Button ID="Button4" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 20px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Sales" Height="30px" Width="200px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button4_Click" />
-                 </div>
-        <br />
-        <br />
-        <div style="padding-top:20px; padding-bottom:10%;">
-                <div class="whitepanel dealerpanel1">
-           <table id="table1">
-                
+   
+        <div style="padding-top: 30px;">
+        <div class="whitepanel dealerpanel1 ">
+               <table id="table1" align="center">
                <tr>
-                   <td align="right">Find Dealer of Pharmacy by Entering Dealer ID :</td> 
-                     <td>  
-                         <asp:TextBox ID="findDealerbyid" runat="server"></asp:TextBox>
-                   </td>
-                  <td><asp:Button ID="Button5" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button5_Click" /></td>
-               </tr>
-               <tr>
-                   <td align="right"> Get The Dealer Name  By Providing Company ID :  </td>
+                   <td></td>
                    <td>
-                       <asp:TextBox ID="getdealnmbyid" runat="server"></asp:TextBox>
+                       <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
                    </td>
-                   <td><asp:Button ID="Button6" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button6_Click" /></td>
-               </tr>
-               </table>
-                    </div>
-           
+               </tr>               
+               
 
-        <asp:Label ID="errorLabel" runat="server" Text="" Visible="false"></asp:Label>
-    </div>
-        </body>
+               <tr>
+                   <td align="right">Dealer Name:</td>
+                  <td>
+                       <asp:TextBox ID="Dealername" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+         
+               <tr>
+                   <td align="right">Dealer Contact No:</td>
+                   <td>
+                       <asp:TextBox ID="Dealercontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td align="right">Dealer Address:</td>
+                   <td>
+                        <asp:TextBox ID="Dealeraddress" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+                    <tr>
+                   <td align="right">Dealer Email:</td>
+                   <td>
+                        <asp:TextBox ID="Dealeremail" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+                   <tr>
+                   <td align="right">New Company?:</td>
+                   <td>
+                        <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+                           <asp:ListItem>Yes</asp:ListItem>
+                           <asp:ListItem>No</asp:ListItem>
+                       </asp:RadioButtonList>
+                   </td>
+               </tr>
+               
+               <tr id="oldcompany">
+                   <td align="right">Company:</td>
+                   <td>
+                    <asp:DropDownList ID="CompanyList" runat="server" AppendDataBoundItems="True"
+                    DataTextField="CompanyName" DataValueField="CompanyName" Height="16px"
+                    Width="118px">
+                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                </asp:DropDownList>
+                   </td>
+               </tr>
+               <tr id="newCompanyname">
+                   <td  align="right">Enter Company name:</td>
+                   <td>
+                       <asp:TextBox ID="Companyname" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>             
+               <tr>
+                      <tr id="newCompanylocation">
+                   <td  align="right">Company Location:</td>
+                   <td>
+                       <asp:TextBox ID="Companyaddress" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>             
+               <tr>
+                      <tr id="newCompanycontactno">
+                   <td  align="right">Company Contact Number:</td>
+                   <td>
+                       <asp:TextBox ID="Companycontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>             
+               <tr>
+                   <td></td>
+                   <td>
+                       <div class="div" style="padding-right: 7px; height: 15px;">
+                           <asp:Button ID="Button2" Text="Submit" runat="server" Style="margin-left: 80px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Submit" />
+                       </div>
+                   </td>
+               </tr>
+          </table>
+         </body>
 </asp:Content>
