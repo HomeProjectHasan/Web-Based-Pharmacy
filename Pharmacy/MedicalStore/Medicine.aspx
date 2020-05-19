@@ -9,17 +9,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <body>
-        <div>
              <nav class="menu-navigation-round">
-                <div style="padding-left:26%; padding-top:30px;">
+                <div class="menuCustom">
                 <a href="Home.aspx"  accesskey="1" >Home</a>
                 <a href="Medicine.aspx"  class="selected" accesskey="2">Medicines</a>
                 <a href="Employ.aspx"   accesskey="3">Employees</a>
                 <a href="Purchase.aspx" accesskey="4">Purchase</a>
                 <a href="Dealer.aspx" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
-                <a href="Frontpage.aspx" accesskey="7">Sign Out</a>
             </div>
             </nav>
             <br />
@@ -28,14 +25,14 @@
             
             <p>
              <div style="font-size: large; padding-left:40%;">
-            <asp:Button ID="Button1" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Medicines" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Medicines" Height="40px" Width="200px" OnClick="Button1_Click" />
                 &nbsp;
-                <asp:Button ID="Button2" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Large" Font-Bold="true" Text="Show Out Of Stock" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button2_Click" />
+                <asp:Button ID="Button2" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show Out Of Stock" Height="40px" Width="200px" OnClick="Button2_Click" />
                 &nbsp;
-                <asp:Button ID="Button3" runat="server" Style="border: 2px solid white; padding-left: 10px; padding-right: 10px; border-radius: 8px; box-shadow: 0 10px 50px #d4fbff;" Font-Size="Larger" Font-Bold="true" Text="Show All Expired" Height="40px" Width="250px" BorderColor="White" BorderStyle="Solid" ForeColor="Black" OnClick="Button3_Click" />
+                <asp:Button ID="Button3" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Expired" Height="40px" Width="200px" OnClick="Button3_Click" />
             </div>
                  </p>
-              <div style="padding-top:20px; padding-bottom:10%;">
+              <div style="padding-top:20px;">
                 <div class="whitepanel medicinepanel1">
            <table id="table1">
                 
@@ -118,6 +115,6 @@
                </tr>
                 </table>
               </div>
-    </body>
+                  </div>
 
 </asp:Content>

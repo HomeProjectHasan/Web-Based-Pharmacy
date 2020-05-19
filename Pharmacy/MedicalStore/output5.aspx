@@ -3,17 +3,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <nav class="menu-navigation-round">
-                <div style="padding-left:26%; padding-top:30px;">
+                <div class="menuCustom">
                 <a href="Home.aspx"  accesskey="1" >Home</a>
                 <a href="Medicine.aspx" accesskey="2">Medicines</a>
                 <a href="Employ.aspx"   accesskey="3">Employees</a>
                 <a href="Purchase.aspx" accesskey="4">Purchase</a>
                 <a href="Dealer.aspx" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
-                <a href="Frontpage.aspx" accesskey="7">Sign Out</a>
             </div>
          </nav>
-        <div style="padding-bottom:500px;">
+        <div style="padding-left:40%;padding-top:20px;">
     <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

@@ -204,6 +204,29 @@ namespace MedicalStore.DAL
             return searchresult;
         }
 
+        public DataTable showSellBill(string id, int quantity)
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter(String.Format("SELECT MedicineID, MedicineName, {1} as Quantity, Price UnitPrice, cast({1} as INT) * price TotalPrice from Medicine where MedicineID = '{0}'", id, quantity), sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
         public DataTable getMedicineList()
         {
             SqlConnection sqlconn = new SqlConnection(connString);

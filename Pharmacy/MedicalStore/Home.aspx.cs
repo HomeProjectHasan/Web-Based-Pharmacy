@@ -30,6 +30,43 @@ namespace MedicalStore
             }
 
         }
+
+        protected void GenerateBill(object sender, EventArgs e)
+        {
+            if (NewFlag.Text == "" || MedicineList.Text == "" || (NewFlag.Text == "Yes" && Customer.Text == "") || (NewFlag.Text == "Yes" && Address.Text == "")
+              || (NewFlag.Text == "Yes" && Contact.Text == "") || (NewFlag.Text == "No" && Customerlist.Text == "") || Date.Text == "" || Quantity.Text == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");
+            }
+            else
+            {
+                string MedicineID = MedicineList.Text;
+                int QuantitySell = Int32.Parse(Quantity.Text);
+                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                DataTable table = new DataTable();
+                table = userDal.showSellBill(MedicineID, QuantitySell);
+                medicineidbill.Text = table.Rows[0]["MedicineID"].ToString();
+                medicinenamebill.Text = table.Rows[0]["MedicineName"].ToString();
+                medicinepricebill.Text = "₹ " + table.Rows[0]["UnitPrice"].ToString()+"/p";
+                medicineqtybill.Text = table.Rows[0]["Quantity"].ToString();
+                medicinetotalbill.Text = "₹ " + table.Rows[0]["TotalPrice"].ToString()+"/-";
+                datebill.Text = Date.Text;
+                servedbybill.Text = Session["user_name"].ToString();
+                if (NewFlag.Text == "Yes")
+                {
+                    namebill.Text = Customer.Text;
+                    contactbill.Text = Contact.Text;
+                }
+                else
+                {
+                    namebill.Text = Customerlist.SelectedItem.Text;
+                    contactbill.Text = Customerlist.SelectedItem.Value; ;
+                }
+
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);
+
+            }
+        }
         protected void SellClick(object sender, EventArgs e)
         {
             if (NewFlag.Text == "" || MedicineList.Text == "" || (NewFlag.Text == "Yes" && Customer.Text == "") || (NewFlag.Text == "Yes" && Address.Text == "")
@@ -64,9 +101,9 @@ namespace MedicalStore
 
                 ErrorLabel.Text = strArray[1].ToString();
 
-
                 if (strArray[0].ToString() == "Success")
                 {
+                    
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
 
                     ErrorLabel.Text = strArray[1].ToString();

@@ -1,10 +1,10 @@
 ﻿<head id="Head1" runat="server">
     <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" /> 
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="Content/navigation-round.css">
-    <script src="Scripts/jquery.slicknav.min.js"></script>
-    <script src="Scripts/jquery-custom.min.js"></script>
-
+    <link rel="stylesheet" href="Content/navigation-round.css" />   
+    <script src="Scripts/jquery-custom.min.js"></script>      
+    <script src="Scripts/bootstrap.min.js"></script>
     <script>
         $(function () {
             var menu = $('.menu-navigation-round');
@@ -22,6 +22,11 @@
             var SesVar = '<%= Session("user_name") %>';
             if (SesVar) {
                 document.getElementById("userID").innerHTML = "Welcome, " + SesVar.toString();
+
+                document.getElementById("signout").style.visibility = 'visible';
+            }
+            else {
+                document.getElementById("signout").style.visibility = 'hidden';
             }
         }
     </script>
@@ -29,14 +34,16 @@
     </asp:ContentPlaceHolder>
 </head>
 <header>  
-    <div style="color: white; position:fixed;"><a href="Frontpage.aspx" accesskey="7">Sign Out</a></div>    
-    <div><p style="color: white; position:fixed;" id="userID"></p></div>
+    <div id="signout"><a style="color: white; font:bold 12px Arial, Helvetica, sans-serif; position:relative;float: right; padding-top:90px;padding-right:8px;" href="Frontpage.aspx" accesskey="7">Sign Out</a></div>    
+    <div><p style="color: white; font:bold 14px Arial, Helvetica, sans-serif; position:absolute; padding-top:80px;padding-left:8px;" id="userID"></p></div>
     <div class="header" >        
         <div style="color: #FBFBF8">
             <h1>ALPHA PHARMACY</h1>
         </div>
     </div>
-    
+    <div style="padding-top:5px;">
+    <div class="header1" > </div>
+        </div>
 </header>
 <body onload="getData()">
     <form id="form1" runat="server">
@@ -47,9 +54,7 @@
     </form>
 </body>
 <br />
-<footer class="footer">
-    <div class="div" style="color:#FBFBF8; height: 25px;">
-        This project is made by: <br />
-        SALMAN LAYEK
+<footer>
+    <div class="footer"><p> All content & design © 2019-2020 Salman Layek</p>
     </div>
 </footer>

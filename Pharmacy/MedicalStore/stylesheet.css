@@ -91,14 +91,19 @@ h3 {
     background: linear-gradient(to right,#052637, #ACD9DF);
     /*linear-gradient(to right, #052637, #dce6e8);*/
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
     text-transform: uppercase;
 }
 .header1 {
-    background-image: linear-gradient(to right, #ACD9DF #052637);
+    background-image: linear-gradient(to right,#052637, #ACD9DF);
     text-align: center;
-    padding-top: 8px;
+    padding-top: 5px;
     text-transform: uppercase;
+}
+
+.menuCustom {
+    padding-left: 24%;
+    padding-top: 15px;
 }
 
 
@@ -107,14 +112,35 @@ h3 {
 .footer {
     background: linear-gradient(to right,#052637, #ACD9DF);
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    color: #FBFBF8;
+    width: 100%;
+    height: 2.5rem;
 }
 .footerImage {
     background: url(images/7129.jpg) center;
 }
 
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
 .whitepanel {
     overflow: hidden;
-    background-color: white;
+    background: linear-gradient(to right,white, #ACD9DF);
     position: relative;
     padding: 20px 2px 20px 5px;
     border-radius: 12px;
@@ -137,7 +163,7 @@ h3 {
 }
 .medicinepanel1 {
     left: 40%;
-    width:850px;
+    width:800px;
 }
 .employpanel {
     left: 40%;
@@ -150,6 +176,10 @@ h3 {
 .purchasepanel {
     left: 40%;
     width: 450px;
+}
+.aboutpanel {
+    left: 40%;
+    width: 700px;
 }
 .buttonBorder {
     border: 2px solid white;

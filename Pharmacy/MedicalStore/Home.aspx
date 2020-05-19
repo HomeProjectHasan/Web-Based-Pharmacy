@@ -43,24 +43,21 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <body>
-        <div class="menu-navigation-round">
-        <nav >
-            <div style="padding-left:26%; padding-top:30px;">
-                <a href="Home.aspx" class="selected" accesskey="1" >Home</a>
-                <a href="Medicine.aspx" accesskey="2">Medicines</a>
-                <a href="Employ.aspx" accesskey="3">Employees</a>
-                <a href="Purchase.aspx" accesskey="4">Purchase</a>
-                <a href="Dealer.aspx" accesskey="5">Dealers</a>
-                <a href="About.aspx" accesskey="6">About Us</a>
-            </div>           
-            </nav>
-            </div>
-        
-        <div style="padding-top:20px; padding-bottom:10%;">
-            <div class="whitepanel homepanel">
+    <nav class="menu-navigation-round">
+        <div class="menuCustom">
+            <a href="Home.aspx" class="selected" accesskey="1">Home</a>
+            <a href="Medicine.aspx" accesskey="2">Medicines</a>
+            <a href="Employ.aspx" accesskey="3">Employees</a>
+            <a href="Purchase.aspx" accesskey="4">Purchase</a>
+            <a href="Dealer.aspx" accesskey="5">Dealers</a>
+            <a href="About.aspx" accesskey="6">About Us</a>
+        </div>
+    </nav>
+
+    <div style="padding-top: 20px;">
+        <div class="whitepanel homepanel">
             <table id="table1" align="center">
-               <tr>
+                <tr>
                    <td></td>
                    <td>
                        <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
@@ -136,14 +133,101 @@
                    <td></td>
                    <td>
                        <div class="div" style="padding-right: 7px; height: 15px;">
-                           <asp:Button ID="Sell" Text="Generate Bill" runat="server" Style="margin-left: 80px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="SellClick" />
+                           <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" Style="margin-left: 80px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="GenerateBill" />
                        </div>
                    </td>
                </tr>
           </table>
         </div>
      </div>
- </body>
- <br />
-    
+
+<!-- The button -->
+
+<!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="invoice-title">
+                            <h2>Invoice</h2>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <address>
+                                    <strong>Billed To:</strong><br>
+                                    Name: <asp:Label ID="namebill" runat="server" Text=""></asp:Label><br>
+                                    Contact No: <asp:Label ID="contactbill" runat="server" Text=""></asp:Label>
+                                </address>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <address>
+                                    <strong>Order Date:</strong><br>
+                                    <asp:Label ID="datebill" runat="server" Text=""></asp:Label><br>
+                                </address>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="panel panel-default col-12">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                                </div>
+                                <br>
+                                <div class="panel-body">
+                                    <table class="table table-condensed" style="color: #405A67;">
+                                        <thead>
+                                            <tr>
+                                                <td><strong>ID</strong></td>
+                                                <td class="text-center"><strong>Name</strong></td>
+                                                <td class="text-center"><strong>Price</strong></td>
+                                                <td class="text-center"><strong>Quantity</strong></td>
+                                                <td class="text-right"><strong>Total</strong></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="medicineidbill" runat="server" Text=""></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="medicinenamebill" runat="server" Text=""></asp:Label></td>
+                                                <td class="text-center">
+                                                    <asp:Label ID="medicinepricebill" runat="server" Text=""></asp:Label>
+                                                <td class="text-center">
+                                                    <asp:Label ID="medicineqtybill" runat="server" Text=""></asp:Label></td>
+                                                <td class="text-right">
+                                                    <asp:Label ID="medicinetotalbill" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <address>
+                                            <strong>Prepared By:</strong>
+                                            <asp:Label ID="servedbybill" runat="server" Text=""></asp:Label>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="buttonBorderSmall" data-dismiss="modal" style="margin-right: 80px; height: 38px;" aria-hidden="true">Cancel</button>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Button ID="Sell" Text="Confirm" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Bold="true" Height="38px" Width="100px" OnClick="SellClick" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
