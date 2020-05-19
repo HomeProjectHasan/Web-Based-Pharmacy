@@ -19,13 +19,16 @@ namespace MedicalStore
             }
             else
             {
-                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                if (!Page.IsPostBack)
+                {
+                    DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
-                Customerlist.DataSource = userDal.getCustomerList();
-                Customerlist.DataBind();
+                    Customerlist.DataSource = userDal.getCustomerList();
+                    Customerlist.DataBind();
 
-                MedicineList.DataSource = userDal.getMedicineList();
-                MedicineList.DataBind();
+                    MedicineList.DataSource = userDal.getMedicineList();
+                    MedicineList.DataBind();
+                }
 
             }
 
@@ -47,7 +50,7 @@ namespace MedicalStore
                 table = userDal.showSellBill(MedicineID, QuantitySell);
                 medicineidbill.Text = table.Rows[0]["MedicineID"].ToString();
                 medicinenamebill.Text = table.Rows[0]["MedicineName"].ToString();
-                medicinepricebill.Text = "₹ " + table.Rows[0]["UnitPrice"].ToString()+"/p";
+                medicinepricebill.Text = "₹ " + table.Rows[0]["UnitPrice"].ToString();
                 medicineqtybill.Text = table.Rows[0]["Quantity"].ToString();
                 medicinetotalbill.Text = "₹ " + table.Rows[0]["TotalPrice"].ToString()+"/-";
                 datebill.Text = Date.Text;
@@ -64,6 +67,8 @@ namespace MedicalStore
                 }
 
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);
+
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
 
             }
         }

@@ -3,10 +3,93 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
         <script  type="text/javascript">
+
+            function ValidateForm() {
+                var Date = document.getElementById('<%=Date.ClientID%>').value;
+                var Quantity = document.getElementById('<%=Quantity.ClientID%>').value;
+                var MedicineName = document.getElementById('<%=MedicineList.ClientID%>').value;
+                var oldCustomer = document.getElementById('<%=Customerlist.ClientID%>').value;
+                var newCustomer = document.getElementById('<%=Customer.ClientID%>').value;
+                var newaddress = document.getElementById('<%=Address.ClientID%>').value;
+                var newcontact = document.getElementById('<%=Contact.ClientID%>').value;
+
+                var list = document.getElementById("<%= NewFlag.ClientID%>");
+                var inputs = list.getElementsByTagName("input");
+                var selected;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].checked) {
+                        selected = inputs[i];
+                        break;
+                    }
+                }
+                if (selected) {
+                    if (selected.value == "No") {
+                        if (MedicineName != "0" && oldCustomer != "0") {
+                            //check others
+                            if (Date != "") {
+                                if (dateValidator(Date)) {
+                                    //date is fine check quantity
+                                    if (Quantity != "") {
+                                        if (numberValidator(Quantity)) {
+                                            //Quantity is fine too. Rerturn
+                                            return true;
+                                        }
+                                        else {
+                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
+                                            enableDisable();
+                                            return false;
+                                        }
+                                    }
+                                    else {
+                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
+                                        enableDisable();
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                                    enableDisable();
+                                    return false;
+                                }
+                            }
+                            else {
+                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
+                                enableDisable();
+                                return false;
+                            }
+
+                        }
+                        else {
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select customer and medicine.";
+                            enableDisable();
+                            return false;
+                        }
+
+                    }
+
+                    //if selected yes
+                    else {
+                        if (phoneNoValidator(newcontact) && textWithSpaceValidator(newCustomer) && textWithSpaceValidator(newaddress)) {
+                            return true;
+                        }
+                        else {
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter correct new customer details for Name/Contact/Address.";
+                            enableDisable();
+                            return false;
+                        }
+                    }
+                }
+                else {
+                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select customer type.";
+                    enableDisable();
+                    return false;
+                }
+            }
+
             function showContact() {
                 var list = document.getElementById("<%= Customerlist.ClientID%>");
                 if (list.value) {
-                    document.getElementById("contactNo").innerHTML = "ContactNo: "+ list.value;
+                    document.getElementById("contactNo").innerHTML = list.value;
                 }
                 else {
                     document.getElementById("contactNo").innerHTML = ""
@@ -56,51 +139,50 @@
 
     <div style="padding-top: 20px;">
         <div class="whitepanel homepanel">
-            <table id="table1" align="center">
-                <tr>
-                   <td></td>
-                   <td>
-                       <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
-                   </td>
-               </tr>
-               
-               <tr>
-                   <td align="right">New Customer?:</td>
-                   <td>
-                        <asp:RadioButtonList ID="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+            <div class="row">
+                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Customer?:</div>
+                <div class="col-md-4">
+                <asp:RadioButtonList ID="NewFlag" Height="25px" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem>Yes</asp:ListItem>
                            <asp:ListItem>No</asp:ListItem>
-                       </asp:RadioButtonList>
-                   </td>
-               </tr>  
-                <tr id="oldCustomer">
+                       </asp:RadioButtonList>    
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-11 offset-1">
+                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+                </div>
+            </div>
+            <table id="table1" align="center">
+               <tr id="oldCustomer">
                    <td align="right">Customer:</td>
                     <td>
                         <asp:DropDownList ID="Customerlist" runat="server" AppendDataBoundItems="True" OnChange="showContact()"
-                            DataTextField="CustomerName" DataValueField="ContactNo" Height="16px"
-                            Width="118px">
-                            <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                            DataTextField="CustomerName" DataValueField="ContactNo" Height="25px"
+                            Width="181px">
+                            <asp:ListItem Value="0">--Select Customer--</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                </tr> 
                 <tr id="oldCustomerNo">
-                    <td></td>
-                    <td> <p id="contactNo"></p></td>
+                    <td align="right">Contact No:</td>
+                    <td id="contactNo"></td>
                 </tr>
                <tr>
                    <td align="right">medicine Name:</td>
                    <td>
                        <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
-                    DataTextField="MedicineName" DataValueField="MedicineID" Height="16px"
-                    Width="118px">
-                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                    DataTextField="MedicineName" DataValueField="MedicineID" Height="25px"
+                    Width="181px">
+                    <asp:ListItem Value="0">--Select Medicine--</asp:ListItem>
                    </asp:DropDownList>
                    </td>
                </tr>
                <tr>
-                   <td align="right">Sell Date:</td>
+                   <td align="right">Date:</td>
                    <td>
-                       <asp:TextBox ID="Date" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                       <asp:TextBox ID="Date" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
 
@@ -129,15 +211,14 @@
                    </td>
                </tr>
                
-               <tr>
-                   <td></td>
-                   <td>
-                       <div class="div" style="padding-right: 7px; height: 15px;">
-                           <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" Style="margin-left: 80px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="38px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="GenerateBill" />
-                       </div>
-                   </td>
-               </tr>
-          </table>
+            </table>
+            <br>
+            <hr>
+            <div class="row">
+                <div class="col-md-8 offset-4">
+                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="GenerateBill" />
+                </div>
+            </div>
         </div>
      </div>
 
@@ -177,7 +258,7 @@
                                 </div>
                                 <br>
                                 <div class="panel-body">
-                                    <table class="table table-condensed" style="color: #405A67;">
+                                    <table class="table table-condensed" style="color: #405A67;font-size:12px;">
                                         <thead>
                                             <tr>
                                                 <td><strong>ID</strong></td>
