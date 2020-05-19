@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 18-05-2020 13:22:31 ******/
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 19-05-2020 19:55:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,7 +33,7 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 18-05-2020 13:22:31 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 19-05-2020 19:55:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -116,7 +116,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 18-05-2020 13:22:31 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 19-05-2020 19:55:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -146,7 +146,7 @@ BEGIN
 
 	if(@CurrQuantity<@Quantity)
 	begin
-		select @result = 'Error|Entered quantity is greater than available quantity'
+		select @result = 'Error|Entered quantity is greater than available quantity ('+cast(@CurrQuantity as varchar)+')'
 		set @valid = 0
 	end
 	else
@@ -209,7 +209,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 18-05-2020 13:22:31 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 19-05-2020 19:55:46 ******/
 SET ANSI_NULLS ON
 GO
 

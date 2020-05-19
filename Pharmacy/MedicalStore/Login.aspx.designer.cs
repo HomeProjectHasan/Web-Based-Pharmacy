@@ -15,6 +15,15 @@ namespace MedicalStore
     {
 
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
         /// TextBox1 control.
         /// </summary>
         /// <remarks>
@@ -33,15 +42,6 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button1;
-
-        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>
@@ -51,12 +51,12 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
-        /// Label1 control.
+        /// button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button button1;
     }
 }

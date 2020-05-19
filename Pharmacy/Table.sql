@@ -1,7 +1,68 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  Table [dbo].[Company]    Script Date: 18-05-2020 13:22:04 ******/
+ALTER TABLE [dbo].[Sell] DROP CONSTRAINT [FK_Sell_Medicine]
+GO
+
+ALTER TABLE [dbo].[Sell] DROP CONSTRAINT [FK_Sell_Customers]
+GO
+
+ALTER TABLE [dbo].[Purchase] DROP CONSTRAINT [FK_Purchase_Medicine]
+GO
+
+ALTER TABLE [dbo].[Purchase] DROP CONSTRAINT [FK_Purchase_Dealer]
+GO
+
+ALTER TABLE [dbo].[Medicine] DROP CONSTRAINT [FK_Medicine_Company]
+GO
+
+ALTER TABLE [dbo].[LoginDetails] DROP CONSTRAINT [FK_LoginDetails_Employee]
+GO
+
+ALTER TABLE [dbo].[Dealer] DROP CONSTRAINT [FK_Dealer_Company]
+GO
+
+/****** Object:  Table [dbo].[Sell]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Sell]') AND type in (N'U'))
+DROP TABLE [dbo].[Sell]
+GO
+
+/****** Object:  Table [dbo].[Purchase]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Purchase]') AND type in (N'U'))
+DROP TABLE [dbo].[Purchase]
+GO
+
+/****** Object:  Table [dbo].[Medicine]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Medicine]') AND type in (N'U'))
+DROP TABLE [dbo].[Medicine]
+GO
+
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[LoginDetails]') AND type in (N'U'))
+DROP TABLE [dbo].[LoginDetails]
+GO
+
+/****** Object:  Table [dbo].[Employee]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Employee]') AND type in (N'U'))
+DROP TABLE [dbo].[Employee]
+GO
+
+/****** Object:  Table [dbo].[Dealer]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Dealer]') AND type in (N'U'))
+DROP TABLE [dbo].[Dealer]
+GO
+
+/****** Object:  Table [dbo].[Customers]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Customers]') AND type in (N'U'))
+DROP TABLE [dbo].[Customers]
+GO
+
+/****** Object:  Table [dbo].[Company]    Script Date: 19-05-2020 19:54:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Company]') AND type in (N'U'))
+DROP TABLE [dbo].[Company]
+GO
+
+/****** Object:  Table [dbo].[Company]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +81,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,7 +100,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -64,7 +125,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -92,7 +153,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -106,7 +167,7 @@ CREATE TABLE [dbo].[LoginDetails](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -116,19 +177,19 @@ GO
 CREATE TABLE [dbo].[Medicine](
 	[MedicineID] [varchar](20) NOT NULL,
 	[MedicineName] [varchar](100) NOT NULL,
-	[CompanyID] [varchar](20) NULL,
-	[Price] [float] NOT NULL,
+	[CompanyID] [varchar](20) NOT NULL,
+	[Price] [numeric](18, 2) NOT NULL,
 	[Manufacturing] [date] NOT NULL,
 	[Expiry] [date] NOT NULL,
 	[CurrentQuantity] [int] NOT NULL,
-PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Medicine__4F2128F066B11B4A] PRIMARY KEY CLUSTERED 
 (
 	[MedicineID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -149,7 +210,7 @@ CREATE TABLE [dbo].[Purchase](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 18-05-2020 13:22:04 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 19-05-2020 19:54:02 ******/
 SET ANSI_NULLS ON
 GO
 

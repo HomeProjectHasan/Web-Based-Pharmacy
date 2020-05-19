@@ -12,7 +12,6 @@
                 var newCustomer = document.getElementById('<%=Customer.ClientID%>').value;
                 var newaddress = document.getElementById('<%=Address.ClientID%>').value;
                 var newcontact = document.getElementById('<%=Contact.ClientID%>').value;
-
                 var list = document.getElementById("<%= NewFlag.ClientID%>");
                 var inputs = list.getElementsByTagName("input");
                 var selected;
@@ -70,7 +69,44 @@
                     //if selected yes
                     else {
                         if (phoneNoValidator(newcontact) && textWithSpaceValidator(newCustomer) && textWithSpaceValidator(newaddress)) {
-                            return true;
+                            if (MedicineName != "0") {
+                                if (Date != "") {
+                                    if (dateValidator(Date)) {
+                                        //date is fine check quantity
+                                        if (Quantity != "") {
+                                            if (numberValidator(Quantity)) {
+                                                //Quantity is fine too. Rerturn
+                                                return true;
+                                            }
+                                            else {
+                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
+                                                enableDisable();
+                                                return false;
+                                            }
+                                        }
+                                        else {
+                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
+                                            enableDisable();
+                                            return false;
+                                        }
+                                    }
+                                    else {
+                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                                        enableDisable();
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
+                                    enableDisable();
+                                    return false;
+                                }
+                            }
+                            else {
+                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine.";
+                                enableDisable();
+                                return false;
+                            }
                         }
                         else {
                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter correct new customer details for Name/Contact/Address.";
@@ -140,7 +176,7 @@
     <div style="padding-top: 20px;">
         <div class="whitepanel homepanel">
             <div class="row">
-                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Customer?:</div>
+                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Customer:</div>
                 <div class="col-md-4">
                 <asp:RadioButtonList ID="NewFlag" Height="25px" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem>Yes</asp:ListItem>
