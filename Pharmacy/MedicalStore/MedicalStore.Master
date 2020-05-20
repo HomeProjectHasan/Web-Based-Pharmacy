@@ -2,13 +2,12 @@
     <title></title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" /> 
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="Content/navigation-round.css" />   
-    <script src="Scripts/jquery-custom.min.js"></script>      
+    <link rel="stylesheet" href="Content/navigation-round.css" />  
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script>
         $(function () {
             var menu = $('.menu-navigation-round');
-            menu.slicknav();
             // Mark the clicked item as selected
             menu.on('click', 'a', function () {
                 var a = $(this);
@@ -31,6 +30,16 @@
         function numberValidator(num) {
             var reg = /^[0-9]{1,3}$/gm;
             return (reg.test(num));
+        }
+
+        function decimalValidator(num) {
+            var reg = /^\d[0-9]{0,5}(\.\d{1,2})?$/gm;
+            return (reg.test(num));
+        }
+
+        function textWithNumberValidator(txt) {
+            var reg = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/gm;
+            return (reg.test(txt));
         }
 
         function textOnlyValidator(txt) {

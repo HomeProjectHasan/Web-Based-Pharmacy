@@ -271,6 +271,29 @@ namespace MedicalStore.DAL
             return searchresult;
         }
 
+        public DataTable showDelearDetailsForBill(string dealerId)
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
         public DataTable getMedicineList()
         {
             SqlConnection sqlconn = new SqlConnection(connString);

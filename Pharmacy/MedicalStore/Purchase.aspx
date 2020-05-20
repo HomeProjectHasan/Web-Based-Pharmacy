@@ -5,84 +5,116 @@
 
         function ValidateForm() {
             var Date = document.getElementById('<%=Date.ClientID%>').value;
-             var Quantity = document.getElementById('<%=Quantity.ClientID%>').value;
-             var MedicineName = document.getElementById('<%=MedicineList.ClientID%>').value;
-             var oldmedicine = document.getElementById('<%=MedicineList.ClientID%>').value;
-             var newmedicine = document.getElementById('<%=Medicine.ClientID%>').value;
-             var newprice = document.getElementById('<%=Price.ClientID%>').value;
-             var newmfd = document.getElementById('<%=MFD.ClientID%>').value;
-             var newexp = document.getElementById('<%=EXP.ClientID%>').value;
-             var list = document.getElementById("<%= NewFlag.ClientID%>");
-             var inputs = list.getElementsByTagName("input");
-             var selected;
-             for (var i = 0; i < inputs.length; i++) {
-                 if (inputs[i].checked) {
-                     selected = inputs[i];
-                     break;
-                 }
-             }
-             if (selected) {
-                 if (selected.value == "No") {
-                     if (MedicineName != "0" && oldmedicine != "0") {
-                         //check others
-                         if (Date != "") {
-                             if (dateValidator(Date)) {
-                                 //date is fine check quantity
-                                 if (Quantity != "") {
-                                     if (numberValidator(Quantity)) {
-                                         //Quantity is fine too. Rerturn
-                                         return true;
-                                     }
-                                     else {
-                                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
-                                            enableDisable();
-                                            return false;
-                                        }
-                                    }
-                                    else {
-                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
-                                        enableDisable();
-                                        return false;
-                                    }
-                                }
-                                else {
-                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
-                                    enableDisable();
-                                    return false;
-                                }
+            var Quantity = document.getElementById('<%=Quantity.ClientID%>').value;
+            var DealerName = document.getElementById('<%=Dealer.ClientID%>').value;
+            var oldmedicine = document.getElementById('<%=MedicineList.ClientID%>').value;
+            var newmedicine = document.getElementById('<%=Medicine.ClientID%>').value;
+            var newprice = document.getElementById('<%=Price.ClientID%>').value;
+            var newmfd = document.getElementById('<%=MFD.ClientID%>').value;
+            var newexp = document.getElementById('<%=EXP.ClientID%>').value;
+            var list = document.getElementById("<%= NewFlag.ClientID%>");
+            var inputs = list.getElementsByTagName("input");
+            var selected;
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    selected = inputs[i];
+                    break;
+                }
+            }
+            if (selected) {
+                if (selected.value == "No") {
+                    if (DealerName != "0" && oldmedicine != "0") {
+                        //check others
+                        if (dateValidator(Date)) {
+                            //date is fine check quantity
+                            if (numberValidator(Quantity)) {
+                                //Quantity is fine too. Rerturn
+                                return true;
                             }
                             else {
-                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
-                                enableDisable();
-                                return false;
-                            }
+                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
+                                 enableDisable();
+                                 return false;
+                             }
+                         }
+                         else {
+                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                             enableDisable();
+                             return false;
+                         }
+                     }
+                     else {
+                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine and dealer.";
+                         enableDisable();
+                         return false;
+                     }
+                 }
 
-                        }
-                        else {
-                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine and medicine.";
-                            enableDisable();
-                            return false;
-                        }
-
-                    }
-
-                    //if selected yes
-                    else {
-                        if (phoneNoValidator(newexp) && textWithSpaceValidator(newmedicine) && textWithSpaceValidator(newmfd)) {
-                            return true;
-                        }
-                        else {
-                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter correct new medicine details for Name/Contact/Address.";
-                            enableDisable();
-                            return false;
-                        }
-                    }
-                }
-                else {
-                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine type.";
-                 enableDisable();
-                 return false;
+                 //if selected yes
+                 else {
+                     if (DealerName != "0") {
+                         if (dateValidator(Date)) {
+                             //date is fine check quantity
+                             if (numberValidator(Quantity)) {
+                                 //Quantity is fine.
+                                 if (textWithNumberValidator(newmedicine)) {
+                                     //Medicine name is fine.
+                                     if (decimalValidator(newprice)) {
+                                         //Price is fine.
+                                         if (dateValidator(newmfd)) {
+                                             //MFD is fine.
+                                             if (dateValidator(newexp)) {
+                                                 //EXP is fine
+                                                     return true;
+                                             }
+                                             else {
+                                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid EXP.";
+                                                 enableDisable();
+                                                 return false;
+                                             }
+                                         }
+                                         else {
+                                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid MFD.";
+                                             enableDisable();
+                                             return false;
+                                         }
+                                     }
+                                     else {
+                                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Price.";
+                                         enableDisable();
+                                         return false;
+                                     }
+                                 }
+                                 else {
+                                     document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Medicine Name.";
+                                     enableDisable();
+                                     return false;
+                                 }
+                             }
+                             else {
+                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
+                                 enableDisable();
+                                 return false;
+                             }
+                         }
+                         else {
+                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                             enableDisable();
+                             return false;
+                         }
+                     }
+                     else {
+                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select a dealer.";
+                         enableDisable();
+                         return false;
+                     }
+                 }
              }
+             else {
+                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine type.";
+                enableDisable();
+                return false;
+            }
         }
 
         function enableDisable() {
@@ -147,8 +179,8 @@
                    <td align="right">Medicine:</td>
                    <td>
                     <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
-                    DataTextField="MedicineName" DataValueField="MedicineName" Height="16px"
-                    Width="118px">
+                    DataTextField="MedicineName" DataValueField="Price" Height="25px"
+                    Width="181px">
                     <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
                 </asp:DropDownList>
                    </td>
@@ -158,8 +190,8 @@
                    <td align="right">Dealer ID:</td>
                    <td>
                        <asp:DropDownList ID="Dealer" runat="server" AppendDataBoundItems="True"
-                    DataTextField="Name" DataValueField="DealerID" Height="16px"
-                    Width="118px">
+                    DataTextField="Name" DataValueField="DealerID" Height="25px"
+                    Width="181px">
                     <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
                 </asp:DropDownList>
                    </td>
@@ -168,7 +200,7 @@
                <tr>
                    <td align="right">Purchase Date:</td>
                    <td>
-                       <asp:TextBox ID="Date" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                       <asp:TextBox ID="Date" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
 
@@ -193,13 +225,13 @@
                <tr id ="newMFD">
                    <td align="right">MFD:</td>
                    <td>
-                        <asp:TextBox ID="MFD" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                        <asp:TextBox ID="MFD" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
                 <tr id ="newEXP">
                    <td align="right">EXP:</td>
                    <td>
-                       <asp:TextBox ID="EXP" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                       <asp:TextBox ID="EXP" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>
           </table>
@@ -207,7 +239,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-8 offset-4">
-                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="PurchaseClick" />
+                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="GenerateBill" />
                 </div>
             </div>
        </div>   
@@ -229,7 +261,9 @@
                                 <address>
                                     <strong>Billed To:</strong><br>
                                     Name: <asp:Label ID="namebill" runat="server" Text=""></asp:Label><br>
-                                    Contact No: <asp:Label ID="contactbill" runat="server" Text=""></asp:Label>
+                                    Company: <asp:Label ID="companybill" runat="server" Text=""></asp:Label><br>
+                                    Contact: <asp:Label ID="contactbill" runat="server" Text=""></asp:Label><br>
+                                    Email: <asp:Label ID="emailbill" runat="server" Text=""></asp:Label>
                                 </address>
                             </div>
                             <div class="col-md-6 text-right">
@@ -251,7 +285,6 @@
                                     <table class="table table-condensed" style="color: #405A67;font-size:12px;">
                                         <thead>
                                             <tr>
-                                                <td><strong>ID</strong></td>
                                                 <td class="text-center"><strong>Name</strong></td>
                                                 <td class="text-center"><strong>Price</strong></td>
                                                 <td class="text-center"><strong>Quantity</strong></td>
@@ -261,8 +294,6 @@
                                         <tbody>
                                             <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                             <tr>
-                                                <td>
-                                                    <asp:Label ID="medicineidbill" runat="server" Text=""></asp:Label></td>
                                                 <td>
                                                     <asp:Label ID="medicinenamebill" runat="server" Text=""></asp:Label></td>
                                                 <td class="text-center">

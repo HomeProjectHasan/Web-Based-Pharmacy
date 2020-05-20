@@ -123,6 +123,15 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Label namebill;
 
         /// <summary>
+        /// companybill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label companybill;
+
+        /// <summary>
         /// contactbill control.
         /// </summary>
         /// <remarks>
@@ -132,6 +141,15 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Label contactbill;
 
         /// <summary>
+        /// emailbill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailbill;
+
+        /// <summary>
         /// datebill control.
         /// </summary>
         /// <remarks>
@@ -139,15 +157,6 @@ namespace MedicalStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label datebill;
-
-        /// <summary>
-        /// medicineidbill control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label medicineidbill;
 
         /// <summary>
         /// medicinenamebill control.

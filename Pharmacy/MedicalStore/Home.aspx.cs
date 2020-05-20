@@ -63,7 +63,7 @@ namespace MedicalStore
                 else
                 {
                     namebill.Text = Customerlist.SelectedItem.Text;
-                    contactbill.Text = Customerlist.SelectedItem.Value; ;
+                    contactbill.Text = Customerlist.SelectedItem.Value;
                 }
 
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);

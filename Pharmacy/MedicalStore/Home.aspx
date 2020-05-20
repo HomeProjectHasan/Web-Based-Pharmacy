@@ -24,92 +24,79 @@
                 if (selected) {
                     if (selected.value == "No") {
                         if (MedicineName != "0" && oldCustomer != "0") {
-                            //check others
-                            if (Date != "") {
-                                if (dateValidator(Date)) {
-                                    //date is fine check quantity
-                                    if (Quantity != "") {
-                                        if (numberValidator(Quantity)) {
-                                            //Quantity is fine too. Rerturn
-                                            return true;
-                                        }
-                                        else {
-                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
-                                            enableDisable();
-                                            return false;
-                                        }
-                                    }
-                                    else {
-                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
+                            if (dateValidator(Date)) {
+                                //date is fine check quantity
+                                if (numberValidator(Quantity)) {
+                                    //Quantity is fine too. Rerturn
+                                    return true;
+                                }
+                                else {
+                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
                                         enableDisable();
                                         return false;
                                     }
                                 }
                                 else {
                                     document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
-                                    enableDisable();
-                                    return false;
-                                }
-                            }
-                            else {
-                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
                                 enableDisable();
                                 return false;
                             }
-
                         }
                         else {
                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select customer and medicine.";
                             enableDisable();
                             return false;
                         }
-
                     }
 
                     //if selected yes
                     else {
-                        if (phoneNoValidator(newcontact) && textWithSpaceValidator(newCustomer) && textWithSpaceValidator(newaddress)) {
-                            if (MedicineName != "0") {
-                                if (Date != "") {
-                                    if (dateValidator(Date)) {
-                                        //date is fine check quantity
-                                        if (Quantity != "") {
-                                            if (numberValidator(Quantity)) {
-                                                //Quantity is fine too. Rerturn
+                        if (MedicineName != "0") {
+                            //medicine name selected
+                            if (dateValidator(Date)) {
+                                //date is fine check quantity                                       
+                                if (numberValidator(Quantity)) {
+                                    //Quantity is fine too. Rerturn
+                                    if (textWithSpaceValidator(newCustomer)) {
+                                        //new customer name fine
+                                        if (textWithSpaceValidator(newaddress)) {
+                                            //new address fine
+                                            if (phoneNoValidator(newcontact)) {
+                                                //contact no is fine too
                                                 return true;
                                             }
                                             else {
-                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
-                                                enableDisable();
-                                                return false;
+                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Contact No.";
+                                                            enableDisable();
+                                                            return false;
+                                                        }
+                                                    }
+                                                    else {
+                                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Address.";
+                                                        enableDisable();
+                                                        return false;
+                                                    }
+                                                }
+                                                else {
+                                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Customer Name.";
+                                                    enableDisable();
+                                                    return false;
+                                                }
                                             }
-                                        }
-                                        else {
-                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter Quantity.";
+                                            else {
+                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
                                             enableDisable();
                                             return false;
                                         }
                                     }
                                     else {
                                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
-                                        enableDisable();
-                                        return false;
-                                    }
-                                }
-                                else {
-                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter date.";
-                                    enableDisable();
-                                    return false;
-                                }
-                            }
-                            else {
-                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine.";
                                 enableDisable();
                                 return false;
                             }
                         }
                         else {
-                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter correct new customer details for Name/Contact/Address.";
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine.";
                             enableDisable();
                             return false;
                         }
@@ -158,7 +145,7 @@
                 }
             }
         }
-    </script>
+        </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
