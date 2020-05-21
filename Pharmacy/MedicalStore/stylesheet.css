@@ -157,10 +157,8 @@ h3 {
     font-family: Helvetica, Arial, sans-serif;
 }
 .signup {
-    left: 0%;
-    width: 99%;
-    top: 2px;
-    height: 462px;
+    left: 40%;
+    width: 450px;
 }
 .login {
     left: 40%;
