@@ -75,7 +75,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\navigation-round.css" />
     <Content Include="Dealer.aspx" />
-    <Content Include="Employ.aspx" />
+    <Content Include="Employee.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Frontpage.aspx" />
     <Content Include="Home.aspx" />
@@ -221,12 +221,12 @@
     <Compile Include="Dealer.aspx.designer.cs">
       <DependentUpon>Dealer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employ.aspx.cs">
-      <DependentUpon>Employ.aspx</DependentUpon>
+    <Compile Include="Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employ.aspx.designer.cs">
-      <DependentUpon>Employ.aspx</DependentUpon>
+    <Compile Include="Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Frontpage.aspx.cs">
       <DependentUpon>Frontpage.aspx</DependentUpon>
