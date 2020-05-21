@@ -19,19 +19,19 @@ namespace MedicalStore
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void All_Click(object sender, EventArgs e)
         {
-            Session["Button"] = 1;
+            Session["MedicineButton"] = "All_Click";
             Response.Redirect("~/MedicineOutput.aspx");
         }
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void OutOfStock_Click(object sender, EventArgs e)
         {
-            Session["Button"] = 2;
+            Session["MedicineButton"] = "OutOfStock_Click";
             Response.Redirect("~/MedicineOutput.aspx");
         }
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void Expired_Click(object sender, EventArgs e)
         {
-            Session["Button"] = 3;
+            Session["MedicineButton"] = "Expired_Click";
             Response.Redirect("~/MedicineOutput.aspx");
         }
         protected void Button4_Click(object sender, EventArgs e)

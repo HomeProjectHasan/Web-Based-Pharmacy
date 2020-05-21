@@ -91,7 +91,7 @@
     <Content Include="MedicineOutput.aspx" />
     <Content Include="Outputpage.aspx" />
     <Content Include="Outputpage2.aspx" />
-    <Content Include="Outputpage3.aspx" />
+    <Content Include="EmployeeOutput.aspx" />
     <Content Include="Purchase.aspx" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
@@ -210,6 +210,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class\Employee.cs" />
     <Compile Include="Class\Medicine.cs" />
     <Compile Include="DAL\MedicalStoreDAL.cs" />
     <Compile Include="DAL\myClass.cs" />
@@ -283,12 +284,12 @@
     <Compile Include="Outputpage2.aspx.designer.cs">
       <DependentUpon>Outputpage2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Outputpage3.aspx.cs">
-      <DependentUpon>Outputpage3.aspx</DependentUpon>
+    <Compile Include="EmployeeOutput.aspx.cs">
+      <DependentUpon>EmployeeOutput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Outputpage3.aspx.designer.cs">
-      <DependentUpon>Outputpage3.aspx</DependentUpon>
+    <Compile Include="EmployeeOutput.aspx.designer.cs">
+      <DependentUpon>EmployeeOutput.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">

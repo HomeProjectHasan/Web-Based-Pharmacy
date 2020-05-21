@@ -15,6 +15,7 @@ namespace MedicalStore
 {
     public partial class output5 : System.Web.UI.Page
     {
+        public static string ButtonValue;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user_id"] == null)
@@ -22,6 +23,7 @@ namespace MedicalStore
                 Response.Redirect("Login.aspx");
             }
             else {
+                 ButtonValue = Session["MedicineButton"].ToString();
                 if (!this.IsPostBack)
                 {
                     DataTable dummy = new DataTable();
@@ -48,11 +50,22 @@ namespace MedicalStore
             List<MedicineDetails> Medicines = new List<MedicineDetails>();
             DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
-            DataTable table1 = new DataTable();
+            DataTable resultTable = new DataTable();
 
-            table1 = userDal.getMedicineList();
+            if (ButtonValue == "All_Click")
+            {
+                resultTable = userDal.getMedicineList();
+            }
+            else if (ButtonValue == "OutOfStock_Click")
+            {
+                resultTable = userDal.getMedicineOutOfStockList();
+            }
+            else if (ButtonValue == "Expired_Click")
+            {
+                resultTable = userDal.getMedicineExpiredList();
+            }
 
-            foreach (DataRow dr in table1.Rows)
+            foreach (DataRow dr in resultTable.Rows)
             {
 
                 Medicines.Add(new MedicineDetails

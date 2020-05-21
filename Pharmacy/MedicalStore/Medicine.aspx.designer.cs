@@ -15,31 +15,31 @@ namespace MedicalStore
     {
 
         /// <summary>
-        /// Button1 control.
+        /// AllMedicine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button AllMedicine;
 
         /// <summary>
-        /// Button2 control.
+        /// OutOfStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button OutOfStock;
 
         /// <summary>
-        /// Button3 control.
+        /// Expired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button Expired;
 
         /// <summary>
         /// Pricebyid control.

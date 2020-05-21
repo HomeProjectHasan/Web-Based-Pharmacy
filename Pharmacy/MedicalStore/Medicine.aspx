@@ -25,11 +25,11 @@
             
             <p>
              <div style="font-size: large; padding-left:40%;">
-            <asp:Button ID="Button1" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Medicines" Height="40px" Width="200px" OnClick="Button1_Click" />
+                <asp:Button ID="AllMedicine" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Medicines" Height="40px" Width="200px" OnClick="All_Click" />
                 &nbsp;
-                <asp:Button ID="Button2" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show Out Of Stock" Height="40px" Width="200px" OnClick="Button2_Click" />
+                <asp:Button ID="OutOfStock" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show Out Of Stock" Height="40px" Width="200px" OnClick="OutOfStock_Click" />
                 &nbsp;
-                <asp:Button ID="Button3" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Expired" Height="40px" Width="200px" OnClick="Button3_Click" />
+                <asp:Button ID="Expired" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show All Expired" Height="40px" Width="200px" OnClick="Expired_Click" />
             </div>
                  </p>
               <div style="padding-top:20px;">

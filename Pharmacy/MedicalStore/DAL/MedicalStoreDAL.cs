@@ -317,6 +317,75 @@ namespace MedicalStore.DAL
             return searchresult;
         }
 
+        public DataTable getMedicineExpiredList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT MedicineID,MedicineName,CompanyName, cast(Manufacturing as date) Manufacturing , Expiry,Price, CurrentQuantity FROM Medicine M , Company C where M.CompanyID=C.CompanyID and Expiry<=getdate()", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
+        public DataTable getEmployeeList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT EmpID,EmpName,ContactNo,Address,Designation,Salary,Gender,DOB,Email  FROM Employee", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
+        public DataTable getMedicineOutOfStockList()
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT MedicineID,MedicineName,CompanyName, cast(Manufacturing as date) Manufacturing , Expiry,Price, CurrentQuantity FROM Medicine M , Company C where M.CompanyID=C.CompanyID and CurrentQuantity=0", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
         public DataTable getCustomerList()
         {
             SqlConnection sqlconn = new SqlConnection(connString);
