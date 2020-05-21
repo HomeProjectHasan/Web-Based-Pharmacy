@@ -37,81 +37,32 @@
            <table id="table1">
                 
                <tr>
-                   <td align="right">Find Price of Medicine by Entering Medicine ID :</td> 
+                   <td align="right">Find Price of Medicine by Selecting Medicine ID :</td> 
                      <td>  
                          <asp:TextBox ID="Pricebyid" runat="server"></asp:TextBox>
                    </td>
                   <td><asp:Button ID="Button4" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button4_Click" /></td>
                </tr>
                <tr>
-                   <td align="right">Find Expiry Date(dd mm yyyy) of Medicine by Entering Medicine ID :</td>
+                   <td align="right">Find Price of Medicine by Entering Medicine Name :</td>
                    <td>
                        <asp:TextBox ID="Expirybyid" runat="server"></asp:TextBox>
                    </td>
                    <td><asp:Button ID="Button5" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button5_Click" /></td>
                </tr>
                <tr>
-                   <td align="right">Find Who Took These Medicine by Entering Medicine ID :</td>
+                   <td align="right">Medicine purchase history :</td>
                    <td>
                        <asp:TextBox ID="Takebyid" runat="server"></asp:TextBox>
                    </td>
                    <td><asp:Button ID="Button6" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button6_Click" /></td>
                </tr>
                <tr>
-                   <td align="right">Find All Information of Medicine by Entering Medicine ID : </td>
+                   <td align="right">Medicine sell history : </td>
                    <td>
                        <asp:TextBox ID="Informationbyid" runat="server"></asp:TextBox>
                    </td>
                    <td><asp:Button ID="Button7" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button7_Click" /></td>
-               </tr>
-               <tr>
-                   <td align="right">Find Medicine Quantity left in stock by Entering Medicine ID :  </td>
-                   <td>
-                       <asp:TextBox ID="Quantitybyid" runat="server"></asp:TextBox>
-                   </td>
-                   <td><asp:Button ID="Button8" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button8_Click" /></td>
-               </tr>
-               <tr>
-                   <td align="right">Find Purchase Date of Medicine from Dealer by Entering Medicine ID : </td>
-                   <td>
-                       <asp:TextBox ID="Purchasebyid" runat="server"></asp:TextBox>
-                   </td>
-                   <td><asp:Button ID="Button9" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button9_Click" /></td>
-               </tr>
-               <tr>
-                   <td align="right">Find Number of Sales of Medicine by Entering Medicine ID : </td>
-                   <td>
-                       <asp:TextBox ID="Salesnobyid" runat="server"></asp:TextBox>
-                   </td>
-                   <td><asp:Button ID="Button10" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button10_Click" /></td>
-               </tr>
-               <tr>
-                  <td align="right">Update Manufacturing Date(dd mm yyyy) by Entering Medicine ID : </td>
-                   <td>
-                       <asp:TextBox ID="Updatebyid" runat="server"></asp:TextBox>
-                   </td>
-                  </tr>
-                   <tr>
-                   <td align="right"> And Manufacturing date :  </td>
-                      <td>
-                       <asp:TextBox ID="manudate" runat="server"></asp:TextBox>
-                   </td>
-                       <td><asp:Button ID="Button11" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button11_Click" /></td>
-               </tr>
-               
-               <tr>
-
-                   <td align="right">Update Expiry Date of Medicine(dd mm yyyy) by Medicine ID :  </td>
-                   <td>
-                       <asp:TextBox ID="Expirydatebyid" runat="server"></asp:TextBox>
-                   </td>
-                 </tr>
-                  <tr>
-                   <td align="right"> And Expiry date :  </td>
-                      <td>
-                       <asp:TextBox ID="expirydate" runat="server"></asp:TextBox>
-                   </td>
-                      <td><asp:Button ID="Button12" Text="Submit" runat="server" style="margin-left:3px;" class="buttonBorderSmall" Font-Size="Larger" Font-Bold="true" Height="30px" Width="100px" BorderColor="#d4fbff" BorderStyle="Solid" ForeColor="Black" OnClick="Button12_Click" /></td>
                </tr>
                 </table>
               </div>

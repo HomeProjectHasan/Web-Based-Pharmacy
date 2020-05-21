@@ -4,6 +4,8 @@
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="Content/navigation-round.css" />  
     <script src="Scripts/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/bootstrap.min.js"></script>
     <script>
         $(function () {
@@ -93,6 +95,6 @@
 </body>
 <br />
 <footer class="footer">
-    <div style="padding-top:8px;"><p> All content & design © 2019-2020 Salman Layek</p>
+    <div><p> All content & design © 2019-2020 Salman Layek</p>
     </div>
 </footer>

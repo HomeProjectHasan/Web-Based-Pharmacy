@@ -302,7 +302,7 @@ namespace MedicalStore.DAL
             DataTable searchresult = new DataTable();
             try
             {
-                datatable = new SqlDataAdapter("SELECT MedicineID, MedicineName, CurrentQuantity, Price from Medicine", sqlconn);
+                datatable = new SqlDataAdapter("SELECT MedicineID,MedicineName,CompanyName, cast(Manufacturing as date) Manufacturing , Expiry,Price, CurrentQuantity FROM Medicine M , Company C where M.CompanyID=C.CompanyID", sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)

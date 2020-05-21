@@ -138,9 +138,18 @@ h3 {
     border-top: 2px solid;
 }
 
+.tablepanel {
+    overflow: hidden;
+    background-color: #B1B4B4;
+    position: relative;
+    border-radius: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
 .whitepanel {
     overflow: hidden;
-    background-color: #F3FEFF;
+    background-color: #F5F8F8;
     position: relative;
     padding: 20px 2px 20px 5px;
     border-radius: 12px;

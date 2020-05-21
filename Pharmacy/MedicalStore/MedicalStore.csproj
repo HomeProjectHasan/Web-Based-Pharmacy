@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -73,6 +76,7 @@
     <Content Include="Content\navigation-round.css" />
     <Content Include="Dealer.aspx" />
     <Content Include="Employ.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="Frontpage.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\1088840.jpg" />
@@ -84,7 +88,7 @@
     <Content Include="images\image3.jpg" />
     <Content Include="Medicine.aspx" />
     <Content Include="output4.aspx" />
-    <Content Include="output5.aspx" />
+    <Content Include="MedicineOutput.aspx" />
     <Content Include="Outputpage.aspx" />
     <Content Include="Outputpage2.aspx" />
     <Content Include="Outputpage3.aspx" />
@@ -206,6 +210,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class\Medicine.cs" />
     <Compile Include="DAL\MedicalStoreDAL.cs" />
     <Compile Include="DAL\myClass.cs" />
     <Compile Include="Dealer.aspx.cs">
@@ -257,12 +262,12 @@
     <Compile Include="output4.aspx.designer.cs">
       <DependentUpon>output4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="output5.aspx.cs">
-      <DependentUpon>output5.aspx</DependentUpon>
+    <Compile Include="MedicineOutput.aspx.cs">
+      <DependentUpon>MedicineOutput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="output5.aspx.designer.cs">
-      <DependentUpon>output5.aspx</DependentUpon>
+    <Compile Include="MedicineOutput.aspx.designer.cs">
+      <DependentUpon>MedicineOutput.aspx</DependentUpon>
     </Compile>
     <Compile Include="Outputpage.aspx.cs">
       <DependentUpon>Outputpage.aspx</DependentUpon>
