@@ -16,6 +16,7 @@ namespace MedicalStore
     public partial class output5 : System.Web.UI.Page
     {
         public static string ButtonValue;
+        public static string TextValue;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user_id"] == null)
@@ -24,6 +25,7 @@ namespace MedicalStore
             }
             else {
                  ButtonValue = Session["MedicineButton"].ToString();
+                 TextValue = Session["MedicineText"].ToString();
                 if (!this.IsPostBack)
                 {
                     DataTable dummy = new DataTable();
@@ -63,6 +65,10 @@ namespace MedicalStore
             else if (ButtonValue == "Expired_Click")
             {
                 resultTable = userDal.getMedicineExpiredList();
+            }
+            else if (ButtonValue == "ID_Click" || ButtonValue == "Name_Click")
+            {
+                resultTable = userDal.searchMedicine(ButtonValue, TextValue);
             }
 
             foreach (DataRow dr in resultTable.Rows)

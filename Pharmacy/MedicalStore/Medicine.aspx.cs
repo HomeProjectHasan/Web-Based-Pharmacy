@@ -34,32 +34,22 @@ namespace MedicalStore
             Session["MedicineButton"] = "Expired_Click";
             Response.Redirect("~/MedicineOutput.aspx");
         }
-        protected void Button4_Click(object sender, EventArgs e)
+        protected void SearchByID(object sender, EventArgs e)
         {
-            Session["Button"] = 4;
-            Session["id"] = Pricebyid.Text;
-            if (Session["id"].ToString() == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
-            }
-            else
-                Response.Redirect("~/MedicineOutput.aspx");
+            Session["MedicineButton"] = "ID_Click";
+            Session["MedicineText"] = MedicineID.Text;
+            Response.Redirect("~/MedicineOutput.aspx");
         }
-        protected void Button5_Click(object sender, EventArgs e)
+        protected void SearchByName(object sender, EventArgs e)
         {
-            Session["Button"] = 5;
-            Session["id"] = Expirybyid.Text;
-            if (Session["id"].ToString() == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
-            }
-            else
-                Response.Redirect("~/MedicineOutput.aspx");
+            Session["MedicineButton"] = "Name_Click";
+            Session["MedicineText"] = MedicineName.Text;
+            Response.Redirect("~/MedicineOutput.aspx");
         }
         protected void Button6_Click(object sender, EventArgs e)
         {
             Session["Button"] = 6;
-            Session["id"] = Takebyid.Text;
+            Session["id"] = MedicineID.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
@@ -70,7 +60,7 @@ namespace MedicalStore
         protected void Button7_Click(object sender, EventArgs e)
         {
             Session["Button"] = 7;
-            Session["id"] = Informationbyid.Text;
+            Session["id"] = MedicineID.Text;
             if (Session["id"].ToString() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿

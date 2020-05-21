@@ -317,6 +317,37 @@ namespace MedicalStore.DAL
             return searchresult;
         }
 
+        public DataTable searchMedicine(string key, string value)
+        {
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+            try
+            {
+                if (key == "ID_Click")
+                {
+                    datatable = new SqlDataAdapter(String.Format("SELECT MedicineID,MedicineName,CompanyName, cast(Manufacturing as date) Manufacturing , Expiry,Price, CurrentQuantity FROM Medicine M , Company C where M.CompanyID=C.CompanyID and MedicineID LIKE '%{0}%'",value), sqlconn);
+
+                }
+                else if (key == "Name_Click")
+                {
+                    datatable = new SqlDataAdapter(String.Format("SELECT MedicineID,MedicineName,CompanyName, cast(Manufacturing as date) Manufacturing , Expiry,Price, CurrentQuantity FROM Medicine M , Company C where M.CompanyID=C.CompanyID and MedicineName LIKE '%{0}%'", value), sqlconn);
+                }
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
         public DataTable getMedicineExpiredList()
         {
             SqlConnection sqlconn = new SqlConnection(connString);

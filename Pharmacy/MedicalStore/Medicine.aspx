@@ -31,54 +31,54 @@
     </div>
     <br>
     <br>
-    <div class="whitepanel employpanel">
+    <div class="whitepanel medicinepanel">
         <div class="row">
-            <div class="col-6 pl-4 pr-0">
-                Find Medicine by Selecting Medicine ID :
+            <div class="col-4 pl-3 pr-0">
+                Search by Medicine ID :
             </div>
             <div class="col-3 pl-0">
-               <asp:TextBox ID="Pricebyid" runat="server"></asp:TextBox>
+               <asp:TextBox ID="MedicineID" runat="server"></asp:TextBox>
             </div>
-            <div class="col-3  pr-4">
-                <asp:Button ID="Button2" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="Button4_Click" />
+            <div class="col-4 pr-4">
+                <asp:Button ID="Button2" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByID" />
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-6 pl-4 pr-0">
-                Find Medicine by Entering Medicine Name :
+            <div class="col-4 pl-3 pr-0">
+                Search by Medicine Name :
             </div>
             <div class="col-3 pl-0">
-                       <asp:TextBox ID="Expirybyid" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="MedicineName" runat="server"></asp:TextBox>
             </div>
-            <div class="col-3 pr-4">
-                <asp:Button ID="Button3" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="Button5_Click" />
+            <div class="col-4 pr-4">
+                <asp:Button ID="Button3" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-6 pl-4 pr-0">
+            <div class="col-4 pl-3 pr-0">
                 Medicine sell history :
             </div>
             <div class="col-3 pl-0">
                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             </div>
-            <div class="col-3 pr-4">
-                <asp:Button ID="Button1" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="Button5_Click" />
+            <div class="col-4 pr-4">
+                <asp:Button ID="Button1" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-6 pl-4 pr-0">
+            <div class="col-4 pl-3 pr-0">
                Medicine purchase history :
             </div>
             <div class="col-3 pl-0">
                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             </div>
-            <div class="col-3 pr-4">
-                <asp:Button ID="Button4" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="Button5_Click" />
+            <div class="col-4 pr-4">
+                <asp:Button ID="Button4" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
             </div>
         </div>
-    </div>        
+    </div>   
 
 </asp:Content>
