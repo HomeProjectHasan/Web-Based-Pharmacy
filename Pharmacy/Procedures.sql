@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 19-05-2020 19:55:46 ******/
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 21-05-2020 18:06:10 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,7 +33,7 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 19-05-2020 19:55:46 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 21-05-2020 18:06:10 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -46,7 +46,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[PurchaseMedicine]
-	@DealerID varchar(20), @MedicineName varchar(100), @Date date, @Quantity int, @Price float, @MFD Date, @EXP Date, @NewFlag varchar(1), @result varchar(200) output
+	@DealerID varchar(20), @MedicineName varchar(100), @Date date, @Quantity int, @Price float, @MFD Date, @EXP Date,@userID varchar(50), @NewFlag varchar(1), @result varchar(200) output
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -103,8 +103,8 @@ BEGIN
 
 	if(@valid = 1)
 	begin
-	INSERT INTO Purchase ([PurchaseID],[DealerID],[MedicineID],[PurchaseDate],[Quantity],[Totalprice])
-	values(cast(@purchaseid as varchar) +'P', @DealerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
+	INSERT INTO Purchase ([PurchaseID],[DealerID],[MedicineID],[PurchaseDate],[Quantity],[Totalprice], [PurchaseBy],[DateTime])
+	values(cast(@purchaseid as varchar) +'P', @DealerID, @MedicineID, @Date, @Quantity, @Quantity * @Price, @userID, Getdate() )
 
 	select @result = 'Success|Purchase successful'
 	end
@@ -116,7 +116,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 19-05-2020 19:55:46 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 21-05-2020 18:06:10 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -129,7 +129,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[SellMedicine]
-	@CustomerName varchar(50), @MedicineID varchar(100), @Date date, @Quantity int, @Address varchar(100), @Contact numeric(11,0), @NewFlag varchar(1),@result varchar(200) output
+	@CustomerName varchar(50), @MedicineID varchar(100), @Date date, @Quantity int, @Address varchar(100), @Contact numeric(11,0),@userID varchar(50), @NewFlag varchar(1),@result varchar(200) output
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -194,8 +194,8 @@ BEGIN
 			set @sellid = @sellid+1
 			if(@valid = 1)
 			begin
-				INSERT INTO Sell ([SellID],[CustomerID],[MedicineID],[SellDate],[Quantity],[Totalprice])
-				values(cast(@sellid as varchar) +'S', @CustomerID, @MedicineID, @Date, @Quantity, @Quantity * @Price )
+				INSERT INTO Sell ([SellID],[CustomerID],[MedicineID],[SellDate],[Quantity],[Totalprice],[SoldBy],[DateTime])
+				values(cast(@sellid as varchar) +'S', @CustomerID, @MedicineID, @Date, @Quantity, @Quantity * @Price, @userID, GETDATE() )
 
 				update [Medicine] set [CurrentQuantity] = [CurrentQuantity] - @Quantity where [MedicineID] = @MedicineID
 
@@ -209,7 +209,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 19-05-2020 19:55:46 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 21-05-2020 18:06:10 ******/
 SET ANSI_NULLS ON
 GO
 

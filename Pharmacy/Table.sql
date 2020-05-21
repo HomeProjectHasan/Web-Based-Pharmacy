@@ -1,68 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-ALTER TABLE [dbo].[Sell] DROP CONSTRAINT [FK_Sell_Medicine]
-GO
-
-ALTER TABLE [dbo].[Sell] DROP CONSTRAINT [FK_Sell_Customers]
-GO
-
-ALTER TABLE [dbo].[Purchase] DROP CONSTRAINT [FK_Purchase_Medicine]
-GO
-
-ALTER TABLE [dbo].[Purchase] DROP CONSTRAINT [FK_Purchase_Dealer]
-GO
-
-ALTER TABLE [dbo].[Medicine] DROP CONSTRAINT [FK_Medicine_Company]
-GO
-
-ALTER TABLE [dbo].[LoginDetails] DROP CONSTRAINT [FK_LoginDetails_Employee]
-GO
-
-ALTER TABLE [dbo].[Dealer] DROP CONSTRAINT [FK_Dealer_Company]
-GO
-
-/****** Object:  Table [dbo].[Sell]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Sell]') AND type in (N'U'))
-DROP TABLE [dbo].[Sell]
-GO
-
-/****** Object:  Table [dbo].[Purchase]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Purchase]') AND type in (N'U'))
-DROP TABLE [dbo].[Purchase]
-GO
-
-/****** Object:  Table [dbo].[Medicine]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Medicine]') AND type in (N'U'))
-DROP TABLE [dbo].[Medicine]
-GO
-
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[LoginDetails]') AND type in (N'U'))
-DROP TABLE [dbo].[LoginDetails]
-GO
-
-/****** Object:  Table [dbo].[Employee]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Employee]') AND type in (N'U'))
-DROP TABLE [dbo].[Employee]
-GO
-
-/****** Object:  Table [dbo].[Dealer]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Dealer]') AND type in (N'U'))
-DROP TABLE [dbo].[Dealer]
-GO
-
-/****** Object:  Table [dbo].[Customers]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Customers]') AND type in (N'U'))
-DROP TABLE [dbo].[Customers]
-GO
-
-/****** Object:  Table [dbo].[Company]    Script Date: 19-05-2020 19:54:02 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Company]') AND type in (N'U'))
-DROP TABLE [dbo].[Company]
-GO
-
-/****** Object:  Table [dbo].[Company]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -74,14 +13,16 @@ CREATE TABLE [dbo].[Company](
 	[CompanyName] [varchar](100) NOT NULL,
 	[Location] [varchar](40) NOT NULL,
 	[ContactNumber] [numeric](11, 0) NOT NULL,
-PRIMARY KEY CLUSTERED 
+	[AddedBy] [varchar](50) NOT NULL,
+	[DateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK__Company__2D971C4C470E4BC8] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -100,7 +41,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -111,21 +52,23 @@ CREATE TABLE [dbo].[Dealer](
 	[DealerID] [varchar](20) NOT NULL,
 	[Name] [varchar](50) NOT NULL,
 	[ContactNo] [numeric](11, 0) NOT NULL,
-	[Address] [varchar](100) NULL,
-	[CompanyID] [varchar](20) NULL,
-	[Email] [varchar](100) NULL,
-PRIMARY KEY CLUSTERED 
+	[Address] [varchar](100) NOT NULL,
+	[CompanyID] [varchar](20) NOT NULL,
+	[Email] [varchar](100) NOT NULL,
+	[AddedBy] [varchar](50) NOT NULL,
+	[DateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK__Dealer__CA2F8E9277A2BABD] PRIMARY KEY CLUSTERED 
 (
 	[DealerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
+ CONSTRAINT [UQ__Dealer__A9D1053465F16297] UNIQUE NONCLUSTERED 
 (
 	[Email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -153,7 +96,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -163,11 +106,15 @@ GO
 CREATE TABLE [dbo].[LoginDetails](
 	[UserName] [varchar](50) NOT NULL,
 	[Pass] [varchar](20) NOT NULL,
-	[EmpID] [int] NULL
+	[EmpID] [int] NULL,
+ CONSTRAINT [PK_LoginDetails] PRIMARY KEY CLUSTERED 
+(
+	[UserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -189,7 +136,7 @@ CREATE TABLE [dbo].[Medicine](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -203,6 +150,8 @@ CREATE TABLE [dbo].[Purchase](
 	[PurchaseDate] [date] NOT NULL,
 	[Quantity] [int] NOT NULL,
 	[Totalprice] [float] NOT NULL,
+	[PurchaseBy] [varchar](50) NOT NULL,
+	[DateTime] [datetime] NOT NULL,
  CONSTRAINT [PK__Purchase__6B0A6BDE8D8AFF02] PRIMARY KEY CLUSTERED 
 (
 	[PurchaseID] ASC
@@ -210,7 +159,7 @@ CREATE TABLE [dbo].[Purchase](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 19-05-2020 19:54:02 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 21-05-2020 18:05:21 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -219,16 +168,25 @@ GO
 
 CREATE TABLE [dbo].[Sell](
 	[SellID] [varchar](20) NOT NULL,
-	[CustomerID] [varchar](20) NULL,
-	[MedicineID] [varchar](20) NULL,
+	[CustomerID] [varchar](20) NOT NULL,
+	[MedicineID] [varchar](20) NOT NULL,
 	[SellDate] [date] NOT NULL,
 	[Quantity] [int] NOT NULL,
 	[Totalprice] [float] NOT NULL,
-PRIMARY KEY CLUSTERED 
+	[SoldBy] [varchar](50) NOT NULL,
+	[DateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK__Sell__B35F66FF5A601E40] PRIMARY KEY CLUSTERED 
 (
 	[SellID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Company]  WITH CHECK ADD  CONSTRAINT [FK_Company_LoginDetails] FOREIGN KEY([AddedBy])
+REFERENCES [dbo].[LoginDetails] ([UserName])
+GO
+
+ALTER TABLE [dbo].[Company] CHECK CONSTRAINT [FK_Company_LoginDetails]
 GO
 
 ALTER TABLE [dbo].[Dealer]  WITH CHECK ADD  CONSTRAINT [FK_Dealer_Company] FOREIGN KEY([CompanyID])
@@ -236,6 +194,13 @@ REFERENCES [dbo].[Company] ([CompanyID])
 GO
 
 ALTER TABLE [dbo].[Dealer] CHECK CONSTRAINT [FK_Dealer_Company]
+GO
+
+ALTER TABLE [dbo].[Dealer]  WITH CHECK ADD  CONSTRAINT [FK_Dealer_LoginDetails] FOREIGN KEY([AddedBy])
+REFERENCES [dbo].[LoginDetails] ([UserName])
+GO
+
+ALTER TABLE [dbo].[Dealer] CHECK CONSTRAINT [FK_Dealer_LoginDetails]
 GO
 
 ALTER TABLE [dbo].[LoginDetails]  WITH CHECK ADD  CONSTRAINT [FK_LoginDetails_Employee] FOREIGN KEY([EmpID])
@@ -259,6 +224,13 @@ GO
 ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_Dealer]
 GO
 
+ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_LoginDetails] FOREIGN KEY([PurchaseBy])
+REFERENCES [dbo].[LoginDetails] ([UserName])
+GO
+
+ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_LoginDetails]
+GO
+
 ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_Medicine] FOREIGN KEY([MedicineID])
 REFERENCES [dbo].[Medicine] ([MedicineID])
 GO
@@ -271,6 +243,13 @@ REFERENCES [dbo].[Customers] ([CustomerID])
 GO
 
 ALTER TABLE [dbo].[Sell] CHECK CONSTRAINT [FK_Sell_Customers]
+GO
+
+ALTER TABLE [dbo].[Sell]  WITH CHECK ADD  CONSTRAINT [FK_Sell_LoginDetails] FOREIGN KEY([SoldBy])
+REFERENCES [dbo].[LoginDetails] ([UserName])
+GO
+
+ALTER TABLE [dbo].[Sell] CHECK CONSTRAINT [FK_Sell_LoginDetails]
 GO
 
 ALTER TABLE [dbo].[Sell]  WITH CHECK ADD  CONSTRAINT [FK_Sell_Medicine] FOREIGN KEY([MedicineID])

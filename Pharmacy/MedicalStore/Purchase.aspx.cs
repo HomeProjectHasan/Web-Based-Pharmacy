@@ -87,6 +87,7 @@ namespace MedicalStore
                 int QuantityPurchased = Int32.Parse(Quantity.Text);
                 string Newflag = NewFlag.Text;
                 float price;
+                string userID = Session["user_id"].ToString();
                 DateTime MFDEntered;
                 DateTime EXPEntered;
                 if (Newflag == "Yes")
@@ -104,7 +105,7 @@ namespace MedicalStore
                     EXPEntered = DateTime.Parse("1900-01-01");
                 }
 
-                string result = userDal.PurchaseMedicine(DealerID, MedicineName, PurchaseDate, QuantityPurchased, price, MFDEntered, EXPEntered, Newflag);
+                string result = userDal.PurchaseMedicine(DealerID, MedicineName, PurchaseDate, QuantityPurchased, price, MFDEntered, EXPEntered, userID, Newflag);
                 string[] strArray = result.Split('|');
 
                 if (strArray[0].ToString() == "Success")

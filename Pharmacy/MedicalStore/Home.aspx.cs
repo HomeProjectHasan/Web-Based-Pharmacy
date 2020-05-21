@@ -89,6 +89,7 @@ namespace MedicalStore
                 DateTime SellDate = DateTime.Parse(Date.Text);
                 int QuantitySell = Int32.Parse(Quantity.Text);
                 string Newflag = NewFlag.Text;
+                string userID = Session["user_id"].ToString();
                 if (Newflag == "Yes")
                 {
                     CustomerName = Customer.Text;
@@ -99,9 +100,9 @@ namespace MedicalStore
                 {
                     CustomerName = Customerlist.SelectedItem.Text;
                     CustomerAddress = "";
-                    CustomerContact = "0";
+                    CustomerContact = Customerlist.SelectedItem.Value;
                 }
-                string result = userDal.SellMedicine(CustomerName, CustomerAddress, CustomerContact, MedicineID, SellDate, QuantitySell, Newflag);
+                string result = userDal.SellMedicine(CustomerName, CustomerAddress, CustomerContact, MedicineID, SellDate, QuantitySell, userID, Newflag);
                 string[] strArray = result.Split('|');
 
                 ErrorLabel.Text = strArray[1].ToString();

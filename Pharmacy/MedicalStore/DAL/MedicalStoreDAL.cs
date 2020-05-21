@@ -95,7 +95,7 @@ namespace MedicalStore.DAL
             return result;
         }
 
-        public string PurchaseMedicine(string DealerID, string MedicineName, DateTime PurchaseDate, int Quantity, float price, DateTime MFD, DateTime EXP, string NewFlag)
+        public string PurchaseMedicine(string DealerID, string MedicineName, DateTime PurchaseDate, int Quantity, float price, DateTime MFD, DateTime EXP, string userID, string NewFlag)
         {
             string result;
             DataSet ds = new DataSet();
@@ -113,6 +113,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters.Add("@price", SqlDbType.Float);
                 sqlcommand.Parameters.Add("@MFD", SqlDbType.Date);
                 sqlcommand.Parameters.Add("@EXP", SqlDbType.Date);
+                sqlcommand.Parameters.Add("@userID", SqlDbType.VarChar, 50);
                 sqlcommand.Parameters.Add("@NewFlag", SqlDbType.VarChar, 1);
                 sqlcommand.Parameters.Add("@result", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
 
@@ -123,6 +124,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters["@price"].Value = price;
                 sqlcommand.Parameters["@MFD"].Value = MFD;
                 sqlcommand.Parameters["@EXP"].Value = EXP;
+                sqlcommand.Parameters["@userID"].Value = userID;
                 sqlcommand.Parameters["@NewFlag"].Value = NewFlag;
                 sqlcommand.ExecuteNonQuery();
                 result = sqlcommand.Parameters["@result"].Value.ToString();
@@ -139,7 +141,7 @@ namespace MedicalStore.DAL
             return result;
         }
 
-        public string SellMedicine(string CustomerName, string CustomerAddress, String CustomerContact, string MedicineID, DateTime SellDate, int Quantity, string NewFlag)
+        public string SellMedicine(string CustomerName, string CustomerAddress, String CustomerContact, string MedicineID, DateTime SellDate, int Quantity,string userID, string NewFlag)
         {
             string result;
             DataSet ds = new DataSet();
@@ -156,6 +158,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters.Add("@Quantity", SqlDbType.Int);
                 sqlcommand.Parameters.Add("@Address", SqlDbType.VarChar, 100);
                 sqlcommand.Parameters.Add("@Contact", SqlDbType.BigInt);
+                sqlcommand.Parameters.Add("@userID", SqlDbType.VarChar, 50);
                 sqlcommand.Parameters.Add("@NewFlag", SqlDbType.VarChar, 1);
                 sqlcommand.Parameters.Add("@result", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
 
@@ -165,6 +168,7 @@ namespace MedicalStore.DAL
                 sqlcommand.Parameters["@Quantity"].Value = Quantity;
                 sqlcommand.Parameters["@Address"].Value = CustomerAddress;
                 sqlcommand.Parameters["@Contact"].Value = CustomerContact;
+                sqlcommand.Parameters["@userID"].Value = userID;
                 sqlcommand.Parameters["@NewFlag"].Value = NewFlag;
                 sqlcommand.ExecuteNonQuery();
                 result = sqlcommand.Parameters["@result"].Value.ToString();
