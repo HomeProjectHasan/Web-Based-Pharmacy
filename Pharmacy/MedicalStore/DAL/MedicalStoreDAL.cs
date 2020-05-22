@@ -184,7 +184,7 @@ namespace MedicalStore.DAL
             }
             return result;
         }
-        public string creatdealer(string DealerName, string DealerContact, string DealerAddress, string DealerEmail, string Newflag, string CompanyName, string CompanyLocation, string CompanyContact)
+        public string CreateDealer(string DealerName, string DealerContact, string DealerAddress, string DealerEmail, string Newflag, string CompanyName, string CompanyLocation, string CompanyContact)
         {
             string result;
             DataSet ds = new DataSet();

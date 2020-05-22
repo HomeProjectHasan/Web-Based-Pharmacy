@@ -8,7 +8,7 @@
                 <div class="menuCustom">
                 <a href="Home.aspx"  accesskey="1" >Home</a>
                 <a href="Medicine.aspx" accesskey="2">Medicines</a>
-                <a href="Employee.aspx" accesskey="3">Employees</a>
+                <a href="Employ.aspx" accesskey="3">Employees</a>
                 <a href="Purchase.aspx" accesskey="4">Purchase</a>
                 <a href="Dealer.aspx" class="selected" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
