@@ -56,7 +56,7 @@ namespace MedicalStore
                     CompanyContact = "0";
                 }
 
-                string result = userDal.creatdealer(DealerName, DealerContact, DealerAddress, DealerEmail, Newflag, CompanyName, CompanyLocation, CompanyContact);
+                string result = userDal.CreateDealer(DealerName, DealerContact, DealerAddress, DealerEmail, Newflag, CompanyName, CompanyLocation, CompanyContact);
                 string[] strArray = result.Split('|');
 
                 if (strArray[0].ToString() == "Success")
