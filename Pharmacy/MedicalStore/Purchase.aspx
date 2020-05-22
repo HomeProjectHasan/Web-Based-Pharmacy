@@ -68,13 +68,13 @@
                                                      return true;
                                              }
                                              else {
-                                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid EXP.";
+                                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid EXP in 'DD/MM/YYYY' format..";
                                                  enableDisable();
                                                  return false;
                                              }
                                          }
                                          else {
-                                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid MFD.";
+                                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid MFD in 'DD/MM/YYYY' format.";
                                              enableDisable();
                                              return false;
                                          }
@@ -157,13 +157,14 @@
                 <a href="About.aspx" accesskey="6">About Us</a>
             </div>
          </nav>
-        <div style="padding-top: 20px;">
+    <br>
+    <br>
              <div class="whitepanel purchasepanel">
                  <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Medicine:</div>
                 <div class="col-md-4">
-                <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
-                           <asp:ListItem>Yes</asp:ListItem>
+                <asp:RadioButtonList ID="NewFlag" name="NewFlag" CssClass="radioButtonList" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+                           <asp:ListItem >Yes</asp:ListItem>
                            <asp:ListItem>No</asp:ListItem>
                        </asp:RadioButtonList>
                 </div>
@@ -243,7 +244,6 @@
                 </div>
             </div>
        </div>   
-      </div>
 
 
 <!-- The Modal -->
