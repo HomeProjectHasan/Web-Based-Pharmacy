@@ -159,13 +159,13 @@
             <a href="About.aspx" accesskey="6">About Us</a>
         </div>
     </nav>
-
-    <div style="padding-top: 20px;">
+    <br>
+    <br>
         <div class="whitepanel homepanel">
             <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Customer:</div>
                 <div class="col-md-4">
-                <asp:RadioButtonList ID="NewFlag" Height="25px" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+                <asp:RadioButtonList ID="NewFlag" CssClass="radioButtonList" Height="25px" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem>Yes</asp:ListItem>
                            <asp:ListItem>No</asp:ListItem>
                        </asp:RadioButtonList>    
@@ -243,7 +243,6 @@
                 </div>
             </div>
         </div>
-     </div>
 
 <!-- The button -->
 

@@ -87,7 +87,7 @@
     <Content Include="images\image2.jpg" />
     <Content Include="images\image3.jpg" />
     <Content Include="Medicine.aspx" />
-    <Content Include="output4.aspx" />
+    <Content Include="PurchaseOutput.aspx" />
     <Content Include="MedicineOutput.aspx" />
     <Content Include="Outputpage.aspx" />
     <Content Include="Outputpage2.aspx" />
@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Class\Employee.cs" />
     <Compile Include="Class\Medicine.cs" />
+    <Compile Include="Class\Purchase.cs" />
     <Compile Include="DAL\MedicalStoreDAL.cs" />
     <Compile Include="DAL\myClass.cs" />
     <Compile Include="Dealer.aspx.cs">
@@ -256,12 +257,12 @@
     <Compile Include="Medicine.aspx.designer.cs">
       <DependentUpon>Medicine.aspx</DependentUpon>
     </Compile>
-    <Compile Include="output4.aspx.cs">
-      <DependentUpon>output4.aspx</DependentUpon>
+    <Compile Include="PurchaseOutput.aspx.cs">
+      <DependentUpon>PurchaseOutput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="output4.aspx.designer.cs">
-      <DependentUpon>output4.aspx</DependentUpon>
+    <Compile Include="PurchaseOutput.aspx.designer.cs">
+      <DependentUpon>PurchaseOutput.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicineOutput.aspx.cs">
       <DependentUpon>MedicineOutput.aspx</DependentUpon>

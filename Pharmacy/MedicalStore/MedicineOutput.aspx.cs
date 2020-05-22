@@ -25,7 +25,9 @@ namespace MedicalStore
             }
             else {
                  ButtonValue = Session["MedicineButton"].ToString();
+                if(Session["MedicineText"] != null) { 
                  TextValue = Session["MedicineText"].ToString();
+                }
                 if (!this.IsPostBack)
                 {
                     DataTable dummy = new DataTable();

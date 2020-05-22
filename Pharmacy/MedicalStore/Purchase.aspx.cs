@@ -70,6 +70,12 @@ namespace MedicalStore
             }
         }
 
+        protected void AllClick(object sender, EventArgs e)
+        {
+            Session["PurchaseButton"] = "All_Click";
+            Response.Redirect("~/PurchaseOutput.aspx");
+        }
+
         protected void PurchaseClick(object sender, EventArgs e)
         {
 
