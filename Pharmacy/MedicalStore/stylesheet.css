@@ -138,9 +138,18 @@ h3 {
     border-top: 2px solid;
 }
 
+.tablepanel {
+    overflow: hidden;
+    background-color: #B1B4B4;
+    position: relative;
+    border-radius: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
 .whitepanel {
     overflow: hidden;
-    background: linear-gradient(to right,white, #ACD9DF);
+    background-color: #F5F8F8;
     position: relative;
     padding: 20px 2px 20px 5px;
     border-radius: 12px;
@@ -148,10 +157,8 @@ h3 {
     font-family: Helvetica, Arial, sans-serif;
 }
 .signup {
-    left: 0%;
-    width: 99%;
-    top: 2px;
-    height: 462px;
+    left: 40%;
+    width: 450px;
 }
 .login {
     left: 40%;
@@ -161,13 +168,13 @@ h3 {
     left: 40%;
     width: 450px;
 }
-.medicinepanel1 {
+.medicinepanel {
     left: 40%;
-    width:800px;
+    width: 566px;
 }
 .employpanel {
     left: 40%;
-    width: 850px;
+    width: 620px;
 }
 .dealerpanel1 {
     left: 50%;

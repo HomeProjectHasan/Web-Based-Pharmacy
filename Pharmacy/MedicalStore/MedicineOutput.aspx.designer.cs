@@ -7,18 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MedicalStore {
-    
-    
-    public partial class Outputpage3 {
-        
+namespace MedicalStore
+{
+
+
+    public partial class output5
+    {
+
         /// <summary>
-        /// GridView1 control.
+        /// grdModel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView grdModel;
     }
 }
