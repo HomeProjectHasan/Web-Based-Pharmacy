@@ -255,3 +255,31 @@ end
 GO
 
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[GetPurchaseHistory] 
+	@MedicineId varchar(20)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT P.PurchaseID, P.PurchaseDate, D.Name DealerName,
+		C.CompanyName, M.MedicineID, M.MedicineName, 
+		Quantity, Totalprice, P.PurchaseBy ServedBy, P.DateTime
+		  FROM [AlphaPharmacy].[dbo].[Purchase] P
+		  ,Company C, Dealer D , Medicine M
+		  where P.DealerID=D.DealerID
+		  and D.CompanyID=C.CompanyID
+		  and P.MedicineID=M.MedicineID
+		  and (M.MedicineID = @MedicineId or isnull(@MedicineId,'') = '')
+END
+
+GO

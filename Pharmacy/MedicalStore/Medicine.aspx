@@ -57,28 +57,27 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-4 pl-3 pr-0">
-                Medicine sell history :
+            <div class="col-4 offset-2 pl-5 pr-0">
+               Select Medicine :
             </div>
-            <div class="col-3 pl-0">
-                       <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <div class="col-3 pl-0 pr-2">
+                <asp:DropDownList ID="MedicinePurchase" runat="server" AppendDataBoundItems="True"
+                    DataTextField="MedicineName" DataValueField="MedicineID" Height="25px"
+                    Width="160px">
+                    <asp:ListItem Value="0">--Select Medicine--</asp:ListItem>
+                </asp:DropDownList>
             </div>
-            <div class="col-4 pr-4">
-                <asp:Button ID="Button1" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
+            <div class="col-3">                
             </div>
         </div>
-        <hr>
+        <br>
         <div class="row">
-            <div class="col-4 pl-3 pr-0">
-               Medicine purchase history :
-            </div>
-            <div class="col-3 pl-0">
-                       <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            </div>
-            <div class="col-4 pr-4">
-                <asp:Button ID="Button4" Text="Show" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
-            </div>
+            <div class="col-4 offset-2 pl-5">     
+            <asp:Button ID="Button4" Text="Purchase History" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="160px" OnClick="ShowPurchaseHistory" />
+</div>
+            <div class="col-4 pl-4">     
+            <asp:Button ID="Button1" Text="Sell History" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="120px" OnClick="ShowPurchaseHistory" />
         </div>
+            </div>
     </div>   
-
 </asp:Content>

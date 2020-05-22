@@ -159,6 +159,12 @@
          </nav>
     <br>
     <br>
+     <div style="font-size: large; padding-left:40%;">
+         <asp:Button ID="AllMedicine" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show Purchase History" Height="40px" Width="220px" OnClick="AllClick" />
+               
+    </div>
+    <br>
+    <br>
              <div class="whitepanel purchasepanel">
                  <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Medicine:</div>

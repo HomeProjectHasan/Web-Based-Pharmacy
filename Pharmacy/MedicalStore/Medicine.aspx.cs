@@ -17,6 +17,12 @@ namespace MedicalStore
             {
                 Response.Redirect("Login.aspx");
             }
+            if (!Page.IsPostBack)
+            {
+                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                MedicinePurchase.DataSource = userDal.getMedicineList();
+                MedicinePurchase.DataBind();
+            }
         }
 
         protected void All_Click(object sender, EventArgs e)
@@ -46,16 +52,11 @@ namespace MedicalStore
             Session["MedicineText"] = MedicineName.Text;
             Response.Redirect("~/MedicineOutput.aspx");
         }
-        protected void Button6_Click(object sender, EventArgs e)
+        protected void ShowPurchaseHistory(object sender, EventArgs e)
         {
-            Session["Button"] = 6;
-            Session["id"] = MedicineID.Text;
-            if (Session["id"].ToString() == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
-            }
-            else
-                Response.Redirect("~/MedicineOutput.aspx");
+            Session["PurchaseButton"] = "BY_ID";
+            Session["PurchaseText"] = MedicinePurchase.Text;
+            Response.Redirect("~/PurchaseOutput.aspx");
         }
         protected void Button7_Click(object sender, EventArgs e)
         {
