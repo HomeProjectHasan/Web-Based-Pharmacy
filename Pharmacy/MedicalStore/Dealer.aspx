@@ -8,7 +8,7 @@
                 <div class="menuCustom">
                 <a href="Home.aspx"  accesskey="1" >Home</a>
                 <a href="Medicine.aspx" accesskey="2">Medicines</a>
-                <a href="Employ.aspx" accesskey="3">Employees</a>
+                <a href="Employee.aspx" accesskey="3">Employees</a>
                 <a href="Purchase.aspx" accesskey="4">Purchase</a>
                 <a href="Dealer.aspx" class="selected" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
@@ -25,35 +25,7 @@
                        <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
                    </td>
                </tr>               
-               
-
-               <tr>
-                   <td align="right">Dealer Name:</td>
-                  <td>
-                       <asp:TextBox ID="Dealername" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-         
-               <tr>
-                   <td align="right">Dealer Contact No:</td>
-                   <td>
-                       <asp:TextBox ID="Dealercontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-
-               <tr>
-                   <td align="right">Dealer Address:</td>
-                   <td>
-                        <asp:TextBox ID="Dealeraddress" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-                    <tr>
-                   <td align="right">Dealer Email:</td>
-                   <td>
-                        <asp:TextBox ID="Dealeremail" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-                   <tr>
+                <tr>
                    <td align="right">New Company?:</td>
                    <td>
                         <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
@@ -92,7 +64,34 @@
                    <td>
                        <asp:TextBox ID="Companycontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
-               </tr>             
+               </tr>       
+
+               <tr>
+                   <td align="right">Dealer Name:</td>
+                  <td>
+                       <asp:TextBox ID="Dealername" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+         
+               <tr>
+                   <td align="right">Dealer Contact No:</td>
+                   <td>
+                       <asp:TextBox ID="Dealercontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td align="right">Dealer Address:</td>
+                   <td>
+                        <asp:TextBox ID="Dealeraddress" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>
+                    <tr>
+                   <td align="right">Dealer Email:</td>
+                   <td>
+                        <asp:TextBox ID="Dealeremail" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                   </td>
+               </tr>                 
                <tr>
                    <td></td>
                    <td>

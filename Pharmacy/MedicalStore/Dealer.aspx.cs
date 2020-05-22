@@ -27,22 +27,23 @@ namespace MedicalStore
 
         protected void Submit(object sender, EventArgs e)
         {
-            if (Dealername.Text == "" || Dealercontactno.Text == "" || Dealeraddress.Text == "" || Dealeremail.Text == "" || NewFlag.Text == "" || (NewFlag.Text == "Yes" && Companyname.Text == "") || (NewFlag.Text == "Yes" && Companyaddress.Text == "")
-                || (NewFlag.Text == "Yes" && Companycontactno.Text == "") || (NewFlag.Text == "No" && CompanyList.Text == "")) 
+            if ( NewFlag.Text == "" || (NewFlag.Text == "Yes" && Companyname.Text == "") || (NewFlag.Text == "Yes" && Companyaddress.Text == "")
+                || (NewFlag.Text == "Yes" && Companycontactno.Text == "") || (NewFlag.Text == "No" && CompanyList.Text == "") || Dealername.Text == "" || Dealercontactno.Text == "" || Dealeraddress.Text == "" || Dealeremail.Text == "") 
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");
             }
             else
             {
                 DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                string Newflag = NewFlag.Text;
+                string CompanyName;
+                string CompanyLocation;
+                string CompanyContact;
                 string DealerName= Dealername.Text;                  
                 string DealerContact= Dealercontactno.Text;
                 string DealerAddress= Dealeraddress.Text;
                 string DealerEmail= Dealeremail.Text;
-                string Newflag = NewFlag.Text;
-                string CompanyName;
-                string CompanyLocation;
-                string CompanyContact;             
+                string userID = Session["user_id"].ToString();
                 if (Newflag == "Yes")
                 {
                     CompanyName = Companyname.Text;
@@ -56,14 +57,14 @@ namespace MedicalStore
                     CompanyContact = "0";
                 }
 
-                string result = userDal.CreateDealer(DealerName, DealerContact, DealerAddress, DealerEmail, Newflag, CompanyName, CompanyLocation, CompanyContact);
+                string result = userDal.CreateDealer( Newflag, CompanyName, CompanyLocation, CompanyContact, DealerName, DealerContact, DealerAddress, DealerEmail, userID);
                 string[] strArray = result.Split('|');
 
                 if (strArray[0].ToString() == "Success")
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
                     ClientScriptManager CSM = Page.ClientScript;
-                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to home?')){window.location.href='Home.aspx'}</script>";
+                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to home?')){window.location.href='Dealer.aspx'}</script>";
                     CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false); ;
                 }
                 else
