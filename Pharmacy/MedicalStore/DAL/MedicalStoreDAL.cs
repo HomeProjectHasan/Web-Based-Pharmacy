@@ -121,6 +121,30 @@ namespace MedicalStore.DAL
             }
             return searchresult;
         }
+        public DataTable ShowAllDealers()
+        {
+            DataSet ds = new DataSet();
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT DealerID,Name,ContactNo, Address, Email, CompanyName, AddedBy, DateTime FROM Dealer D , Company C where D.CompanyID=C.CompanyID", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
 
         public DataTable getSellHistory(string id)
         {
@@ -236,7 +260,7 @@ namespace MedicalStore.DAL
             }
             return result;
         }
-        public string CreateDealer(string DealerName, string DealerContact, string DealerAddress, string DealerEmail, string Newflag, string CompanyName, string CompanyLocation, string CompanyContact)
+        public string CreateDealer(string Newflag, string CompanyName, string CompanyLocation, string CompanyContact, string DealerName, string DealerContact, string DealerAddress, string DealerEmail, string userID)
         {
             string result;
             DataSet ds = new DataSet();
@@ -245,26 +269,30 @@ namespace MedicalStore.DAL
             SqlCommand sqlcommand;
             try
             {
-                sqlcommand = new SqlCommand("dbo.CreatDealer", sqlconn);
-                sqlcommand.CommandType = CommandType.StoredProcedure;
-                sqlcommand.Parameters.Add("@DName", SqlDbType.VarChar, 50);
-                sqlcommand.Parameters.Add("@DContact", SqlDbType.BigInt);
-                sqlcommand.Parameters.Add("@DAddress", SqlDbType.VarChar, 100);
-                sqlcommand.Parameters.Add("@DEmail", SqlDbType.VarChar, 100);
+                sqlcommand = new SqlCommand("dbo.CreateDealer", sqlconn);
+                sqlcommand.CommandType = CommandType.StoredProcedure;               
                 sqlcommand.Parameters.Add("@NewFlag", SqlDbType.VarChar, 1);
                 sqlcommand.Parameters.Add("@CName", SqlDbType.VarChar, 100);
                 sqlcommand.Parameters.Add("@CLocation", SqlDbType.VarChar, 40);
                 sqlcommand.Parameters.Add("@CContact", SqlDbType.BigInt);
+                sqlcommand.Parameters.Add("@DName", SqlDbType.VarChar, 50);
+                sqlcommand.Parameters.Add("@DContact", SqlDbType.BigInt);
+                sqlcommand.Parameters.Add("@DAddress", SqlDbType.VarChar, 100);
+                sqlcommand.Parameters.Add("@DEmail", SqlDbType.VarChar, 100);
+                sqlcommand.Parameters.Add("@userID", SqlDbType.VarChar, 50);
                 sqlcommand.Parameters.Add("@result", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
 
-                sqlcommand.Parameters["@DName"].Value = DealerName;
-                sqlcommand.Parameters["@DContact"].Value = DealerContact;
-                sqlcommand.Parameters["@DAddress"].Value = DealerAddress;
-                sqlcommand.Parameters["@DEmail"].Value = DealerEmail;
                 sqlcommand.Parameters["@NewFlag"].Value = Newflag;
                 sqlcommand.Parameters["@CName"].Value = CompanyName;
                 sqlcommand.Parameters["@CLocation"].Value = CompanyLocation;
                 sqlcommand.Parameters["@CContact"].Value = CompanyContact;
+                sqlcommand.Parameters["@DName"].Value = DealerName;
+                sqlcommand.Parameters["@DContact"].Value = DealerContact;
+                sqlcommand.Parameters["@DAddress"].Value = DealerAddress;
+                sqlcommand.Parameters["@DEmail"].Value = DealerEmail;
+                sqlcommand.Parameters["@userID"].Value = userID;
+
+
                 sqlcommand.ExecuteNonQuery();
                 result = sqlcommand.Parameters["@result"].Value.ToString();
             }
@@ -335,7 +363,7 @@ namespace MedicalStore.DAL
             DataTable searchresult = new DataTable();
             try
             {
-                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
+                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)

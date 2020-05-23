@@ -1,12 +1,91 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 21-05-2020 18:06:10 ******/
+/****** Object:  StoredProcedure [dbo].[CreateDealer]    Script Date: 23-05-2020 14:27:25 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[CreateDealer]
+	@NewFlag varchar(1), @CName varchar(100), @CLocation varchar(40),@CContact numeric(11,0),@DName varchar(50), @DContact numeric(11,0), @DAddress varchar(100), @DEmail varchar(100),@userID varchar(50) , @result varchar(200) output
+AS
+BEGIN
+    -- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+
+	SET NOCOUNT ON;
+	
+	
+	declare @valid bit = 0;
+	
+	begin try
+	if(@NewFlag = 'Y')
+	begin
+	-- for new Company create a Company and then proceed to Add Dealer
+		if((select count(1) from Company where CompanyName = @CName) = 0)
+		begin	
+	declare @CompanyID varchar(20)
+	declare @Comid int
+	select @Comid = isnull(max(cast(REPLACE([CompanyID],'C','') as INT)),0) from Company
+	select @CompanyID = cast(@Comid+1 as varchar) +'C'
+
+	INSERT INTO Company([CompanyID],[CompanyName],[Location],[ContactNumber],[AddedBy],[DateTime])
+			values(@CompanyID, @CName, @CLocation, @CContact,@userID, Getdate())
+			set @valid = 1
+		end
+		else
+		begin
+			select @result = 'Error|Company already exist with same name. Please select new Company as "No"';
+			set @valid = 0
+		end
+
+	end
+	else if (@NewFlag = 'N')
+	begin
+	-- For existing Company get the CompanyId.
+		select @CompanyID = [CompanyID] from [dbo].[Company] where [CompanyName] = @CName
+	end
+	else
+	begin
+	select @result = 'Error|NewFlag should be either Yes or No'
+	set @valid = 0
+
+	end
+	-- finally Add Dealer
+	declare @DealerID varchar(20)
+	declare @Did int 
+	select @Did = isnull(max(cast(REPLACE([DealerID],'D','') as INT)),0) from Dealer
+	select @DealerID = cast(@Did+1 as varchar) +'D'
+
+		if(@valid = 1)
+		begin
+		INSERT INTO Dealer([DealerID],[Name],[ContactNo],[Address],[CompanyID],[Email],[AddedBy],[DateTime])
+				values(@DealerID, @DName, @DContact,@DAddress,@CompanyID,@DEmail,@userID, Getdate())
+				
+	select @result = 'Success|successfully Added'
+	end
+end try
+	begin catch
+	set @result = 'Error|' + ERROR_MESSAGE ( ) 
+	end catch
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 23-05-2020 14:27:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 
 
  CREATE procedure [dbo].[Login] @usr varchar(20), @pas varchar(20), @result varchar(200) output
@@ -33,12 +112,13 @@ GO
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 21-05-2020 18:06:10 ******/
+/****** Object:  StoredProcedure [dbo].[PurchaseMedicine]    Script Date: 23-05-2020 14:27:27 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -116,12 +196,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 21-05-2020 18:06:10 ******/
+/****** Object:  StoredProcedure [dbo].[SellMedicine]    Script Date: 23-05-2020 14:27:28 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -209,12 +290,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 21-05-2020 18:06:10 ******/
+/****** Object:  StoredProcedure [dbo].[SignUp]    Script Date: 23-05-2020 14:27:29 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -255,31 +337,3 @@ end
 GO
 
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE [dbo].[GetPurchaseHistory] 
-	@MedicineId varchar(20)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-	SELECT P.PurchaseID, P.PurchaseDate, D.Name DealerName,
-		C.CompanyName, M.MedicineID, M.MedicineName, 
-		Quantity, Totalprice, P.PurchaseBy ServedBy, P.DateTime
-		  FROM [AlphaPharmacy].[dbo].[Purchase] P
-		  ,Company C, Dealer D , Medicine M
-		  where P.DealerID=D.DealerID
-		  and D.CompanyID=C.CompanyID
-		  and P.MedicineID=M.MedicineID
-		  and (M.MedicineID = @MedicineId or isnull(@MedicineId,'') = '')
-END
-
-GO
