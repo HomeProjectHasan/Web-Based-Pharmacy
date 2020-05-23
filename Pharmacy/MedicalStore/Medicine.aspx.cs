@@ -54,15 +54,29 @@ namespace MedicalStore
         }
         protected void ShowPurchaseHistory(object sender, EventArgs e)
         {
+            if (MedicinePurchase.Text != '0'.ToString())
+            {
             Session["PurchaseButton"] = "BY_ID";
             Session["PurchaseText"] = MedicinePurchase.Text;
             Response.Redirect("~/PurchaseOutput.aspx");
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please select medicine');</script>");
+            }
         }
         protected void ShowSellHistory(object sender, EventArgs e)
         {
-            Session["SellButton"] = "BY_ID";
-            Session["SellText"] = MedicinePurchase.Text;
-            Response.Redirect("~/SellOutput.aspx");
+            if (MedicinePurchase.Text != '0'.ToString())
+            {
+                Session["SellButton"] = "BY_ID";
+                Session["SellText"] = MedicinePurchase.Text;
+                Response.Redirect("~/SellOutput.aspx");
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please select medicine');</script>");
+            }
         }
 
         protected void Textbox1_TextChanged(object sender, EventArgs e)
