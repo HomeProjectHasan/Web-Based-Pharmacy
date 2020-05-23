@@ -89,8 +89,8 @@
     <Content Include="Medicine.aspx" />
     <Content Include="PurchaseOutput.aspx" />
     <Content Include="MedicineOutput.aspx" />
-    <Content Include="Outputpage.aspx" />
-    <Content Include="Outputpage2.aspx" />
+    <Content Include="SellOutput.aspx" />
+    <Content Include="DealerOutput.aspx" />
     <Content Include="EmployeeOutput.aspx" />
     <Content Include="Purchase.aspx" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -271,19 +271,19 @@
     <Compile Include="MedicineOutput.aspx.designer.cs">
       <DependentUpon>MedicineOutput.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Outputpage.aspx.cs">
-      <DependentUpon>Outputpage.aspx</DependentUpon>
+    <Compile Include="SellOutput.aspx.cs">
+      <DependentUpon>SellOutput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Outputpage.aspx.designer.cs">
-      <DependentUpon>Outputpage.aspx</DependentUpon>
+    <Compile Include="SellOutput.aspx.designer.cs">
+      <DependentUpon>SellOutput.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Outputpage2.aspx.cs">
-      <DependentUpon>Outputpage2.aspx</DependentUpon>
+    <Compile Include="DealerOutput.aspx.cs">
+      <DependentUpon>DealerOutput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Outputpage2.aspx.designer.cs">
-      <DependentUpon>Outputpage2.aspx</DependentUpon>
+    <Compile Include="DealerOutput.aspx.designer.cs">
+      <DependentUpon>DealerOutput.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmployeeOutput.aspx.cs">
       <DependentUpon>EmployeeOutput.aspx</DependentUpon>
