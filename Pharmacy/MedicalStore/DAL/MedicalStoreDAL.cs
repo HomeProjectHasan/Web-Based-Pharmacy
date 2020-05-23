@@ -122,6 +122,31 @@ namespace MedicalStore.DAL
             return searchresult;
         }
 
+        public DataTable getSellHistory(string id)
+        {
+            DataSet ds = new DataSet();
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+
+            try
+            {
+                datatable = new SqlDataAdapter(String.Format("execute GetSellHistory '{0}'", id), sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
+
         public string PurchaseMedicine(string DealerID, string MedicineName, DateTime PurchaseDate, int Quantity, float price, DateTime MFD, DateTime EXP, string userID, string NewFlag)
         {
             string result;

@@ -58,16 +58,11 @@ namespace MedicalStore
             Session["PurchaseText"] = MedicinePurchase.Text;
             Response.Redirect("~/PurchaseOutput.aspx");
         }
-        protected void Button7_Click(object sender, EventArgs e)
+        protected void ShowSellHistory(object sender, EventArgs e)
         {
-            Session["Button"] = 7;
-            Session["id"] = MedicineID.Text;
-            if (Session["id"].ToString() == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Kindly Enter Data');</script>");﻿
-            }
-            else
-                Response.Redirect("~/MedicineOutput.aspx");
+            Session["SellButton"] = "BY_ID";
+            Session["SellText"] = MedicinePurchase.Text;
+            Response.Redirect("~/SellOutput.aspx");
         }
 
         protected void Textbox1_TextChanged(object sender, EventArgs e)

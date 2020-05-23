@@ -72,6 +72,12 @@ namespace MedicalStore
 
             }
         }
+
+        protected void AllClick(object sender, EventArgs e)
+        {
+            Session["SellButton"] = "All_Click";
+            Response.Redirect("~/SellOutput.aspx");
+        }
         protected void SellClick(object sender, EventArgs e)
         {
             if (NewFlag.Text == "" || MedicineList.Text == "" || (NewFlag.Text == "Yes" && Customer.Text == "") || (NewFlag.Text == "Yes" && Address.Text == "")

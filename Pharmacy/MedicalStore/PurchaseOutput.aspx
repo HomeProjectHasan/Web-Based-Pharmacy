@@ -53,7 +53,8 @@
                 <a href="Dealer.aspx" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
             </div>
-         </nav><div class="pt-5 pr-4">
+         </nav>
+    <div class="pt-5 pr-4">
         <div class="content-wrapper whitepanel pt-3 pb-3 pr-3 pl-3 col-8 offset-4">
             <asp:GridView ID="grdModel" runat="server" CssClass="display compact tablepanel" AutoGenerateColumns="False">
                 <Columns>

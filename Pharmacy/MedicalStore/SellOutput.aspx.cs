@@ -6,125 +6,89 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Services;
 
 namespace MedicalStore
 {
     public partial class Outputpage : System.Web.UI.Page
     {
+        public static string ButtonValue;
+        public static string TextValue;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user_id"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-            else if (Session["Button"].ToString() == "1")
+            else
             {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.showallMedicine();
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
+
+                ButtonValue = Session["SellButton"].ToString();
+                if (Session["SellText"] != null)
+                {
+                    TextValue = Session["SellText"].ToString();
+                }
+                if (!this.IsPostBack)
+                {
+                    DataTable dummy = new DataTable();
+                    dummy.Columns.Add("SellID");
+                    dummy.Columns.Add("SellDate");
+                    dummy.Columns.Add("CustomerName");
+                    dummy.Columns.Add("Contact");
+                    dummy.Columns.Add("MedicineID");
+                    dummy.Columns.Add("MedicineName");
+                    dummy.Columns.Add("Quantity");
+                    dummy.Columns.Add("Totalprice");
+                    dummy.Columns.Add("ServedBy");
+                    dummy.Columns.Add("DateTime");
+
+                    dummy.Rows.Add();
+                    grdModel.DataSource = dummy;
+                    grdModel.DataBind();
+
+                    //Required for jQuery DataTables to work.
+                    grdModel.UseAccessibleHeader = true;
+                    grdModel.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
-            else if (Session["Button"].ToString() == "2")
+        }
+        [WebMethod]
+        public static List<SellDetails> GetSellDetails()
+        {
+            List<SellDetails> SellDetails = new List<SellDetails>();
+            DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+
+            DataTable resultTable = new DataTable();
+
+            if (ButtonValue == "All_Click")
             {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.showOutOfStock();
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
+                resultTable = userDal.getSellHistory("");
             }
-            else if (Session["Button"].ToString() == "3")
+            else if (ButtonValue == "BY_ID")
             {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.showAllExpired();
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
+                resultTable = userDal.getSellHistory(TextValue);
             }
-            else if (Session["Button"].ToString() == "4")
+
+            foreach (DataRow dr in resultTable.Rows)
             {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.searchMedicinebyId(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
+
+                SellDetails.Add(new SellDetails
+                {
+                    SellID = dr["SellID"].ToString(),
+                    SellDate = dr["SellDate"].ToString(),
+                    CustomerName = dr["CustomerName"].ToString(),
+                    Contact = dr["Contact"].ToString(),
+                    MedicineID = dr["MedicineID"].ToString(),
+                    MedicineName = dr["MedicineName"].ToString(),
+                    Quantity = dr["Quantity"].ToString(),
+                    Totalprice = dr["Totalprice"].ToString(),
+                    ServedBy = dr["ServedBy"].ToString(),
+                    DateTime = dr["DateTime"].ToString(),
+
+
+                });
             }
-            else if (Session["Button"].ToString() == "5")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.ExpireMedicinebyId(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "6")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.whotookthesemedicine(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "7")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.findallinfo(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "8")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.quantityleft(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "9")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.purchasedate(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "10")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.noofsale(Session["id"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "11")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.updatemanf(Session["id"].ToString(), Session["id2"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
-            else if (Session["Button"].ToString() == "12")
-            {
-                DAL.myClass userDal = new DAL.myClass();
-                DataTable table = new DataTable();
-                table = userDal.updateexpiry(Session["id"].ToString(), Session["id2"].ToString());
-                GridView1.DataSource = table;
-                GridView1.EmptyDataText = "No Records Found";
-                GridView1.DataBind();
-            }
+            return SellDetails;
         }
     }
 }

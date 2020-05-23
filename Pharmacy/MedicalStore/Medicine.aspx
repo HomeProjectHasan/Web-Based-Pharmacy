@@ -76,7 +76,7 @@
             <asp:Button ID="Button4" Text="Purchase History" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="160px" OnClick="ShowPurchaseHistory" />
 </div>
             <div class="col-4 pl-4">     
-            <asp:Button ID="Button1" Text="Sell History" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="120px" OnClick="ShowPurchaseHistory" />
+            <asp:Button ID="Button1" Text="Sell History" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="120px" OnClick="ShowSellHistory" />
         </div>
             </div>
     </div>   
