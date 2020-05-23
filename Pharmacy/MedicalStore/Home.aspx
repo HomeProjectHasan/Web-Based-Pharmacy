@@ -173,6 +173,11 @@
                 </div>            
             <hr>
             <div class="row">
+                <div class="col-md-11 offset-1">
+                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:15px;" align="right">New Customer:</div>
                 <div class="col-md-4">
                 <asp:RadioButtonList ID="NewFlag" CssClass="radioButtonList" Height="25px" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
@@ -180,12 +185,7 @@
                            <asp:ListItem>No</asp:ListItem>
                        </asp:RadioButtonList>    
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-11 offset-1">
-                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
-                </div>
-            </div>
+            </div>            
             <table id="table1" align="center">
                <tr id="oldCustomer">
                    <td align="right">Customer:</td>

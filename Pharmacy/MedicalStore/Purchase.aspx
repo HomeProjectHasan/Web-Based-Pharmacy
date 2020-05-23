@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MedicalStore.Master" AutoEventWireup="true" CodeBehind="Purchase.aspx.cs" Inherits="MedicalStore.Purchase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script  type="text/javascript">
+    <script type="text/javascript">
 
         function ValidateForm() {
             var Date = document.getElementById('<%=Date.ClientID%>').value;
@@ -33,42 +33,42 @@
                             }
                             else {
                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Quantity.";
-                                 enableDisable();
-                                 return false;
-                             }
-                         }
-                         else {
-                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
-                             enableDisable();
-                             return false;
-                         }
-                     }
-                     else {
-                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine and dealer.";
-                         enableDisable();
-                         return false;
-                     }
-                 }
+                                enableDisable();
+                                return false;
+                            }
+                        }
+                        else {
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid date in 'DD/MM/YYYY' format.";
+                            enableDisable();
+                            return false;
+                        }
+                    }
+                    else {
+                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine and dealer.";
+                        enableDisable();
+                        return false;
+                    }
+                }
 
-                 //if selected yes
-                 else {
-                     if (DealerName != "0") {
-                         if (dateValidator(Date)) {
-                             //date is fine check quantity
-                             if (numberValidator(Quantity)) {
-                                 //Quantity is fine.
-                                 if (textWithNumberValidator(newmedicine)) {
-                                     //Medicine name is fine.
-                                     if (decimalValidator(newprice)) {
-                                         //Price is fine.
-                                         if (dateValidator(newmfd)) {
-                                             //MFD is fine.
-                                             if (dateValidator(newexp)) {
-                                                 //EXP is fine
-                                                     return true;
-                                             }
-                                             else {
-                                                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid EXP in 'DD/MM/YYYY' format..";
+                //if selected yes
+                else {
+                    if (DealerName != "0") {
+                        if (dateValidator(Date)) {
+                            //date is fine check quantity
+                            if (numberValidator(Quantity)) {
+                                //Quantity is fine.
+                                if (textWithNumberValidator(newmedicine)) {
+                                    //Medicine name is fine.
+                                    if (decimalValidator(newprice)) {
+                                        //Price is fine.
+                                        if (dateValidator(newmfd)) {
+                                            //MFD is fine.
+                                            if (dateValidator(newexp)) {
+                                                //EXP is fine
+                                                return true;
+                                            }
+                                            else {
+                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid EXP in 'DD/MM/YYYY' format..";
                                                  enableDisable();
                                                  return false;
                                              }
@@ -105,13 +105,13 @@
                      }
                      else {
                          document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select a dealer.";
-                         enableDisable();
-                         return false;
-                     }
-                 }
-             }
-             else {
-                 document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine type.";
+                        enableDisable();
+                        return false;
+                    }
+                }
+            }
+            else {
+                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please select medicine type.";
                 enableDisable();
                 return false;
             }
@@ -147,115 +147,116 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-         <nav class="menu-navigation-round">
-                <div class="menuCustom">
-                <a href="Home.aspx"  accesskey="1" >Home</a>
-                <a href="Medicine.aspx" accesskey="2">Medicines</a>
-                <a href="Employee.aspx"   accesskey="3">Employees</a>
-                <a href="Purchase.aspx" class="selected" accesskey="4">Purchase</a>
-                <a href="Dealer.aspx" accesskey="5">Dealers</a>
-                <a href="About.aspx" accesskey="6">About Us</a>
-            </div>
-         </nav>
+    <nav class="menu-navigation-round">
+        <div class="menuCustom">
+            <a href="Home.aspx" accesskey="1">Home</a>
+            <a href="Medicine.aspx" accesskey="2">Medicines</a>
+            <a href="Employee.aspx" accesskey="3">Employees</a>
+            <a href="Purchase.aspx" class="selected" accesskey="4">Purchase</a>
+            <a href="Dealer.aspx" accesskey="5">Dealers</a>
+            <a href="About.aspx" accesskey="6">About Us</a>
+        </div>
+    </nav>
     <br>
     <br>
-     <div style="font-size: large; padding-left:40%;">
-         <asp:Button ID="AllMedicine" runat="server" class="buttonBorder"  Font-Size="Large" Text="Show Purchase History" Height="40px" Width="220px" OnClick="AllClick" />
-               
+    <div style="font-size: large; padding-left: 40%;">
+        <asp:Button ID="AllMedicine" runat="server" class="buttonBorder" Font-Size="Large" Text="Show Purchase History" Height="40px" Width="220px" OnClick="AllClick" />
+
     </div>
     <br>
     <br>
-             <div class="whitepanel purchasepanel">
-                 <div class="row"> 
-                <div class="col-md-11 offset-1" style="font-size:16px;">To purchase medicine enter below details :</div>
-                </div>            
-            <hr>
-                 <div class="row">
-                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:15px;" align="right">New Medicine:</div>
-                <div class="col-md-4">
+    <div class="whitepanel purchasepanel">
+        <div class="row">
+            <div class="col-md-11 offset-1" style="font-size: 16px;">To purchase medicine enter below details :</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-11 offset-1">
+                <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 offset-1" style="padding-top: 2px; padding-left: 10px; font-size: 15px;" align="right">New Medicine:</div>
+            <div class="col-md-4">
                 <asp:RadioButtonList ID="NewFlag" name="NewFlag" CssClass="radioButtonList" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
-                           <asp:ListItem >Yes</asp:ListItem>
-                           <asp:ListItem>No</asp:ListItem>
-                       </asp:RadioButtonList>
-                </div>
+                    <asp:ListItem>Yes</asp:ListItem>
+                    <asp:ListItem>No</asp:ListItem>
+                </asp:RadioButtonList>
             </div>
-            <div class="row">
-                <div class="col-md-11 offset-1">
-                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
-                </div>
-            </div>
-           <table id="table1" align="center">
-               <tr id="oldMedicine">
-                   <td align="right">Medicine:</td>
-                   <td>
+        </div>
+
+        <table id="table1" align="center">
+            <tr id="oldMedicine">
+                <td align="right">Medicine:</td>
+                <td>
                     <asp:DropDownList ID="MedicineList" runat="server" AppendDataBoundItems="True"
-                    DataTextField="MedicineName" DataValueField="Price" Height="25px"
-                    Width="181px">
-                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
-                </asp:DropDownList>
-                   </td>
-               </tr>
+                        DataTextField="MedicineName" DataValueField="Price" Height="25px"
+                        Width="181px">
+                        <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
 
-               <tr>
-                   <td align="right">Dealer ID:</td>
-                   <td>
-                       <asp:DropDownList ID="Dealer" runat="server" AppendDataBoundItems="True"
-                    DataTextField="Name" DataValueField="DealerID" Height="25px"
-                    Width="181px">
-                    <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
-                </asp:DropDownList>
-                   </td>
-               </tr>
-         
-               <tr>
-                   <td align="right">Purchase Date:</td>
-                   <td>
-                       <asp:TextBox ID="Date" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
+            <tr>
+                <td align="right">Dealer ID:</td>
+                <td>
+                    <asp:DropDownList ID="Dealer" runat="server" AppendDataBoundItems="True"
+                        DataTextField="Name" DataValueField="DealerID" Height="25px"
+                        Width="181px">
+                        <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
 
-               <tr>
-                   <td align="right">Quantity:</td>
-                   <td>
-                        <asp:TextBox ID="Quantity" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-               <tr id="newMedicine">
-                   <td  align="right">Enter Medicine name:</td>
-                   <td>
-                       <asp:TextBox ID="Medicine" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-               <tr id ="newPrice">
-                   <td align="right">Price:</td>
-                   <td>
-                       <asp:TextBox ID="Price" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-               <tr id ="newMFD">
-                   <td align="right">MFD:</td>
-                   <td>
-                        <asp:TextBox ID="MFD" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-                <tr id ="newEXP">
-                   <td align="right">EXP:</td>
-                   <td>
-                       <asp:TextBox ID="EXP" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
-                   </td>
-               </tr>
-          </table>
-            <br>
-            <hr>
-            <div class="row">
-                <div class="col-md-8 offset-4">
-                    <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="GenerateBill" />
-                </div>
+            <tr>
+                <td align="right">Purchase Date:</td>
+                <td>
+                    <asp:TextBox ID="Date" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Quantity:</td>
+                <td>
+                    <asp:TextBox ID="Quantity" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr id="newMedicine">
+                <td align="right">Enter Medicine name:</td>
+                <td>
+                    <asp:TextBox ID="Medicine" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr id="newPrice">
+                <td align="right">Price:</td>
+                <td>
+                    <asp:TextBox ID="Price" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr id="newMFD">
+                <td align="right">MFD:</td>
+                <td>
+                    <asp:TextBox ID="MFD" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr id="newEXP">
+                <td align="right">EXP:</td>
+                <td>
+                    <asp:TextBox ID="EXP" placeholder="DD/MM/YYYY" runat="server" Style="margin-left: 0px"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+        <div class="row">
+            <div class="col-md-8 offset-4">
+                <asp:Button ID="Button1" Text="Generate Bill" runat="server" data-target="#myModal" class="buttonBorderSmall" Font-Size="Larger" Height="35px" Width="140px" OnClientClick="return ValidateForm();" OnClick="GenerateBill" />
             </div>
-       </div>   
+        </div>
+    </div>
 
 
-<!-- The Modal -->
+    <!-- The Modal -->
     <div class="modal" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -269,10 +270,14 @@
                             <div class="col-md-6">
                                 <address>
                                     <strong>Billed To:</strong><br>
-                                    Name: <asp:Label ID="namebill" runat="server" Text=""></asp:Label><br>
-                                    Company: <asp:Label ID="companybill" runat="server" Text=""></asp:Label><br>
-                                    Contact: <asp:Label ID="contactbill" runat="server" Text=""></asp:Label><br>
-                                    Email: <asp:Label ID="emailbill" runat="server" Text=""></asp:Label>
+                                    Name:
+                                    <asp:Label ID="namebill" runat="server" Text=""></asp:Label><br>
+                                    Company:
+                                    <asp:Label ID="companybill" runat="server" Text=""></asp:Label><br>
+                                    Contact:
+                                    <asp:Label ID="contactbill" runat="server" Text=""></asp:Label><br>
+                                    Email:
+                                    <asp:Label ID="emailbill" runat="server" Text=""></asp:Label>
                                 </address>
                             </div>
                             <div class="col-md-6 text-right">
@@ -291,7 +296,7 @@
                                 </div>
                                 <br>
                                 <div class="panel-body">
-                                    <table class="table table-condensed" style="color: #405A67;font-size:12px;">
+                                    <table class="table table-condensed" style="color: #405A67; font-size: 12px;">
                                         <thead>
                                             <tr>
                                                 <td class="text-center"><strong>Name</strong></td>
