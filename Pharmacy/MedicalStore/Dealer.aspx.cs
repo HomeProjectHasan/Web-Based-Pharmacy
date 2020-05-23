@@ -76,7 +76,7 @@ namespace MedicalStore
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
                     ClientScriptManager CSM = Page.ClientScript;
-                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move home?')){window.location.href='Dealer.aspx'}</script>";
+                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move home?')){window.location.href='Home.aspx'}</script>";
                     CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false); ;
                 }
                 else
