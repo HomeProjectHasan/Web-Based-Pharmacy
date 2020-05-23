@@ -166,8 +166,12 @@
     <br>
     <br>
              <div class="whitepanel purchasepanel">
+                 <div class="row"> 
+                <div class="col-md-11 offset-1" style="font-size:16px;">To purchase medicine enter below details :</div>
+                </div>            
+            <hr>
                  <div class="row">
-                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Medicine:</div>
+                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:15px;" align="right">New Medicine:</div>
                 <div class="col-md-4">
                 <asp:RadioButtonList ID="NewFlag" name="NewFlag" CssClass="radioButtonList" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem >Yes</asp:ListItem>
@@ -175,7 +179,6 @@
                        </asp:RadioButtonList>
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="col-md-11 offset-1">
                     <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
