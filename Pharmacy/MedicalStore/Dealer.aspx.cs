@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MedicalStore
 {
@@ -24,6 +26,13 @@ namespace MedicalStore
 
             }
         }
+
+        protected void ShowClick(object sender, EventArgs e)
+        {
+            Session["DealerButton"] = "All_Click";
+            Response.Redirect("~/AllDealer.aspx");
+        }
+
 
         protected void Submit(object sender, EventArgs e)
         {
@@ -64,7 +73,7 @@ namespace MedicalStore
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
                     ClientScriptManager CSM = Page.ClientScript;
-                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to home?')){window.location.href='Dealer.aspx'}</script>";
+                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to Back?')){window.location.href='Dealer.aspx'}</script>";
                     CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false); ;
                 }
                 else

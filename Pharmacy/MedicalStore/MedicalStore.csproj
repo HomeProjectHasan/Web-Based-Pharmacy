@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AllDealer.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -210,6 +211,14 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AllDealer.aspx.cs">
+      <DependentUpon>AllDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllDealer.aspx.designer.cs">
+      <DependentUpon>AllDealer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Dealer.cs" />
     <Compile Include="Class\Employee.cs" />
     <Compile Include="Class\Medicine.cs" />
     <Compile Include="Class\Purchase.cs" />

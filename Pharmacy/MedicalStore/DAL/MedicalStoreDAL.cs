@@ -121,6 +121,30 @@ namespace MedicalStore.DAL
             }
             return searchresult;
         }
+        public DataTable ShowAllDealers()
+        {
+            DataSet ds = new DataSet();
+            SqlConnection sqlconn = new SqlConnection(connString);
+            sqlconn.Open();
+            SqlDataAdapter datatable = new SqlDataAdapter();
+            DataTable searchresult = new DataTable();
+
+            try
+            {
+                datatable = new SqlDataAdapter("SELECT DealerID,Name,ContactNo, Address, Email, CompanyName, AddedBy, DateTime FROM Dealer D , Company C where D.CompanyID=C.CompanyID", sqlconn);
+                datatable.Fill(searchresult);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return null;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return searchresult;
+        }
 
         public string PurchaseMedicine(string DealerID, string MedicineName, DateTime PurchaseDate, int Quantity, float price, DateTime MFD, DateTime EXP, string userID, string NewFlag)
         {
@@ -314,7 +338,7 @@ namespace MedicalStore.DAL
             DataTable searchresult = new DataTable();
             try
             {
-                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
+                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)
