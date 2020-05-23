@@ -18,11 +18,11 @@ namespace MedicalStore
 
         }
 
-        protected void button1_Click1(object sender, EventArgs e)
+        protected void login(object sender, EventArgs e)
         {
             DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
-            string Username = TextBox1.Text;
-            string Password = txtPassword.Text;
+            string Username = username.Text;
+            string Password = password.Text;
             if (Username == "" || Password == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('No data');</script>");﻿
@@ -34,13 +34,13 @@ namespace MedicalStore
                 string[] strArray = result.Split('|');
                 if (strArray[0].ToString().Contains("Success"))
                 {
-                    Session["user_id"] = TextBox1.Text;
+                    Session["user_id"] = username.Text;
                     Session["user_name"] = strArray[1].ToString();
                     Response.Redirect("~/Home.aspx");
                 }
                 else
                 {
-                    Label1.Text = strArray[1].ToString();
+                    ErrorLabel.Text = strArray[1].ToString();
                 }
             }
         }

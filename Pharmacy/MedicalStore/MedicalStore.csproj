@@ -216,7 +216,6 @@
     <Compile Include="Class\Purchase.cs" />
     <Compile Include="Class\Sell.cs" />
     <Compile Include="DAL\MedicalStoreDAL.cs" />
-    <Compile Include="DAL\myClass.cs" />
     <Compile Include="Dealer.aspx.cs">
       <DependentUpon>Dealer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

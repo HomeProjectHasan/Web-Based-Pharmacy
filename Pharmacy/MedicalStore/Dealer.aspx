@@ -34,8 +34,6 @@
                                     if (emailValidator(DealerEmail)) {
                                         //DealerEmail is fine too. Return
                                         return true;
-
-
                                     }
                                     else {
                                         document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Email.";
@@ -55,15 +53,11 @@
                                 enableDisable();
                                 return false;
                             }
-
-
-
                         }
                         else {
                             document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Name.";
                             enableDisable();
                             return false;
-
                         }
                     }
                     else {
@@ -77,9 +71,9 @@
                 else {
                     if (textWithSpaceValidator(Newcompany)) {
                         //Newcompanyis fine check NewCompanyAddress
-                        if (numberValidator(NewCompanyAddress)) {
+                        if (textWithSpaceValidator(NewCompanyAddress)) {
                             //NewCompanyAddress is fine check NewCompanyContact
-                            if (textWithNumberValidator(NewCompanyContact)) {
+                            if (phoneNoValidator(NewCompanyContact)) {
                                 //NewCompanyContact is fine check DealerName
                                 if (textWithSpaceValidator(DealerName)) {
                                     //DealerName is fine check DealerContact
@@ -90,50 +84,46 @@
                                             if (emailValidator(DealerEmail)) {
                                                 //DealerEmail is fine too. Return
                                                 return true;
-
                                             }
                                             else {
-                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Email.";
+                                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid dealer Email.";
                                                 enableDisable();
                                                 return false;
                                             }
                                         }
                                         else {
-                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Address.";
+                                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid dealer Address.";
                                             enableDisable();
                                             return false;
                                         }
                                     }
                                     else {
-                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Contact.";
+                                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid dealer Contact.";
                                         enableDisable();
                                         return false;
                                     }
                                 }
                                 else {
-                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Email.";
+                                    document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Dealer Name.";
                                     enableDisable();
                                     return false;
                                 }
                             }
                             else {
-                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Contact.";
+                                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid company Contact.";
                                 enableDisable();
                                 return false;
                             }
 
                         }
                         else {
-                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Address.";
+                            document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid company location.";
                             enableDisable();
                             return false;
                         }
-
-
-
                     }
                     else {
-                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid Name.";
+                        document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please enter a valid company Name.";
                         enableDisable();
                         return false;
 
@@ -143,7 +133,7 @@
 
             }
             else {
-                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please Select Company.";
+                document.getElementById("<%= ErrorLabel.ClientID%>").innerHTML = "Please Select Company type.";
                 enableDisable();
                 return false;
             }
@@ -193,10 +183,18 @@
           </div>
     <br>
     <br>
-   
-       <div class="whitepanel dealerpanel">
+            <div class="whitepanel purchasepanel">
+                 <div class="row"> 
+                <div class="col-md-11 offset-1" style="font-size:16px;">To add dealer/company enter below details :</div>
+                </div>            
+            <hr>
                  <div class="row">
-                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Company:</div>
+                <div class="col-md-11 offset-1">
+                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
+                </div>
+               </div>
+                 <div class="row">
+                <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:15px;" align="right">New Company:</div>
                 <div class="col-md-4">
                         <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem>Yes</asp:ListItem>
@@ -205,14 +203,9 @@
                
                   </div>
                      </div>
-           <hr >
-           <div class="row">
-                <div class="col-md-11 offset-1">
-                    <asp:Label ID="ErrorLabel" runat="server" Style="color: red" Text=""></asp:Label>
-                </div>
-               </div>
+          
            <table id="table1" align="center">
-               <tr id="oldcompany">
+               <tr id="Oldcompany">
                    <td align="right">Company:</td>
                    <td>
                     <asp:DropDownList ID="CompanyList" runat="server" AppendDataBoundItems="True"
@@ -222,21 +215,19 @@
                 </asp:DropDownList>
                    </td>
                </tr>
-               <tr id="newCompanyname">
+               <tr id="Newcompany">
                    <td  align="right">Enter Company name:</td>
                    <td>
                        <asp:TextBox ID="Companyname" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>             
-               <tr>
-                      <tr id="newCompanylocation">
+               <tr id="NewCompanyAddress">
                    <td  align="right">Company Location:</td>
                    <td>
                        <asp:TextBox ID="Companyaddress" runat="server" Style="margin-left: 0px"></asp:TextBox>
                    </td>
                </tr>             
-               <tr>
-                      <tr id="newCompanycontactno">
+               <tr id="NewCompanyContact">
                    <td  align="right">Company Contact Number:</td>
                    <td>
                        <asp:TextBox ID="Companycontactno" runat="server" Style="margin-left: 0px"></asp:TextBox>

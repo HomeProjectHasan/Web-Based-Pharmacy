@@ -12,7 +12,7 @@ namespace MedicalStore.DAL
     public class MedicalStoreDAL
     {
         private static readonly string connString =
-            System.Configuration.ConfigurationManager.ConnectionStrings["sqlCon2"].ConnectionString;
+            System.Configuration.ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
 
         public string Signup(string Name, string Contact, string House, string Designation, int Salary, string Email, string Gender, DateTime DOB, string UserN, string Pass)
         {

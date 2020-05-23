@@ -19,10 +19,13 @@ namespace MedicalStore
             }
             else
             {
-                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                if (!this.IsPostBack)
+                {
+                    DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
-                CompanyList.DataSource = userDal.getCompanyList();
-                CompanyList.DataBind();
+                    CompanyList.DataSource = userDal.getCompanyList();
+                    CompanyList.DataBind();
+                }
 
             }
         }
@@ -73,7 +76,7 @@ namespace MedicalStore
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>enableDisable();</script>");
                     ClientScriptManager CSM = Page.ClientScript;
-                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move to Back?')){window.location.href='Dealer.aspx'}</script>";
+                    string strconfirm = "<script>if(window.confirm('" + strArray[1].ToString() + " Want to move home?')){window.location.href='Dealer.aspx'}</script>";
                     CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false); ;
                 }
                 else

@@ -1,7 +1,7 @@
 USE [AlphaPharmacy]
 GO
 
-/****** Object:  Table [dbo].[Company]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,14 +15,14 @@ CREATE TABLE [dbo].[Company](
 	[ContactNumber] [numeric](11, 0) NOT NULL,
 	[AddedBy] [varchar](50) NOT NULL,
 	[DateTime] [datetime] NOT NULL,
- CONSTRAINT [PK__Company__2D971C4C470E4BC8] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Company] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Customers]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -41,7 +41,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Dealer]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Dealer]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -57,18 +57,14 @@ CREATE TABLE [dbo].[Dealer](
 	[Email] [varchar](100) NOT NULL,
 	[AddedBy] [varchar](50) NOT NULL,
 	[DateTime] [datetime] NOT NULL,
- CONSTRAINT [PK__Dealer__CA2F8E9277A2BABD] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Dealer] PRIMARY KEY CLUSTERED 
 (
 	[DealerID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UQ__Dealer__A9D1053465F16297] UNIQUE NONCLUSTERED 
-(
-	[Email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -88,15 +84,11 @@ CREATE TABLE [dbo].[Employee](
 PRIMARY KEY CLUSTERED 
 (
 	[EmpID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
-(
-	[Email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[LoginDetails]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[LoginDetails]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -114,7 +106,7 @@ CREATE TABLE [dbo].[LoginDetails](
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Medicine]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Medicine]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -129,14 +121,14 @@ CREATE TABLE [dbo].[Medicine](
 	[Manufacturing] [date] NOT NULL,
 	[Expiry] [date] NOT NULL,
 	[CurrentQuantity] [int] NOT NULL,
- CONSTRAINT [PK__Medicine__4F2128F066B11B4A] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Medicine] PRIMARY KEY CLUSTERED 
 (
 	[MedicineID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Purchase]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -149,17 +141,17 @@ CREATE TABLE [dbo].[Purchase](
 	[MedicineID] [varchar](20) NOT NULL,
 	[PurchaseDate] [date] NOT NULL,
 	[Quantity] [int] NOT NULL,
-	[Totalprice] [float] NOT NULL,
+	[Totalprice] numeric(18,2) NOT NULL,
 	[PurchaseBy] [varchar](50) NOT NULL,
 	[DateTime] [datetime] NOT NULL,
- CONSTRAINT [PK__Purchase__6B0A6BDE8D8AFF02] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__Purchase] PRIMARY KEY CLUSTERED 
 (
 	[PurchaseID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[Sell]    Script Date: 21-05-2020 18:05:21 ******/
+/****** Object:  Table [dbo].[Sell]    Script Date: 23-05-2020 21:33:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -172,7 +164,7 @@ CREATE TABLE [dbo].[Sell](
 	[MedicineID] [varchar](20) NOT NULL,
 	[SellDate] [date] NOT NULL,
 	[Quantity] [int] NOT NULL,
-	[Totalprice] [float] NOT NULL,
+	[Totalprice] numeric(18,2) NOT NULL,
 	[SoldBy] [varchar](50) NOT NULL,
 	[DateTime] [datetime] NOT NULL,
  CONSTRAINT [PK__Sell__B35F66FF5A601E40] PRIMARY KEY CLUSTERED 

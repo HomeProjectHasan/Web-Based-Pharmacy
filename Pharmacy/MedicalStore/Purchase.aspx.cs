@@ -19,13 +19,16 @@ namespace MedicalStore
             }
             else
             {
-                DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
+                if (!this.IsPostBack)
+                {
+                    DAL.MedicalStoreDAL userDal = new DAL.MedicalStoreDAL();
 
-                Dealer.DataSource = userDal.getDealerList();
-                Dealer.DataBind();
+                    Dealer.DataSource = userDal.getDealerList();
+                    Dealer.DataBind();
 
-                MedicineList.DataSource = userDal.getMedicineList();
-                MedicineList.DataBind();
+                    MedicineList.DataSource = userDal.getMedicineList();
+                    MedicineList.DataBind();
+                }
             }
         }
         protected void GenerateBill(object sender, EventArgs e)
