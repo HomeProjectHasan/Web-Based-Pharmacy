@@ -196,7 +196,7 @@
                  <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:15px;" align="right">New Company:</div>
                 <div class="col-md-4">
-                        <asp:RadioButtonList ID="NewFlag" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
+                        <asp:RadioButtonList ID="NewFlag" CssClass="radioButtonList" name="NewFlag" runat="server" OnClick="enableDisable()" RepeatDirection="Horizontal">
                            <asp:ListItem>Yes</asp:ListItem>
                            <asp:ListItem>No</asp:ListItem>
                        </asp:RadioButtonList>
