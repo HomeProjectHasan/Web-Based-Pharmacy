@@ -131,7 +131,7 @@ namespace MedicalStore.DAL
 
             try
             {
-                datatable = new SqlDataAdapter("SELECT DealerID,Name,ContactNo, Address, Email, CompanyName, AddedBy, DateTime FROM Dealer D , Company C where D.CompanyID=C.CompanyID", sqlconn);
+                datatable = new SqlDataAdapter("SELECT DealerID,Name DealerName,ContactNo DealerContact, Address DealerAddress, Email DealerEmail, CompanyName, D.AddedBy ServedBy, D.DateTime FROM Dealer D , Company C where D.CompanyID=C.CompanyID", sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)

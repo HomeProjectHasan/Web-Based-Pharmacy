@@ -1,10 +1,49 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MedicalStore.Master" AutoEventWireup="true" CodeBehind="DealerOutput.aspx.cs" Inherits="MedicalStore.Outputpage2" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MedicalStore.Master" AutoEventWireup="true" CodeBehind="DealerOutput.aspx.cs" Inherits="MedicalStore.DealerOutput" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+         $(document).ready(function () {
+             BindGridView();
+         });
+         function BindGridView() {
+             $.ajax({
+                 type: "POST",
+                 url: "DealerOutput.aspx/ShowAllDealers",
+                 data: "{}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: OnSuccess,
+                 failure: function (response) {
+                     alert(response);
+                 },
+                 error: function (response) {
+                     alert(JSON.stringify(response));
+                 }
+             });
+         }
+         function OnSuccess(response) {
+             $("[id*=grdModel]").DataTable(
+                 {
+                     bLengthChange: true,
+                     lengthMenu: [[5, 10, -1], [5, 10, "All"]],
+                     bFilter: true,
+                     bSort: true,
+                     bPaginate: true,
+                     data: response.d,
+                     columns: [{ 'data': 'DealerID' },
+                        
+                         { 'data': 'DealerName' },
+                         { 'data': 'DealerContact' },
+                         { 'data': 'DealerEmail' },
+                         { 'data': 'DealerAddress' },
+                         { 'data': 'CompanyName' },
+                         { 'data': 'ServedBy' },
+                         { 'data': 'DateTime' }]
+                 });
+        };
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <body>
-        <nav class="menu-navigation-round">
+     <nav class="menu-navigation-round">
                 <div class="menuCustom">
                 <a href="Home.aspx"  accesskey="1" >Home</a>
                 <a href="Medicine.aspx" accesskey="2">Medicines</a>
@@ -13,30 +52,20 @@
                 <a href="Dealer.aspx" accesskey="5">Dealers</a>
                 <a href="About.aspx" accesskey="6">About Us</a>
             </div>
-         </nav>
-       </body>
-        <div style="padding-bottom:380px;">
-            <br />
-            <br />
-            <br />
-            <br />
-            
-                
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            
-                
-                <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Height="16px" style="margin-left: 684px; margin-top: 15px" Width="307px">
-                    <FooterStyle BackColor="#CCCCCC" />
-                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-                    <RowStyle BackColor="White" />
-                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                    <SortedAscendingHeaderStyle BackColor="#808080" />
-                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                    <SortedDescendingHeaderStyle BackColor="#383838" />
-                </asp:GridView>
-
-            </div>
-    
+         </nav><div class="pt-5 pr-4">
+        <div class="content-wrapper whitepanel pt-3 pb-3 pr-3 pl-3 col-8 offset-4">
+            <asp:GridView ID="grdModel" runat="server" CssClass="display compact tablepanel" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="DealerID" HeaderText="ID" />
+                    <asp:BoundField DataField="DealerName" HeaderText="Name" />
+                    <asp:BoundField DataField="DealerContact" HeaderText="Contact" />
+                    <asp:BoundField DataField="DealerEmail" HeaderText="Email" />
+                    <asp:BoundField DataField="DealerAddress" HeaderText="Address" />
+                    <asp:BoundField DataField="CompanyName" HeaderText="Company" />
+                    <asp:BoundField DataField="ServedBy" HeaderText="ServedBy" />
+                    <asp:BoundField DataField="DateTime" HeaderText="ServedOn" />                  
+                </Columns>               
+            </asp:GridView>         
+        </div>
+     </div>   
 </asp:Content>

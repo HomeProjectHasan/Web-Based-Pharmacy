@@ -194,7 +194,7 @@
     <br>
     <br>
    
-       <div class="whitepanel dealerpanel1">
+       <div class="whitepanel dealerpanel">
                  <div class="row">
                 <div class="col-md-5 offset-1" style="padding-top:2px;padding-left:10px;font-size:16px;" align="right">New Company:</div>
                 <div class="col-md-4">

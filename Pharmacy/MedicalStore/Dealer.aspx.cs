@@ -30,7 +30,7 @@ namespace MedicalStore
         protected void ShowClick(object sender, EventArgs e)
         {
             Session["DealerButton"] = "All_Click";
-            Response.Redirect("~/AllDealer.aspx");
+            Response.Redirect("~/DealerOutput.aspx");
         }
 
 
