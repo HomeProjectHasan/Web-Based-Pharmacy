@@ -363,7 +363,7 @@ namespace MedicalStore.DAL
             DataTable searchresult = new DataTable();
             try
             {
-                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
+                datatable = new SqlDataAdapter(String.Format("select Name, CompanyName, ContactNo, Email from Dealer D , Company C where D.CompanyID = c.CompanyID and DealerID = '{0}'", dealerId), sqlconn);
                 datatable.Fill(searchresult);
             }
             catch (SqlException ex)
