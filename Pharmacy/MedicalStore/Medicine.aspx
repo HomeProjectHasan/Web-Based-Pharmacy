@@ -39,7 +39,7 @@
             <div class="col-3 pl-0">
                <asp:TextBox ID="MedicineID" runat="server"></asp:TextBox>
             </div>
-            <div class="col-4 pr-4">
+            <div class="col-4 pl-4">
                 <asp:Button ID="Button2" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByID" />
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="col-3 pl-0">
                        <asp:TextBox ID="MedicineName" runat="server"></asp:TextBox>
             </div>
-            <div class="col-4 pr-4">
+            <div class="col-4 pl-4 pb-2">
                 <asp:Button ID="Button3" Text="Search" runat="server" class="buttonBorderSmall" Font-Size="Large" Height="30px" Width="80px" OnClick="SearchByName" />
             </div>
         </div>
