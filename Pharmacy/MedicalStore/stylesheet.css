@@ -7,7 +7,7 @@ body {
     /*inear-gradient(#2095a1, #dce6e8);*/
     font-size: 14px;
     color: #405A67;
-    height: 207px;
+    zoom:78%;
 }
 
 td {
@@ -53,7 +53,7 @@ h3 {
 }
 
 .menuCustom {
-    padding-left: 24%;
+    padding-left: 14%;
     padding-top: 15px;
 }
 
@@ -67,8 +67,11 @@ h3 {
     bottom: 0;
     color: #FBFBF8;
     width: 100%;
+    margin-top: 5%;
     height: 2.5rem;
 }
+
+
 .footerImage {
     background: url(images/7129.jpg) center;
 }

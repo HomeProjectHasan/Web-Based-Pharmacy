@@ -1,11 +1,11 @@
 ﻿<head id="Head1" runat="server">
     <title></title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="Content/navigation-round.css" />  
+    <link rel="stylesheet" href="Content/navigation-round.css" />
     <script src="Scripts/jquery-3.0.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery.dataTables.min.js"></script>
+    <link href="Content/jquery.dataTables.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.min.js"></script>
     <script>
         $(function () {
@@ -21,7 +21,7 @@
     <script type="text/javascript">
         function dateValidator(date) {
             var reg = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([1][26]|[2468][048]|[3579][26])00))))$/g;
-            return(reg.test(date));
+            return (reg.test(date));
         }
 
         function phoneNoValidator(num) {
@@ -82,17 +82,19 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<header>  
-    <div id="signout"><a style="color: #FBFBF8; font:bold 12px Arial, Helvetica, sans-serif; position:relative;float: right; padding-top:90px;padding-right:8px;" href="Frontpage.aspx" accesskey="7">Sign Out</a></div>    
-    <div><p style="color: #FBFBF8; font:bold 14px Arial, Helvetica, sans-serif; position:absolute; padding-top:80px;padding-left:8px;" id="userID"></p></div>
-    <div class="header" >        
+<header>
+    <div id="signout"><a style="color: #FBFBF8; font: bold 12px Arial, Helvetica, sans-serif; position: relative; float: right; padding-top: 90px; padding-right: 8px;" href="Frontpage.aspx" accesskey="7">Sign Out</a></div>
+    <div>
+        <p style="color: #FBFBF8; font: bold 14px Arial, Helvetica, sans-serif; position: absolute; padding-top: 80px; padding-left: 8px;" id="userID"></p>
+    </div>
+    <div class="header">
         <div style="color: #FBFBF8">
             <h1>ALPHA PHARMACY</h1>
         </div>
     </div>
-    <div style="padding-top:5px;">
-    <div class="header1" > </div>
-        </div>
+    <div style="padding-top: 5px;">
+        <div class="header1"></div>
+    </div>
 </header>
 <body onload="getData()">
     <form id="form1" runat="server">
@@ -104,6 +106,7 @@
 </body>
 <br />
 <footer class="footer">
-    <div><p> All content & design © 2019-2020 Salman Layek</p>
+    <div>
+        <p>All content & design © 2019-2020 Salman Layek</p>
     </div>
 </footer>

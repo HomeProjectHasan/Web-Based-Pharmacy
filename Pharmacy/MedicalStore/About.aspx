@@ -14,12 +14,11 @@
             </div>
             </nav>
     <div style="padding-top:5%;">
-        <div style="color: #38c0e5;  text-align: center;" class="whitepanel aboutpanel">
-            <p>PHOENIX PHARMACY IS AN INNOVATIONAL IDEA OF WEB BASED DATABASE INTERNATIONAL PROJECT. IT INCLUDES SOLUTION OF EVERY KIND OF MAJOR AND MINOR ISSUES.THIS PROJECT INCLUDE PARTICIPATION OF BELOW MEMBER:: </p>
-            <p>1. SALMAN LAYEK  (L16-4348)  </p>
-            <p></p>
-            <p></p>
-            <p>FOR ANY QUERIES AND SUGGESTIONS, KINDLY CONTACT US AT "PHOENIX@GMAIL.COM" </p>
+        <div style="color: #097F7F;  text-align: center;" class="whitepanel aboutpanel">
+            <p>ALPHA PHARMACY IS AN INNOVATIONAL IDEA OF WEB BASED DATABASE INTERNATIONAL PROJECT. IT INCLUDES SOLUTION OF EVERY KIND OF MAJOR AND MINOR ISSUES.THIS PROJECT INCLUDE PARTICIPATION OF BELOW MEMBER:: </p>
+            <p> SALMAN LAYEK  </p>
+             <p></p>
+            <p>FOR ANY QUERIES AND SUGGESTIONS, KINDLY CONTACT US AT "ALPHAPHARMACY@GMAIL.COM" </p>
             <p></p>
             <p></p>
         </div>
